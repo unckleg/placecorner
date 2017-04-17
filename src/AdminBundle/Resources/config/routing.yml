@@ -1,3 +1,15 @@
-admin_homepage:
-    path:     /admin
-    defaults: { _controller: AdminBundle:Auth:index }
+admin_dashboard:
+    path:     /admin/dashboard
+    defaults: { _controller: AdminBundle:Dashboard:index }
+
+admin_login:
+    path:     /admin/login
+    defaults: { _controller: AdminBundle:Security:login }
+
+admin_logout:
+    path:     /admin/logout
+    defaults: { _controller: AdminBundle:Security:logout }
+
+admin_auth:
+    path:     /admin/auth
+    defaults: { _controller: AdminBundle:Security:check }
