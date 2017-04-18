@@ -16,7 +16,7 @@ class Version20170418090503 extends AbstractMigration
     public function up(Schema $schema)
     {
         $this->addSql("
-          CREATE TABLE `user` (
+          CREATE TABLE IF NOT EXISTS `user` (
               `id` int(11) NOT NULL,
               `username` varchar(180) NOT NULL,
               `email` varchar(180) NOT NULL,
