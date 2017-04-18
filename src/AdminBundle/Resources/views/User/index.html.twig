@@ -1,0 +1,140 @@
+{% extends 'AdminBundle:Master/Layouts:admin.html.twig' %}
+{% set page_title = 'User' %}
+
+{% block breadcrumbs %}
+    <div class="page-bar">
+        <ul class="page-breadcrumb">
+            <li>
+                <a href="{{ path('admin_dashboard') }}">Home</a>
+            </li>
+            <li class="active">
+                <a href="{{ path('admin_user') }}">User</a>
+            </li>
+        </ul>
+    </div>
+{% endblock %}
+
+{% block toptitle %}
+    <h1 class="page-title"> User
+        <small>administration of backend users</small>
+        <div class="pull-right">
+            <div class="btn-group">
+                <a class="btn blue btn-circle btn-md" href="{{ path('admin_user_create') }}">Create New User</a>
+            </div>
+        </div>
+    </h1>
+{% endblock %}
+
+{% block content %}
+    <div class="portlet light">
+        <div class="portlet-title">
+            <div class="caption">
+                <i class="icon-people font-grey-gallery"></i>
+                <span class="caption-subject bold font-grey-gallery uppercase"> List </span>
+                <span class="caption-helper">of all users</span>
+            </div>
+            <div class="tools">
+                <a href="" class="collapse" data-original-title="" title=""> </a>
+                <a href="#portlet-config" data-toggle="modal" class="config" data-original-title="" title=""> </a>
+                <a href="" class="fullscreen" data-original-title="" title=""> </a>
+            </div>
+        </div>
+        <div class="portlet-body" style="display: block;">
+            <table class="table table-bordered table-hover" id="user">
+                <thead>
+                    <tr>
+                        <th class="text-center"> Full Name </th>
+                        <th class="text-center"> Username </th>
+                        <th class="text-center"> Email </th>
+                        <th class="text-center"> Last Activity </th>
+                        <th class="text-center"> Status </th>
+                        <th class="text-center"> Roles </th>
+                        <th class="text-center"> Actions </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if users is not empty %}
+                        {% for user in users %}
+                        <tr>
+                            <td class="text-center">
+                                {{ user.getFirstName ~' '~ user.getLastName }}
+                            </td>
+                            <td class="text-center"> {{ user.getUsername }} </td>
+                            <td class="text-center"> {{ user.getEmail }} </td>
+                            <td class="text-center"> {{ user.lastLogin|date("d.m.Y H:i") }} </td>
+                            <td class="text-center">
+                                {% if user.isEnabled %}
+                                    <span class="label label-sm label-info"> Active </span>
+                                {% else %}
+                                    <span class="label label-sm label-danger"> Banned </span>
+                                {% endif %}
+                            </td>
+                            <td class="text-center">
+                                {% for role in user.getRoles %}
+                                    {% if loop.last %}
+                                        {{ role }}
+                                    {% else %}
+                                        {{ role }},
+                                    {% endif %}
+                                {% endfor %}
+                            </td>
+                            <td class="text-center" style="width: 20%;">
+                                {% if user.isEnabled %}
+                                    <a class="btn purple btn-sm tooltips" type="button" data-container="body"
+                                       data-placement="top"
+                                       data-original-title="Ban user"
+                                       data-action="hide"
+                                       data-user-id="{{ user.getId }}">
+                                        <i class="icon-close"></i>
+                                    </a>
+                                {% else %}
+                                    <a class="btn default btn-sm tooltips" type="button" data-container="body"
+                                       data-placement="top"
+                                       data-original-title="Activate user"
+                                       data-action="hide"
+                                       data-user-id="{{ user.getId }}">
+                                        <i class="icon-close"></i>
+                                    </a>
+                                {% endif %}
+                                <a class="btn blue btn-sm tooltips"
+                                   type="button"
+                                   data-container="body"
+                                   data-placement="top"
+                                   data-original-title="Edit user">
+                                    <i class="icon-pencil"></i>
+                                </a>
+
+                                <a class="btn btn-danger btn-sm tooltips"
+                                   type="button" data-container="body"
+                                   data-placement="top"
+                                   data-original-title="Delete user"
+                                   data-action="delete"
+                                   data-user-id="{{ user.getId }}">
+                                    <i class="icon-trash"></i>
+                                </a>
+
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    {% endif %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ loadLibrary('datatable', 'css') |raw }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ loadLibrary('datatable', 'js') | raw }}
+
+    <script>
+        $(document).ready(function() {
+            $('#user').DataTable();
+        } );
+    </script>
+{% endblock %}

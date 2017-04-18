@@ -48,3 +48,9 @@ body {
 .page-sidebar .page-sidebar-menu>li.heading>h3, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu>li.heading>h3 {
     color: #7655af;
 }
+.page-content {
+    background: #eef1f5;
+}
+table.dataTable.no-footer {
+    border-bottom: transparent !important;
+}

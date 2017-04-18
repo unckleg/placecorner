@@ -8,8 +8,8 @@
                 </div>
             </li>
 
-            <li class="nav-item">
-                <a href="" class="nav-link nav-toggle">
+            <li class="nav-item {{ isActive('admin_dashboard', 'parent') }}">
+                <a href="{{ path('admin_dashboard') }}" class="nav-link nav-toggle">
                     <i class="icon-home"></i>
                     <span class="title">Dashboard</span>
                 </a>
@@ -17,19 +17,19 @@
             <li class="heading">
                 <h3 class="uppercase">NEAR.ME</h3>
             </li>
-            <li class="nav-item">
+            <li class="nav-item {{ isActive('admin_page', 'parent') }}">
                 <a href="javascript:;" class="nav-link nav-toggle">
                     <i class="icon-grid"></i>
                     <span class="title">Page</span>
                     <span class="arrow"></span>
                 </a>
                 <ul class="sub-menu">
-                    <li class="nav-item start ">
-                        <a href="" class="nav-link ">
+                    <li class="nav-item start {{ isActive('admin_page', 'child') }}">
+                        <a href="{{ path('admin_page') }}" class="nav-link">
                             <span class="title">Pages </span>
                         </a>
                     </li>
-                    <li class="nav-item start ">
+                    <li class="nav-item start {{ isActive('admin_page_sitemap', 'child') }}">
                         <a href="" class="nav-link ">
                             <span class="title">Sitemap </span>
                         </a>
@@ -120,15 +120,15 @@
             <li class="heading">
                 <h3 class="uppercase">ADMINISTRATION</h3>
             </li>
-            <li class="nav-item">
+            <li class="nav-item {{ isActive('admin_user', 'parent') }}">
                 <a href="javascript:;" class="nav-link nav-toggle">
                     <i class="icon-people"></i>
                     <span class="title">Users</span>
                     <span class="arrow"></span>
                 </a>
                 <ul class="sub-menu">
-                    <li class="nav-item start ">
-                        <a href="" class="nav-link ">
+                    <li class="nav-item start {{ isActive('admin_user', 'child') }}">
+                        <a href="{{ path('admin_user') }}" class="nav-link ">
                             <span class="title">Administration</span>
                         </a>
                     </li>

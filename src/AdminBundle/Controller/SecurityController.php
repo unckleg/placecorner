@@ -2,7 +2,6 @@
 
 namespace AdminBundle\Controller;
 
-use AdminBundle\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RedirectResponse;;
@@ -37,7 +36,7 @@ class SecurityController extends Controller
         }
 
         // last username entered by the user
-        $lastUsername = (null === $session) ? '' : $session->get($lastUsernameKey);
+        $lastUsername = ($session === null) ? '' : $session->get($lastUsernameKey);
         $csrfToken    = $this->has('security.csrf.token_manager')
             ? $this->get('security.csrf.token_manager')->getToken('authenticate')->getValue()
             : null;
@@ -60,8 +59,7 @@ class SecurityController extends Controller
     protected function renderLogin(array $data)
     {
         // If user is already logged-in redirect to admin_dashboard
-        if (true ===  $this->container->get('security.authorization_checker') ->isGranted('ROLE_ADMIN')) {
-            // Redirecting
+        if ($this->container->get('security.authorization_checker') ->isGranted('ROLE_ADMIN') === true) {
             return new RedirectResponse($this->container->get('router')->generate('admin_dashboard'));
         }
         return $this->render('AdminBundle:Security:index.html.twig', $data);

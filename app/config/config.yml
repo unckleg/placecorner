@@ -57,12 +57,19 @@ doctrine:
         naming_strategy: doctrine.orm.naming_strategy.underscore
         auto_mapping: true
 
+doctrine_migrations:
+    dir_name: "%kernel.root_dir%/../database/Migrations"
+    namespace: Database\Migrations
+    table_name: migration_versions
+    name: Application Migrations
+
 # Assetic Configuration
 assetic:
     debug:          '%kernel.debug%'
     use_controller: '%kernel.debug%'
     filters:
         cssrewrite: ~
+# FOSUser Configuration
 fos_user:
     db_driver: orm
     firewall_name: main

@@ -1,7 +1,4 @@
-admin_dashboard:
-    path:     /admin/dashboard
-    defaults: { _controller: AdminBundle:Dashboard:index }
-
+# Authorization and Security
 admin_login:
     path:     /admin/login
     defaults: { _controller: AdminBundle:Security:login }
@@ -13,3 +10,22 @@ admin_logout:
 admin_auth:
     path:     /admin/auth
     defaults: { _controller: AdminBundle:Security:check }
+
+# Administration
+admin_dashboard:
+    path:     /admin/dashboard
+    defaults: { _controller: AdminBundle:Dashboard:index }
+
+# Page
+admin_page:
+    path:     /admin/page
+    defaults: { _controller: AdminBundle:Page:index }
+
+# User
+admin_user:
+    path:     /admin/user
+    defaults: { _controller: AdminBundle:User:index }
+
+admin_user_create:
+    path:     /admin/user/create
+    defaults: { _controller: AdminBundle:User:create }

@@ -1,0 +1,28 @@
+{% extends 'AdminBundle:Master/Layouts:admin.html.twig' %}
+{% set page_title = 'User Create' %}
+
+{% block breadcrumbs %}
+    <div class="page-bar">
+        <ul class="page-breadcrumb">
+            <li>
+                <a href="{{ path('admin_dashboard') }}">Home</a>
+            </li>
+            <li>
+                <a href="{{ path('admin_user') }}">User</a>
+            </li>
+            <li class="active">
+                <a href="{{ path('admin_user_create') }}">User Create</a>
+            </li>
+        </ul>
+    </div>
+{% endblock %}
+
+{% block toptitle %}
+    <h1 class="page-title"> User
+        <small>New user form</small>
+    </h1>
+{% endblock %}
+
+{% block content %}
+
+{% endblock %}
