@@ -25,7 +25,19 @@ admin_page:
 admin_user:
     path:     /admin/user
     defaults: { _controller: AdminBundle:User:index }
+    options:
+        expose: true
 
 admin_user_create:
     path:     /admin/user/create
     defaults: { _controller: AdminBundle:User:create }
+
+admin_user_edit:
+    path:     /admin/user/edit/id/{id}
+    defaults: { _controller: AdminBundle:User:edit }
+
+admin_user_modify:
+    path:     /admin/user/modify/id/{id}/status/{status}
+    defaults: { _controller: AdminBundle:User:modify }
+    options:
+        expose: true

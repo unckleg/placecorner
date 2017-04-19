@@ -24,11 +24,12 @@ class HtmlLibrariesExtension extends \Twig_Extension
      * Returns library by provided name
      * If not library returns null
      * @param string $library
+     * @param string $fileType
      * @return mixed
      */
     public function load($library, $fileType = self::CSS)
     {
-        if (is_string($library)) {
+        if (is_string($library) || is_array($library)) {
             return $this->make($library, $fileType);
         } else {
             throw new Exception('You must provide valid library index name. Example: datatable');
@@ -39,12 +40,23 @@ class HtmlLibrariesExtension extends \Twig_Extension
     /**
      * Building Js and Css output
      * @param string $library
+     * @param string $fileType
      * @return null|string
      */
     private function make($library, $fileType)
     {
-        $index   = $library;
-        $library = $this->libs()[$index];
+        if (is_array($library)) {
+            $libs = [];
+            foreach($library as $libraryIndex) {
+                foreach($this->libs()[$libraryIndex] as $finnalLib) {
+                    $libs[] = $finnalLib;
+                }
+            }
+            $library = $libs;
+        } else {
+            $index   = $library;
+            $library = $this->libs()[$index];
+        }
 
         if (!empty($library)) {
             $javascripts = [];
@@ -64,8 +76,9 @@ class HtmlLibrariesExtension extends \Twig_Extension
 
             if ($fileType == self::CSS) {
                 return $cssOutput;
-            } else
+            } else {
                 return $jsOutput;
+            }
         }
 
         // if array empty return null
@@ -85,6 +98,11 @@ class HtmlLibrariesExtension extends \Twig_Extension
                 '/skins/backend/assets/global/scripts/datatable.js',
                 '/skins/backend/assets/global/plugins/datatables/datatables.min.js',
                 '/skins/backend/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js',
+            ],
+            'confirmation' => [
+                '/skins/backend/assets/global/plugins/bootstrap-confirmation/bootstrap-confirmation.min.js',
+                '/skins/backend/assets/pages/scripts/ui-confirmations.min.js',
+
             ]
         ];
 

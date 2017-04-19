@@ -55,7 +55,7 @@
                 </thead>
                 <tbody>
                     {% if users is not empty %}
-                        {% for user in users %}
+                        {% for user in users if user.getid != app.user.id%}
                         <tr>
                             <td class="text-center">
                                 {{ user.getFirstName ~' '~ user.getLastName }}
@@ -81,23 +81,30 @@
                             </td>
                             <td class="text-center" style="width: 20%;">
                                 {% if user.isEnabled %}
-                                    <a class="btn purple btn-sm tooltips" type="button" data-container="body"
-                                       data-placement="top"
-                                       data-original-title="Ban user"
-                                       data-action="hide"
-                                       data-user-id="{{ user.getId }}">
-                                        <i class="icon-close"></i>
-                                    </a>
+                                <a class="btn purple btn-sm tooltips" type="button" data-container="body"
+                                   data-placement="top"
+                                   data-original-title="Ban user"
+                                   data-action="hide"
+                                   data-user-id="{{ user.getId }}"
+                                   data-toggle="confirmation"
+                                   data-popout="true"
+                                   data-on-confirm="modifyUser">
+                                    <i class="icon-close"></i>
+                                </a>
                                 {% else %}
-                                    <a class="btn default btn-sm tooltips" type="button" data-container="body"
-                                       data-placement="top"
-                                       data-original-title="Activate user"
-                                       data-action="hide"
-                                       data-user-id="{{ user.getId }}">
-                                        <i class="icon-close"></i>
-                                    </a>
+                                <a class="btn default btn-sm tooltips" type="button" data-container="body"
+                                   data-placement="top"
+                                   data-original-title="Activate user"
+                                   data-action="show"
+                                   data-user-id="{{ user.getId }}"
+                                   data-toggle="confirmation"
+                                   data-popout="true"
+                                   data-on-confirm="modifyUser">
+                                    <i class="icon-check"></i>
+                                </a>
                                 {% endif %}
-                                <a class="btn blue btn-sm tooltips"
+                                <a href="{{ path('admin_user_edit', {'id': user.getId}) }}"
+                                   class="btn blue btn-sm tooltips"
                                    type="button"
                                    data-container="body"
                                    data-placement="top"
@@ -110,7 +117,10 @@
                                    data-placement="top"
                                    data-original-title="Delete user"
                                    data-action="delete"
-                                   data-user-id="{{ user.getId }}">
+                                   data-user-id="{{ user.getId }}"
+                                   data-toggle="confirmation"
+                                   data-popout="true"
+                                   data-on-confirm="modifyUser">
                                     <i class="icon-trash"></i>
                                 </a>
 
@@ -126,16 +136,39 @@
 
 {% block stylesheets %}
     {{ parent() }}
-    {{ loadLibrary('datatable', 'css') |raw }}
+    {{ loadLibrary('datatable', 'css')|raw }}
 {% endblock %}
 
 {% block javascripts %}
     {{ parent() }}
-    {{ loadLibrary('datatable', 'js') | raw }}
+    <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+    <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
+    {{ loadLibrary({
+        1: 'datatable',
+        2: 'confirmation'
+    }, 'js')|raw }}
 
     <script>
         $(document).ready(function() {
             $('#user').DataTable();
-        } );
+        });
+
+        function modifyUser() {
+            var status = $(this).data('action'),
+                id     = $(this).data('user-id')
+            ;
+
+            $.ajax({
+                url: Routing.generate('admin_user_modify', { id: id, status: status }),
+                method: 'POST'
+            }).done(function (data) {
+                console.log(data);
+                data == 'success'?
+                    window.location.replace(Routing.generate('admin_user'))
+                    : null;
+            }).fail(function (data) {
+                console.log("There was an error");
+            });
+        };
     </script>
 {% endblock %}
