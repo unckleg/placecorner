@@ -13,28 +13,35 @@ admin_auth:
 
 # Administration
 admin_dashboard:
-    path:     /admin/dashboard
+    path:     /{_locale}/admin/dashboard
     defaults: { _controller: AdminBundle:Dashboard:index }
-
+    requirements:
+        _locale: en|sr|ru
 # Page
 admin_page:
-    path:     /admin/page
+    path:     /{_locale}/admin/page
     defaults: { _controller: AdminBundle:Page:index }
+    requirements:
+        _locale: en|sr|ru
 
 # User
 admin_user:
-    path:     /admin/user
+    path:     /{_locale}/admin/user
     defaults: { _controller: AdminBundle:User:index }
     options:
         expose: true
+    requirements:
+        _locale: en|sr|ru
 
 admin_user_create:
-    path:     /admin/user/create
+    path:     /{_locale}/admin/user/create
     defaults: { _controller: AdminBundle:User:create }
 
 admin_user_edit:
-    path:     /admin/user/edit/id/{id}
+    path:     /{_locale}/admin/user/edit/id/{id}
     defaults: { _controller: AdminBundle:User:edit }
+    requirements:
+        _locale: en|sr|ru
 
 admin_user_modify:
     path:     /admin/user/modify/id/{id}/status/{status}

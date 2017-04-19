@@ -4,6 +4,7 @@ namespace AdminBundle\Controller;
 
 use AdminBundle\Entity\User;
 use AdminBundle\Form\User\UserType;
+use App\CoreBundle\Service\Validator\Validator;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -52,20 +53,15 @@ class UserController extends Controller
 
     public function editAction($id, Request $request)
     {
-        if ($id <= 0) {
-            throw $this->createNotFoundException(
-                'User id must be valid and numeric type, current value is: ' . $id);
-        }
+        // check if $id is numeric and not null or zero
+        Validator::isValid($id, Validator::IS_NUMERIC);
 
         $em   = $this->getDoctrine()->getManager();
         $repository = $em->getRepository(User::class);
         $userManager = $this->get('fos_user.user_manager');
 
         $user = $repository->find($id);
-        if (empty($user)) {
-            throw $this->createNotFoundException(
-            'User with id: ' . $id . ' not found in storage.');
-        }
+        Validator::isValid($user);
 
         if ($request->isMethod(Request::METHOD_POST)) {
 
@@ -104,18 +100,15 @@ class UserController extends Controller
         ]);
     }
 
-    public function modifyAction(
-        $id, $status,
-        Request $request)
+    public function modifyAction($id, $status, Request $request)
     {
         if ($request->isXmlHttpRequest()) {
             $repository = $this->getDoctrine()->getRepository(User::class);
             $modifiedUser = $repository->modifyUser($id, $status);
 
-            if (!empty($modifiedUser)) {
-                return $this->json('success');
-            } else
-                return $this->json('There was an error while updating User data');
+            return Validator::isValid($modifiedUser) ?
+                  $this->json('success')
+                : $this->json('There was an error while updating User data');
         }
     }
 }
