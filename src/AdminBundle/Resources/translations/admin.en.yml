@@ -1,0 +1,38 @@
+admin:
+    sidebar:
+        menus:
+            dashboard: "Dashboard"
+            page: "Page"
+              pages: "Pages"
+              sitemap: "Sitemap"
+            category: Category
+                categories: Categories
+                subcategories: Subcategories
+            tags: Tags
+                tags: Tags
+            listing: Listing
+                items: Items
+                commentsreviews: Comments & Reviews
+            place: Place
+                countries: Countries
+                cities: Cities
+                regions: Regions
+                municipality: Municipality
+            partners: Partners
+            users: Users
+                administration: Administration
+                frontend: Frontend
+            language: Language
+                settings: Settings
+            map: Map
+                icons: Icons
+                settings: Settings
+            statistics: Statistic
+                analytics: Analytics
+            marketing: Marketing
+                advertises: Advertises
+                newsletter: Newsletter
+                notificatons: Notifications
+            global: Global
+                settings: Settings
+                layout: Layout

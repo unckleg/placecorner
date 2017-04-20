@@ -54,3 +54,8 @@ body {
 table.dataTable.no-footer {
     border-bottom: transparent !important;
 }
+.control-label .required, .form-group .required {
+    color: #000 !important;
+    font-weight: 400 !important;
+    padding-left: 0px !important;
+}

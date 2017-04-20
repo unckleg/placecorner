@@ -1,0 +1,38 @@
+admin:
+    sidebar:
+        menus:
+            dashboard: Komandna tabla
+            page: Stranice
+                pages: Lista
+                sitemap: Mapa sajta
+            category: Kategorije
+                categories: Lista
+                subcategories: Podkategorije
+            tags: Oznake
+                tags: Lista
+            listing: Listing
+                items: Mesta
+                commentsreviews: Komentari & Ocene
+            place: Lokacije
+                countries: Države
+                cities: Gradovi
+                regions: Regioni
+                municipality: Opštine
+            partners: Partneri
+            users: Korisnici
+                administration: Administracija
+                frontend: Sajt
+            language: Jezici
+                settings: Podešavanja
+            map: Mapa
+                icons: Ikonice
+                settings: Podešavanja
+            statistics: Statistika
+                analytics: Analitika
+            marketing: Marketing
+                advertises: Reklame
+                newsletter: Newsletter
+                notificatons: Notifikacije
+            global: Globalno
+                settings: Podešavanja
+                layout: Izgled

@@ -9,7 +9,7 @@ use FOS\UserBundle\Model\User as BaseUser;
  * User
  *
  * @ORM\Table(name="user", uniqueConstraints={@ORM\UniqueConstraint(name="email_UNIQUE", columns={"email"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="AdminBundle\Repository\UserRepository")
  */
 class User extends BaseUser
 {
@@ -33,6 +33,12 @@ class User extends BaseUser
      * @ORM\Column(name="last_name", type="string", length=255, nullable=false)
      */
     protected $lastName;
+
+    /**
+     * @var boolean
+     * @ORM\Column(name="is_deleted", type="boolean", nullable=false)
+     */
+    protected $isDeleted = false;
 
     public function __construct()
     {
@@ -85,5 +91,29 @@ class User extends BaseUser
     public function getLastName()
     {
         return $this->lastName;
+    }
+
+    /**
+     * Set isDeleted
+     *
+     * @param boolean $isDeleted
+     *
+     * @return User
+     */
+    public function setIsDeleted($isDeleted)
+    {
+        $this->isDeleted = $isDeleted;
+
+        return $this;
+    }
+
+    /**
+     * Get isDeleted
+     *
+     * @return boolean
+     */
+    public function getIsDeleted()
+    {
+        return $this->isDeleted;
     }
 }

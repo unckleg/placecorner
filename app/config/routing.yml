@@ -1,3 +1,7 @@
+app_core:
+    resource: "@AppCoreBundle/Resources/config/routing.yml"
+    prefix:   /
+
 front:
     resource: "@FrontBundle/Resources/config/routing.yml"
     prefix:   /
@@ -9,3 +13,6 @@ admin:
 api:
     resource: "@APIBundle/Resources/config/routing.yml"
     prefix:   /
+
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"

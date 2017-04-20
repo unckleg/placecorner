@@ -17,12 +17,20 @@ class SidebarExtension extends \Twig_Extension
     protected $currentRoute;
 
     /**
+     * @var RequestStack
+     */
+    protected $requestStack;
+
+    /**
      * SidebarExtension constructor.
      * @param RequestStack $request
      */
     public function __construct(RequestStack $request)
     {
-        $this->currentRoute = $request->getCurrentRequest()->attributes->get('_route');
+        if (!empty($request->getCurrentRequest())) {
+            $this->requestStack = $request;
+            $this->currentRoute = $this->requestStack->getCurrentRequest()->attributes->get('_route');
+        }
     }
 
     /**

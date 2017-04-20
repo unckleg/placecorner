@@ -7,7 +7,7 @@ imports:
     - { resource: "@FrontBundle/Resources/config/services.yml" }
 
 parameters:
-    locale: fr
+    locale: en
 
 framework:
     #esi: ~
