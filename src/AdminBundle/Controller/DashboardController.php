@@ -2,9 +2,9 @@
 
 namespace AdminBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use App\CoreBundle\Controller\CoreController;
 
-class DashboardController extends Controller
+class DashboardController extends CoreController
 {
     public function indexAction()
     {

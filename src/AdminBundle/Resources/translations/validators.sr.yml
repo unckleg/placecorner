@@ -1,2 +1,2 @@
-admin: # bundle key
-  notBlank: Ovo polje je obavezno # a default message for the "notBlank" constraint
+admin:
+    notBlank: Ovo polje je obavezno

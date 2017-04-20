@@ -5,23 +5,29 @@
     <div class="page-bar">
         <ul class="page-breadcrumb">
             <li>
-                <a href="{{ path('admin_dashboard') }}">Home</a>
+                <a href="{{ path('admin_dashboard') }}">
+                    {{ 'admin.global.breadcrumb.home'|trans({}, 'admin') }}
+                </a>
                 <i class="fa fa-circle"></i>
             </li>
             <li>
-                <a href="{{ path('admin_user') }}">User</a>
+                <a href="{{ path('admin_user') }}">
+                    {{ 'admin.module.user.breadcrumb.user'|trans({}, 'admin') }}
+                </a>
                 <i class="fa fa-circle"></i>
             </li>
             <li class="active">
-                <a href="{{ path('admin_user_create') }}">User Create</a>
+                <a href="{{ path('admin_user_create') }}">
+                    {{ 'admin.module.user.breadcrumb.create'|trans({}, 'admin') }}
+                </a>
             </li>
         </ul>
     </div>
 {% endblock %}
 
 {% block toptitle %}
-    <h1 class="page-title"> User
-        <small>New user</small>
+    <h1 class="page-title"> {{ 'admin.module.user.name'|trans({}, 'admin') }}
+        <small> {{ 'admin.module.user.create.pagetitle'|trans({}, 'admin') }}</small>
     </h1>
 {% endblock %}
 
@@ -32,7 +38,7 @@
                 <div class="portlet-title">
                     <div class="caption font-dark">
                         <i class="icon-user font-dark"></i>
-                        <span class="caption-subject bold uppercase"> New User Form</span>
+                        <span class="caption-subject bold uppercase"> {{ 'admin.module.user.create.caption'|trans({}, 'admin') }} </span>
                     </div>
                 </div>
                 <div class="portlet-body form">

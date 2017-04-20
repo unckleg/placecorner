@@ -5,22 +5,28 @@
     <div class="page-bar">
         <ul class="page-breadcrumb">
             <li>
-                <a href="{{ path('admin_dashboard') }}">Home</a>
+                <a href="{{ path('admin_dashboard') }}">
+                    {{ 'admin.global.breadcrumb.home'|trans({}, 'admin') }}
+                </a>
                 <i class="fa fa-circle"></i>
             </li>
             <li class="active">
-                <a href="{{ path('admin_user') }}">User</a>
+                <a href="{{ path('admin_user') }}">
+                    {{ 'admin.module.user.breadcrumb.user'|trans({}, 'admin') }}
+                </a>
             </li>
         </ul>
     </div>
 {% endblock %}
 
 {% block toptitle %}
-    <h1 class="page-title"> User
-        <small>administration of backend users</small>
+    <h1 class="page-title"> {{ 'admin.module.user.name'|trans({}, 'admin') }}
+        <small>{{ 'admin.module.user.index.pagetitle_small'|trans({}, 'admin') }}</small>
         <div class="pull-right">
             <div class="btn-group">
-                <a class="btn blue btn-circle btn-md" href="{{ path('admin_user_create') }}">Create New User</a>
+                <a class="btn blue btn-circle btn-md" href="{{ path('admin_user_create') }}">
+                    {{ 'admin.module.user.index.create_btn'|trans({}, 'admin') }}
+                </a>
             </div>
         </div>
     </h1>
@@ -31,8 +37,12 @@
         <div class="portlet-title">
             <div class="caption">
                 <i class="icon-people font-grey-gallery"></i>
-                <span class="caption-subject bold font-grey-gallery uppercase"> List </span>
-                <span class="caption-helper">of all users</span>
+                <span class="caption-subject bold font-grey-gallery uppercase">
+                        {{ 'admin.module.user.index.caption'|trans({}, 'admin') }}
+                </span>
+                <span class="caption-helper">
+                    {{ 'admin.module.user.index.caption_small'|trans({}, 'admin') }}
+                </span>
             </div>
             <div class="tools">
                 <a href="" class="collapse" data-original-title="" title=""> </a>
@@ -44,13 +54,13 @@
             <table class="table table-bordered table-hover" id="user">
                 <thead>
                     <tr>
-                        <th class="text-center"> Full Name </th>
-                        <th class="text-center"> Username </th>
-                        <th class="text-center"> Email </th>
-                        <th class="text-center"> Last Activity </th>
-                        <th class="text-center"> Status </th>
-                        <th class="text-center"> Roles </th>
-                        <th class="text-center"> Actions </th>
+                        <th class="text-center"> {{ 'admin.module.user.index.table.th_full_name'|trans({}, 'admin') }} </th>
+                        <th class="text-center"> {{ 'admin.module.user.index.table.th_username'|trans({}, 'admin') }} </th>
+                        <th class="text-center"> {{ 'admin.module.user.index.table.th_email'|trans({}, 'admin') }} </th>
+                        <th class="text-center"> {{ 'admin.module.user.index.table.th_last_activity'|trans({}, 'admin') }} </th>
+                        <th class="text-center"> {{ 'admin.module.user.index.table.th_status'|trans({}, 'admin') }} </th>
+                        <th class="text-center"> {{ 'admin.module.user.index.table.th_roles'|trans({}, 'admin') }}</th>
+                        <th class="text-center"> {{ 'admin.module.user.index.table.th_actions'|trans({}, 'admin') }}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -65,9 +75,13 @@
                             <td class="text-center"> {{ user.lastLogin|date("d.m.Y H:i") }} </td>
                             <td class="text-center">
                                 {% if user.isEnabled %}
-                                    <span class="label label-sm label-info"> Active </span>
+                                    <span class="label label-sm label-info">
+                                        {{ 'admin.module.user.index.table.td_active'|trans({}, 'admin') }}
+                                    </span>
                                 {% else %}
-                                    <span class="label label-sm label-danger"> Banned </span>
+                                    <span class="label label-sm label-danger">
+                                        {{ 'admin.module.user.index.table.td_banned'|trans({}, 'admin') }}
+                                    </span>
                                 {% endif %}
                             </td>
                             <td class="text-center">
@@ -83,9 +97,11 @@
                                 {% if user.isEnabled %}
                                 <a class="btn purple btn-sm tooltips" type="button" data-container="body"
                                    data-placement="top"
-                                   data-original-title="Ban user"
+                                   data-original-title="{{ 'admin.module.user.index.table.td_hide'|trans({}, 'admin') }}"
                                    data-action="hide"
                                    data-user-id="{{ user.getId }}"
+                                   data-btn-ok-label="{{ 'admin.global.buttons.yes'|trans({}, 'admin') }}"
+                                   data-btn-cancel-label="{{ 'admin.global.buttons.no'|trans({}, 'admin') }}"
                                    data-toggle="confirmation"
                                    data-popout="true"
                                    data-on-confirm="modifyUser">
@@ -94,9 +110,11 @@
                                 {% else %}
                                 <a class="btn default btn-sm tooltips" type="button" data-container="body"
                                    data-placement="top"
-                                   data-original-title="Activate user"
+                                   data-original-title="{{ 'admin.module.user.index.table.td_show'|trans({}, 'admin') }}"
                                    data-action="show"
                                    data-user-id="{{ user.getId }}"
+                                   data-btn-ok-label="{{ 'admin.global.buttons.yes'|trans({}, 'admin') }}"
+                                   data-btn-cancel-label="{{ 'admin.global.buttons.no'|trans({}, 'admin') }}"
                                    data-toggle="confirmation"
                                    data-popout="true"
                                    data-on-confirm="modifyUser">
@@ -108,17 +126,19 @@
                                    type="button"
                                    data-container="body"
                                    data-placement="top"
-                                   data-original-title="Edit user">
+                                   data-original-title="{{ 'admin.module.user.index.table.td_edit'|trans({}, 'admin') }}">
                                     <i class="icon-pencil"></i>
                                 </a>
 
                                 <a class="btn btn-danger btn-sm tooltips"
                                    type="button" data-container="body"
                                    data-placement="top"
-                                   data-original-title="Delete user"
+                                   data-original-title="{{ 'admin.module.user.index.table.td_delete'|trans({}, 'admin') }}"
                                    data-action="delete"
                                    data-user-id="{{ user.getId }}"
                                    data-toggle="confirmation"
+                                   data-btn-ok-label="{{ 'admin.global.buttons.yes'|trans({}, 'admin') }}"
+                                   data-btn-cancel-label="{{ 'admin.global.buttons.no'|trans({}, 'admin') }}"
                                    data-popout="true"
                                    data-on-confirm="modifyUser">
                                     <i class="icon-trash"></i>
@@ -155,16 +175,17 @@
 
         function modifyUser() {
             var status = $(this).data('action'),
-                id     = $(this).data('user-id')
+                id     = $(this).data('user-id'),
+                locale = '{{ app.request.attributes.get('_locale') }}'
             ;
 
             $.ajax({
-                url: Routing.generate('admin_user_modify', { id: id, status: status }),
+                url: Routing.generate('admin_user_modify', {id: id, status: status}),
                 method: 'POST'
             }).done(function (data) {
                 console.log(data);
                 data == 'success'?
-                    window.location.replace(Routing.generate('admin_user'))
+                    window.location.replace(Routing.generate('admin_user', {'_locale': locale}))
                     : null;
             }).fail(function (data) {
                 console.log("There was an error");

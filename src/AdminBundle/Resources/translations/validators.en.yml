@@ -1,2 +1,2 @@
-admin: # bundle key
-  notBlank: This field should not be blank # a default message for the "notBlank" constraint
+admin: 
+  notBlank: This field should not be blank
