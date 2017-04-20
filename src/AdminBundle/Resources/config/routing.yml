@@ -24,6 +24,10 @@ admin_page:
     requirements:
         _locale: en|sr|ru
 
+admin_page_create:
+    path:     /{_locale}/admin/page/create
+    defaults: { _controller: AdminBundle:Page:create }
+
 # User
 admin_user:
     path:     /{_locale}/admin/user

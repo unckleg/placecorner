@@ -77,3 +77,12 @@ fos_user:
     from_email:
         address: djordjestojilljkovic@gmail.com
         sender_name: near.me
+
+# Translatable Routes Configuration
+be_simple_i18n_routing: ~
+
+# DoctrineBehaviorsBundle Configuration
+knp_doctrine_behaviors:
+    sluggable:      true
+    translatable:   true
+    # All others behaviors are disabled

@@ -121,3 +121,14 @@ admin:
                     editor: Editor
                     author: Author
                     visitor: Visitor
+        page:
+            name: Page
+            breadcrumb:
+                page: Page
+                create: Page Create
+                edit: Page Edit
+            index:
+                pagetitle_small: administration of all pages
+                create_btn: Create New Page
+                caption: List
+                caption_small: of all pages
