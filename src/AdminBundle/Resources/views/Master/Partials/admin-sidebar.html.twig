@@ -11,27 +11,27 @@
             <li class="nav-item {{ isActive('admin_dashboard', 'parent') }}">
                 <a href="{{ path('admin_dashboard') }}" class="nav-link nav-toggle">
                     <i class="icon-home"></i>
-                    <span class="title">{{ 'admin.sidebar.menus.dashboard'|trans }}</span>
+                    <span class="title">{{ 'admin.sidebar.dashboard'|trans({}, 'admin') }}</span>
                 </a>
             </li>
             <li class="heading">
-                <h3 class="uppercase">NEAR.ME</h3>
+                <h3 class="uppercase">{{  'admin.sidebar.heading.near'|trans({}, 'admin') }}</h3>
             </li>
             <li class="nav-item {{ isActive('admin_page', 'parent') }}">
                 <a href="javascript:;" class="nav-link nav-toggle">
                     <i class="icon-grid"></i>
-                    <span class="title">Page</span>
+                    <span class="title">{{ 'admin.sidebar.page.title'|trans({}, 'admin') }}</span>
                     <span class="arrow"></span>
                 </a>
                 <ul class="sub-menu">
                     <li class="nav-item start {{ isActive('admin_page', 'child') }}">
                         <a href="{{ path('admin_page') }}" class="nav-link">
-                            <span class="title">Pages </span>
+                            <span class="title">{{ 'admin.sidebar.page.pages'|trans({}, 'admin') }} </span>
                         </a>
                     </li>
                     <li class="nav-item start {{ isActive('admin_page_sitemap', 'child') }}">
                         <a href="" class="nav-link ">
-                            <span class="title">Sitemap </span>
+                            <span class="title">{{ 'admin.sidebar.page.sitemap'|trans({}, 'admin') }} </span>
                         </a>
                     </li>
                 </ul>
@@ -39,18 +39,18 @@
             <li class="nav-item">
                 <a href="javascript:;" class="nav-link nav-toggle">
                     <i class="icon-list"></i>
-                    <span class="title">Categories</span>
+                    <span class="title">{{ 'admin.sidebar.category.title'|trans({}, 'admin') }}</span>
                     <span class="arrow"></span>
                 </a>
                 <ul class="sub-menu">
                     <li class="nav-item start ">
                         <a href="" class="nav-link ">
-                            <span class="title">Categories </span>
+                            <span class="title">{{ 'admin.sidebar.category.categories'|trans({}, 'admin') }} </span>
                         </a>
                     </li>
                     <li class="nav-item start ">
                         <a href="" class="nav-link ">
-                            <span class="title">Subcategories </span>
+                            <span class="title">{{ 'admin.sidebar.category.subcategories'|trans({}, 'admin') }} </span>
                         </a>
                     </li>
                 </ul>
@@ -58,25 +58,25 @@
             <li class="nav-item">
                 <a href="javascript:;" class="nav-link nav-toggle">
                     <i class="icon-tag"></i>
-                    <span class="title">Tags</span>
+                    <span class="title">{{ 'admin.sidebar.tags.title'|trans({}, 'admin') }}</span>
                     <span class="arrow"></span>
                 </a>
             </li>
             <li class="nav-item">
                 <a href="javascript:;" class="nav-link nav-toggle">
                     <i class="icon-menu"></i>
-                    <span class="title">Listing</span>
+                    <span class="title">{{ 'admin.sidebar.listing.title'|trans({}, 'admin') }}</span>
                     <span class="arrow"></span>
                 </a>
                 <ul class="sub-menu">
                     <li class="nav-item start ">
                         <a href="" class="nav-link ">
-                            <span class="title">Items </span>
+                            <span class="title">{{ 'admin.sidebar.listing.items'|trans({}, 'admin') }} </span>
                         </a>
                     </li>
                     <li class="nav-item start ">
                         <a href="" class="nav-link ">
-                            <span class="title">Comments & Reviews </span>
+                            <span class="title">{{ 'admin.sidebar.listing.commentsreviews'|trans({}, 'admin') }} </span>
                         </a>
                     </li>
                 </ul>
@@ -84,28 +84,28 @@
             <li class="nav-item">
                 <a href="javascript:;" class="nav-link nav-toggle">
                     <i class="icon-location-pin"></i>
-                    <span class="title">Place</span>
+                    <span class="title">{{ 'admin.sidebar.place.title'|trans({}, 'admin') }}</span>
                     <span class="arrow"></span>
                 </a>
                 <ul class="sub-menu">
                     <li class="nav-item start ">
                         <a href="" class="nav-link ">
-                            <span class="title">Countries </span>
+                            <span class="title">{{ 'admin.sidebar.place.countries'|trans({}, 'admin') }} </span>
                         </a>
                     </li>
                     <li class="nav-item start ">
                         <a href="" class="nav-link ">
-                            <span class="title">Cities </span>
+                            <span class="title">{{ 'admin.sidebar.place.cities'|trans({}, 'admin') }} </span>
                         </a>
                     </li>
                     <li class="nav-item start ">
                         <a href="" class="nav-link ">
-                            <span class="title">Regions </span>
+                            <span class="title">{{ 'admin.sidebar.place.regions'|trans({}, 'admin') }} </span>
                         </a>
                     </li>
                     <li class="nav-item start ">
                         <a href="" class="nav-link ">
-                            <span class="title">Municipality </span>
+                            <span class="title">{{ 'admin.sidebar.place.municipality'|trans({}, 'admin') }} </span>
                         </a>
                     </li>
                 </ul>
@@ -113,28 +113,28 @@
             <li class="nav-item">
                 <a href="javascript:;" class="nav-link nav-toggle">
                     <i class="icon-phone"></i>
-                    <span class="title">Partners</span>
+                    <span class="title">{{ 'admin.sidebar.partners.title'|trans({}, 'admin') }}</span>
                     <span class="arrow"></span>
                 </a>
             </li>
             <li class="heading">
-                <h3 class="uppercase">ADMINISTRATION</h3>
+                <h3 class="uppercase">{{  'admin.sidebar.heading.admin'|trans({}, 'admin') }}</h3>
             </li>
             <li class="nav-item {{ isActive('admin_user', 'parent') }}">
                 <a href="javascript:;" class="nav-link nav-toggle">
                     <i class="icon-people"></i>
-                    <span class="title">Users</span>
+                    <span class="title">{{ 'admin.sidebar.users.title'|trans({}, 'admin') }}</span>
                     <span class="arrow"></span>
                 </a>
                 <ul class="sub-menu">
                     <li class="nav-item start {{ isActive('admin_user', 'child') }}">
                         <a href="{{ path('admin_user') }}" class="nav-link ">
-                            <span class="title">Administration</span>
+                            <span class="title">{{ 'admin.sidebar.users.administration'|trans({}, 'admin') }}</span>
                         </a>
                     </li>
                     <li class="nav-item start ">
                         <a href="" class="nav-link ">
-                            <span class="title">Frontend</span>
+                            <span class="title">{{ 'admin.sidebar.users.frontend'|trans({}, 'admin') }}</span>
                         </a>
                     </li>
                 </ul>
@@ -142,13 +142,13 @@
             <li class="nav-item">
                 <a href="javascript:;" class="nav-link nav-toggle">
                     <i class="icon-flag"></i>
-                    <span class="title">Language</span>
+                    <span class="title">{{ 'admin.sidebar.language.title'|trans({}, 'admin') }}</span>
                     <span class="arrow"></span>
                 </a>
                 <ul class="sub-menu">
                     <li class="nav-item start ">
                         <a href="" class="nav-link ">
-                            <span class="title">Settings </span>
+                            <span class="title">{{ 'admin.sidebar.language.settings'|trans({}, 'admin') }} </span>
                         </a>
                     </li>
                 </ul>
@@ -156,18 +156,18 @@
             <li class="nav-item">
                 <a href="javascript:;" class="nav-link nav-toggle">
                     <i class="icon-map"></i>
-                    <span class="title">Map</span>
+                    <span class="title">{{ 'admin.sidebar.map.title'|trans({}, 'admin') }}</span>
                     <span class="arrow"></span>
                 </a>
                 <ul class="sub-menu">
                     <li class="nav-item start ">
                         <a href="" class="nav-link ">
-                            <span class="title">Icons </span>
+                            <span class="title">{{ 'admin.sidebar.map.icons'|trans({}, 'admin') }} </span>
                         </a>
                     </li>
                     <li class="nav-item start ">
                         <a href="" class="nav-link ">
-                            <span class="title">Settings </span>
+                            <span class="title">{{ 'admin.sidebar.map.settings'|trans({}, 'admin') }} </span>
                         </a>
                     </li>
                 </ul>
@@ -175,13 +175,13 @@
             <li class="nav-item">
                 <a href="javascript:;" class="nav-link nav-toggle">
                     <i class="icon-graph"></i>
-                    <span class="title">Statistics</span>
+                    <span class="title">{{ 'admin.sidebar.statistics.title'|trans({}, 'admin') }}</span>
                     <span class="arrow"></span>
                 </a>
                 <ul class="sub-menu">
                     <li class="nav-item start ">
                         <a href="" class="nav-link ">
-                            <span class="title">Analytics </span>
+                            <span class="title">{{ 'admin.sidebar.statistics.analytics'|trans({}, 'admin') }} </span>
                         </a>
                     </li>
                 </ul>
@@ -189,23 +189,23 @@
             <li class="nav-item">
                 <a href="javascript:;" class="nav-link nav-toggle">
                     <i class="icon-heart"></i>
-                    <span class="title">Marketing</span>
+                    <span class="title">{{ 'admin.sidebar.marketing.title'|trans({}, 'admin') }}</span>
                     <span class="arrow"></span>
                 </a>
                 <ul class="sub-menu">
                     <li class="nav-item start ">
                         <a href="" class="nav-link ">
-                            <span class="title">Advertises </span>
+                            <span class="title">{{ 'admin.sidebar.marketing.advertises'|trans({}, 'admin') }} </span>
                         </a>
                     </li>
                     <li class="nav-item start ">
                         <a href="" class="nav-link ">
-                            <span class="title">Newsletter </span>
+                            <span class="title">{{ 'admin.sidebar.marketing.newsletter'|trans({}, 'admin') }} </span>
                         </a>
                     </li>
                     <li class="nav-item start ">
                         <a href="" class="nav-link ">
-                            <span class="title">Notifications </span>
+                            <span class="title">{{ 'admin.sidebar.marketing.notificatons'|trans({}, 'admin') }} </span>
                         </a>
                     </li>
                 </ul>
@@ -213,18 +213,18 @@
             <li class="nav-item">
                 <a href="javascript:;" class="nav-link nav-toggle">
                     <i class="icon-settings"></i>
-                    <span class="title">Global</span>
+                    <span class="title">{{ 'admin.sidebar.global.title'|trans({}, 'admin') }}</span>
                     <span class="arrow"></span>
                 </a>
                 <ul class="sub-menu">
                     <li class="nav-item start ">
                         <a href="" class="nav-link ">
-                            <span class="title">Settings </span>
+                            <span class="title">{{ 'admin.sidebar.global.settings'|trans({}, 'admin') }} </span>
                         </a>
                     </li>
                     <li class="nav-item start ">
                         <a href="" class="nav-link ">
-                            <span class="title">Layout </span>
+                            <span class="title">{{ 'admin.sidebar.global.layout'|trans({}, 'admin') }} </span>
                         </a>
                     </li>
                 </ul>

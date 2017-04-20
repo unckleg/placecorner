@@ -2,15 +2,14 @@
 
 namespace AdminBundle\Controller;
 
-use AdminBundle\Entity\User;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use App\CoreBundle\Controller\CoreController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RedirectResponse;;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
 use Symfony\Component\Security\Core\Security;
 
-class SecurityController extends Controller
+class SecurityController extends CoreController
 {
 
     public function loginAction(Request $request)

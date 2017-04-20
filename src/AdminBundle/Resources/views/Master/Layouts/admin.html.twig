@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>{% if page_title is defined %} {{ page_title }} | {% endif %} Place Corner - Administration</title>
+    <title>{% if page_title is defined %} {{ page_title }} | {% endif %} {{ 'admin.global.title'|trans({}, 'admin') }} </title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <meta content="" name="description" />
@@ -50,7 +50,37 @@
                         <ul class="dropdown-menu dropdown-menu-default">
                             <li>
                                 <a href="{{ path('admin_logout') }}">
-                                    <i class="icon-key"></i> Log Out </a>
+                                    <i class="icon-key"></i>
+                                    {{ 'admin.layout.logout'|trans({}, 'admin') }}
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    {% set route, locale, params =
+                           app.request.attributes.get('_route'),
+                           app.request.attributes.get('_locale'),
+                           app.request.get('_route_params')
+                    %}
+                    <li class="dropdown dropdown-language open">
+                        <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true" aria-expanded="true">
+                            <img alt="" src="/skins/backend/assets/global/img/flags/{{ locale }}.png">
+                            <span class="langname"> {{ app.request.attributes.get('_locale')|upper }} </span>
+                            <i class="fa fa-angle-down"></i>
+                        </a>
+
+                        <ul class="dropdown-menu dropdown-menu-default">
+                            <li>
+                                <a href="{{ path(route, params|merge({'_locale': 'en'})) }}">
+                                    <img alt="" src="{{ asset('/skins/backend/assets/global/img/flags/en.png') }}"> En </a>
+                            </li>
+                            <li>
+                                <a href="{{ path(route, params|merge({'_locale': 'sr'})) }}">
+                                    <img alt="" src="{{ asset('/skins/backend/assets/global/img/flags/sr.png') }}"> Rs </a>
+                            </li>
+                            <li>
+                                <a href="{{ path(route, params|merge({'_locale': 'ru'})) }}">
+                                    <img alt="" src="{{ asset('/skins/backend/assets/global/img/flags/ru.png') }}"> Ru </a>
                             </li>
                         </ul>
                     </li>
@@ -61,6 +91,7 @@
     <div class="clearfix"> </div>
 
     <div class="page-container">
+
         <!-- Including admin sidebar ordered with ACL roles visibility for every user -->
         {% include 'AdminBundle:Master/Partials:admin-sidebar.html.twig' %}
 
@@ -81,7 +112,7 @@
     </div>
 
     <div class="page-footer">
-        <div class="page-footer-inner"> {{ "now"|date('Y') }} &copy; near.me
+        <div class="page-footer-inner"> {{ "now"|date('Y') }} &copy; {{ 'admin.global.name'|trans({}, 'admin')|lower }}
         </div>
         <div class="scroll-to-top">
             <i class="icon-arrow-up"></i>
@@ -105,5 +136,7 @@
     <script src="{{ asset_url }}"></script>
     {% endjavascripts %}
 {% endblock %}
+
+{% include 'AdminBundle:Master/Partials:admin-flashes.html.twig' %}
 </body>
 </html>

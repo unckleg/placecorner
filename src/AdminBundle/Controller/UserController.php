@@ -4,12 +4,11 @@ namespace AdminBundle\Controller;
 
 use AdminBundle\Entity\User;
 use AdminBundle\Form\User\UserType;
+use App\CoreBundle\Controller\CoreController;
 use App\CoreBundle\Service\Validator\Validator;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 
-class UserController extends Controller
+class UserController extends CoreController
 {
     public function indexAction()
     {
@@ -40,6 +39,11 @@ class UserController extends Controller
 
                 $em->persist($user);
                 $em->flush();
+
+                // add flash message
+                $this->addFlash('sucess', $this->trans(
+                    'admin.module.user.create_succesfully', [], 'flashes'));
+
                 return $this->redirectToRoute('admin_user');
             }
 
@@ -82,6 +86,12 @@ class UserController extends Controller
                 }
 
                 $userManager->updateUser($user);
+
+                // add flash message
+                $this->addFlash('sucess', sprintf($this->trans(
+        'admin.module.user.edit_successfully', [], 'flashes'),
+                $user->getFirstName() . ' ' . $user->getLastName()));
+
                 return $this->redirectToRoute('admin_user');
             }
 
@@ -96,7 +106,8 @@ class UserController extends Controller
         }
 
         return $this->render('@Admin/User/edit.html.twig', [
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'user' => $user
         ]);
     }
 

@@ -1,38 +1,123 @@
 admin:
+    # Global administration translations
+    global:
+        title: Place Corner - Administration
+        name: Near.me
+        breadcrumb:
+            home: Home
+        buttons:
+            yes: Yes
+            no: No
+        form:
+            button_submit: Submit
+            button_cancel: Cancel
+    # Administration layout translations
+    layout:
+        logout: Logout
+
+    # Sidebar layout translations
     sidebar:
-        menus:
-            dashboard: "Dashboard"
-            page: "Page"
-              pages: "Pages"
-              sitemap: "Sitemap"
-            category: Category
-                categories: Categories
-                subcategories: Subcategories
-            tags: Tags
-                tags: Tags
-            listing: Listing
-                items: Items
-                commentsreviews: Comments & Reviews
-            place: Place
-                countries: Countries
-                cities: Cities
-                regions: Regions
-                municipality: Municipality
-            partners: Partners
-            users: Users
-                administration: Administration
-                frontend: Frontend
-            language: Language
-                settings: Settings
-            map: Map
-                icons: Icons
-                settings: Settings
-            statistics: Statistic
-                analytics: Analytics
-            marketing: Marketing
-                advertises: Advertises
-                newsletter: Newsletter
-                notificatons: Notifications
-            global: Global
-                settings: Settings
-                layout: Layout
+        heading:
+            near: NEAR.ME
+            admin: Adminsitration
+        dashboard: Dashboard
+        page:
+          title: Page
+          pages: Pages
+          sitemap: Sitemap
+        category:
+            title: Category
+            categories: Categories
+            subcategories: Subcategories
+        tags:
+            title: Tags
+        listing:
+            title: Listing
+            items: Items
+            commentsreviews: Comments & Reviews
+        place:
+            title: Place
+            countries: Countries
+            cities: Cities
+            regions: Regions
+            municipality: Municipality
+        partners:
+            title: Partners
+        users:
+            title: Users
+            administration: Administration
+            frontend: Frontend
+        language:
+            title: Language
+            settings: Settings
+        map:
+            title: Map
+            icons: Icons
+            settings: Settings
+        statistics:
+            title: Statistic
+            analytics: Analytics
+        marketing:
+            title: Marketing
+            advertises: Advertises
+            newsletter: Newsletter
+            notificatons: Notifications
+        global:
+            title: Global
+            settings: Settings
+            layout: Layout
+
+    # List of modules (User, Page, Sitemap)
+    module:
+        user:
+            name: User
+            breadcrumb:
+                user: User
+                create: User Create
+                edit: User Edit
+            index:
+                pagetitle_small: administration of backend users
+                create_btn: Create New User
+                caption: List
+                caption_small: of all users
+                table:
+                    th_full_name: Full Name
+                    th_username: Username
+                    th_email: Email
+                    th_last_activity: Last Activity
+                    th_status: Status
+                    th_roles: Roles
+                    th_actions: Actions
+                    td_active: Active
+                    td_banned: Banned
+                    td_delete: Delete User?
+                    td_show: Unban User ?
+                    td_hide: Ban User ?
+                    td_edit: Edit User ?
+            create:
+                pagetitle: New User
+                caption: New User Form
+            edit:
+                pagetitle: Editing User:
+                caption: Edit User Form
+            form:
+                first_name_label: First Name
+                first_name_placeholder: Enter users first name
+                last_name_label: Last Name
+                last_name_placeholder: Enter users last name
+                username_label: Username
+                username_placeholder: Username used on administration login form
+                email_label: Email Address
+                email_placeholder: Enter email for this user
+                password_invalid: The password fields must match
+                password_first_option: Password
+                password_second_option: Repeat Password
+                roles_label: Pick Role For User
+                roles_choices_label: Selecte role for this user
+                choices:
+                    super_admin: Super Admin
+                    admin: Administrator
+                    moderator: Moderator
+                    editor: Editor
+                    author: Author
+                    visitor: Visitor

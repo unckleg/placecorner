@@ -1,0 +1,9 @@
+admin:
+    global:
+        sucess: Sucess
+        error: Error
+        notice: Notice
+    module:
+        user:
+            create_succesfully: New user is created successfully
+            edit_successfully: User %s is updated successfully

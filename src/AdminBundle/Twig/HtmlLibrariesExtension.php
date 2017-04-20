@@ -102,7 +102,10 @@ class HtmlLibrariesExtension extends \Twig_Extension
             'confirmation' => [
                 '/skins/backend/assets/global/plugins/bootstrap-confirmation/bootstrap-confirmation.min.js',
                 '/skins/backend/assets/pages/scripts/ui-confirmations.min.js',
-
+            ],
+            'toastr' => [
+                '/skins/backend/assets/vendors/toastr/toastr.min.css',
+                '/skins/backend/assets/vendors/toastr/toastr.min.js'
             ]
         ];
 

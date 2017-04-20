@@ -1,38 +1,123 @@
 admin:
+    # Global administration translations
+    global:
+        title: Place Corner - Administracija
+        name: Near.me
+        breadcrumb:
+            home: Početna
+        buttons:
+            yes: Da
+            no: Ne
+        form:
+            button_submit: Potvrdi
+            button_cancel: Otkaži
+    # Administration layout translations
+    layout:
+        logout: Odjavljivanje
+
+    # Sidebar layout translations
     sidebar:
-        menus:
-            dashboard: Komandna tabla
-            page: Stranice
-                pages: Lista
-                sitemap: Mapa sajta
-            category: Kategorije
-                categories: Lista
-                subcategories: Podkategorije
-            tags: Oznake
-                tags: Lista
-            listing: Listing
-                items: Mesta
-                commentsreviews: Komentari & Ocene
-            place: Lokacije
-                countries: Države
-                cities: Gradovi
-                regions: Regioni
-                municipality: Opštine
-            partners: Partneri
-            users: Korisnici
-                administration: Administracija
-                frontend: Sajt
-            language: Jezici
-                settings: Podešavanja
-            map: Mapa
-                icons: Ikonice
-                settings: Podešavanja
-            statistics: Statistika
-                analytics: Analitika
-            marketing: Marketing
-                advertises: Reklame
-                newsletter: Newsletter
-                notificatons: Notifikacije
-            global: Globalno
-                settings: Podešavanja
-                layout: Izgled
+        heading:
+            near: NEAR.ME
+            admin: Administracija
+        dashboard: Komandna tabla
+        page:
+          title: Stranice
+          pages: Stranice
+          sitemap: Mapa sajta
+        category:
+            title: Kategorije
+            categories: Kategorije
+            subcategories: Podkategorije
+        tags:
+            title: Oznake
+        listing:
+            title: Stavke
+            items: Artikli
+            commentsreviews: Komentari i Ocene
+        place:
+            title: Lokacije
+            countries: Države
+            cities: Gradovi
+            regions: Regioni
+            municipality: Opštine
+        partners:
+            title: Partneri
+        users:
+            title: Korisnici
+            administration: Administracija
+            frontend: Sajt
+        language:
+            title: Jezik
+            settings: Podešavanja
+        map:
+            title: Mapa
+            icons: Izgled
+            settings: Podešavanja
+        statistics:
+            title: Statistika
+            analytics: Analitika
+        marketing:
+            title: Marketing
+            advertises: Reklame
+            newsletter: Newsletter
+            notificatons: Notifikacije
+        global:
+            title: Globalno
+            settings: Podešavanja
+            layout: Izgled
+
+    # List of modules (User, Page, Sitemap)
+    module:
+        user:
+            name: Korisnik
+            breadcrumb:
+                user: Korisnik
+                create: Novi Korisnik
+                edit: Izmena Korisnika
+            index:
+                pagetitle_small: administracija svih backend korisnika
+                create_btn: Dodaj Novog Korisnika
+                caption: Lista
+                caption_small: svih korisnika
+                table:
+                    th_full_name: Ime
+                    th_username: Prezime
+                    th_email: Email adresa
+                    th_last_activity: Poslednja Aktivnost
+                    th_status: Status
+                    th_roles: Role
+                    th_actions: Akcije
+                    td_active: Aktivan
+                    td_banned: Banovan
+                    td_delete: Obriši Korisnika?
+                    td_show: Aktiviraj Korisnika ?
+                    td_hide: Banuj Korisnika ?
+                    td_edit: Izmeni Korisnika ?
+            create:
+                pagetitle: Novi Korisnik
+                caption: Forma za kreiranje Novog Korisnika
+            edit:
+                pagetitle: Izmena Korisnika:
+                caption: Forma za izmenu Korisnika
+            form:
+                first_name_label: Ime
+                first_name_placeholder: Unesite ime korisnika
+                last_name_label: Prezime
+                last_name_placeholder: Unesite prezime korisnika
+                username_label: Korisničko ime
+                username_placeholder: Korisničko ime korišćeno pri pristupu na administraciju
+                email_label: Email Adresa
+                email_placeholder: Unesite email adresu za ovog korisnika
+                password_invalid: Polja za zaštitnu lozinku moraju biti popunjena i identične vrednosti
+                password_first_option: Lozinka
+                password_second_option: Ponovite lozinku
+                roles_label: Lista Korisničkih Rola
+                roles_choices_label: Izaberite Rolu za ovog korisnika
+                choices:
+                    super_admin: Super Administrator
+                    admin: Administrator
+                    moderator: Moderator
+                    editor: Editor
+                    author: Autor
+                    visitor: Bez privilegija

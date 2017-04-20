@@ -43,6 +43,6 @@
 
     {{ form_widget(form.save) }}
     <a href="{{ path('admin_user') }}"
-       class="btn default">Cancel</a>
+       class="btn default">{{ 'admin.global.form.button_cancel'|trans({}, 'admin') }}</a>
 
 {{ form_end(form) }}

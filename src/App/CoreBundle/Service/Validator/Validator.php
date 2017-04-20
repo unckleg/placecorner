@@ -18,7 +18,7 @@ class Validator implements Constants
     public static function isValid($data, $additionalCheck = null)
     {
         if (empty($data)) {
-            throw new NotFoundHttpException('Provided data is empty');
+            throw new NotFoundHttpException('Provided data is empty.');
         };
 
         if (isset($additionalCheck)) {

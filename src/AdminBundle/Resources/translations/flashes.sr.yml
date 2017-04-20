@@ -1,0 +1,10 @@
+admin:
+    test: idemo
+    global:
+        sucess: Uspešno
+        error: Greška
+        notice: Obaveštenje
+    module:
+        user:
+            create_succesfully: Korisnik je uspešno kreiran
+            edit_successfully: Korisnik %s je uspešno ažuriran
