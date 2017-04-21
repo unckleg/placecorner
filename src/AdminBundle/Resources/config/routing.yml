@@ -21,12 +21,24 @@ admin_dashboard:
 admin_page:
     path:     /{_locale}/admin/page
     defaults: { _controller: AdminBundle:Page:index }
+    options:
+        expose: true
     requirements:
         _locale: en|sr|ru
 
 admin_page_create:
     path:     /{_locale}/admin/page/create
     defaults: { _controller: AdminBundle:Page:create }
+
+admin_page_edit:
+    path:     /{_locale}}/admin/page/edit/id/{id}
+    defaults: { _controller: AdminBundle:Page:edit }
+
+admin_page_modify:
+    path:     /admin/page/modify/id/{id}/status/{status}
+    defaults: { _controller: AdminBundle:Page:modify }
+    options:
+        expose: true
 
 # User
 admin_user:

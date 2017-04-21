@@ -1,0 +1,43 @@
+{% extends 'AdminBundle:Master/Layouts:admin.html.twig' %}
+{% set page_title = 'admin.module.page.breadcrumb.create'|trans({}, 'admin') %}
+
+{% block breadcrumbs %}
+    <div class="page-bar">
+        <ul class="page-breadcrumb">
+            <li>
+                <a href="{{ path('admin_dashboard') }}">
+                    {{ 'admin.global.breadcrumb.home'|trans({}, 'admin') }}
+                </a>
+                <i class="fa fa-circle"></i>
+            </li>
+            <li>
+                <a href="{{ path('admin_page') }}">
+                    {{ 'admin.module.page.breadcrumb.page'|trans({}, 'admin') }}
+                </a>
+                <i class="fa fa-circle"></i>
+            </li>
+            <li class="active">
+                <a href="{{ path('admin_page_create') }}">
+                    {{ 'admin.module.page.breadcrumb.create'|trans({}, 'admin') }}
+                </a>
+            </li>
+        </ul>
+    </div>
+{% endblock %}
+
+{% block toptitle %}
+    <h1 class="page-title"> {{ 'admin.module.page.name'|trans({}, 'admin') }}
+        <small> {{ 'admin.module.page.create.pagetitle'|trans({}, 'admin') }}</small>
+        <div class="pull-right">
+            <div class="btn-group">
+                <a class="btn blue btn-circle btn-md" href="{{ path('admin_page') }}">
+                    {{ 'admin.global.buttons.go_back'|trans({}, 'admin') }}
+                </a>
+            </div>
+        </div>
+    </h1>
+{% endblock %}
+
+{% block content %}
+
+{% endblock %}

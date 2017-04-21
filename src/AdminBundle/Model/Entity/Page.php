@@ -1,19 +1,19 @@
 <?php
 
-namespace AdminBundle\Entity;
+namespace AdminBundle\Model\Entity;
 
+use App\CoreBundle\Model\Translation\TranslatableTrait;
 use Doctrine\ORM\Mapping as ORM;
-use Knp\DoctrineBehaviors\Model as ORMBehaviors;
 
 /**
  * Page
  *
  * @ORM\Table(name="page")
- * @ORM\Entity(repositoryClass="AdminBundle\Repository\PageRepository")
+ * @ORM\Entity(repositoryClass="AdminBundle\Model\Repository\PageRepository")
  */
 class Page
 {
-    use ORMBehaviors\Translatable\Translatable;
+    use TranslatableTrait;
 
     /**
      * @param  string $method
@@ -22,9 +22,6 @@ class Page
      */
     public function __call($method, $arguments)
     {
-        if (!method_exists(self::getTranslationEntityClass(), $method)) {
-            $method = 'get' . ucfirst($method);
-        }
         return $this->proxyCurrentLocaleTranslation($method, $arguments);
     }
 

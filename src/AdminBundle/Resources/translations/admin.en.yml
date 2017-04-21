@@ -8,6 +8,7 @@ admin:
         buttons:
             yes: Yes
             no: No
+            go_back: Go back
         form:
             button_submit: Submit
             button_cancel: Cancel
@@ -76,6 +77,7 @@ admin:
                 create: User Create
                 edit: User Edit
             index:
+                pagetitle: Users
                 pagetitle_small: administration of backend users
                 create_btn: Create New User
                 caption: List
@@ -128,7 +130,27 @@ admin:
                 create: Page Create
                 edit: Page Edit
             index:
+                pagetitle: Pages
                 pagetitle_small: administration of all pages
                 create_btn: Create New Page
                 caption: List
                 caption_small: of all pages
+                table:
+                    th_image: Image
+                    th_title: Title
+                    th_content: Content
+                    th_locale: Language
+                    th_status: Status
+                    th_actions: Actions
+                    td_active: Active
+                    td_hidden: Hidden
+                    td_delete: Delete Page?
+                    td_show: Activate Page ?
+                    td_hide: Hide Page ?
+                    td_edit: Edit Page ?
+            create:
+                pagetitle: New Page
+                caption: New Page Form
+            edit:
+                pagetitle: Editing Page:
+                caption: Edit Page Form

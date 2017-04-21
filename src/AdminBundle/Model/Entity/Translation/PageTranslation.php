@@ -1,16 +1,16 @@
 <?php
 
-namespace AdminBundle\Entity;
+namespace AdminBundle\Model\Entity\Translation;
 
+use App\CoreBundle\Model\Translation\TranslationTrait;
 use Doctrine\ORM\Mapping as ORM;
-use Knp\DoctrineBehaviors\Model as ORMBehaviors;
 
 /**
  * @ORM\Entity
  */
 class PageTranslation
 {
-    use ORMBehaviors\Translatable\Translation;
+    use TranslationTrait;
 
     /**
      * @ORM\Column(type="string", length=500)

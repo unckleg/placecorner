@@ -2,7 +2,7 @@
 
 namespace AdminBundle\Form\User;
 
-use AdminBundle\Entity\User;
+use AdminBundle\Model\Entity\User;
 use AdminBundle\Form\EventListener\FieldCollectionListener;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;

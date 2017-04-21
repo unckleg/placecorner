@@ -1,5 +1,5 @@
 {% extends 'AdminBundle:Master/Layouts:admin.html.twig' %}
-{% set page_title = 'User Edit' %}
+{% set page_title = 'admin.module.user.breadcrumb.edit'|trans({}, 'admin') %}
 
 {% block breadcrumbs %}
     <div class="page-bar">
@@ -29,6 +29,13 @@
             {{ 'admin.module.user.edit.pagetitle'|trans({}, 'admin') }}
             <strong>{{ user.getFirstName ~' '~ user.getLastName }}</strong>
         </small>
+        <div class="pull-right">
+            <div class="btn-group">
+                <a class="btn blue btn-circle btn-md" href="{{ path('admin_user') }}">
+                    {{ 'admin.global.buttons.go_back'|trans({}, 'admin') }}
+                </a>
+            </div>
+        </div>
     </h1>
 {% endblock %}
 

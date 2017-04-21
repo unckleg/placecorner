@@ -1,5 +1,5 @@
 {% extends '@Admin/Master/Layouts/admin.html.twig' %}
-{% set page_title = 'User' %}
+{% set page_title = 'admin.module.page.index.pagetitle'|trans({}, 'admin') %}
 
 {% block breadcrumbs %}
     <div class="page-bar">
@@ -51,103 +51,93 @@
             </div>
         </div>
         <div class="portlet-body" style="display: block;">
-            <table class="table table-bordered table-hover" id="user">
+            <table class="table table-bordered table-hover" id="page">
                 <thead>
                 <tr>
-                    {#<th class="text-center"> {{ 'admin.module.user.index.table.th_full_name'|trans({}, 'admin') }} </th>#}
-                    {#<th class="text-center"> {{ 'admin.module.user.index.table.th_username'|trans({}, 'admin') }} </th>#}
-                    {#<th class="text-center"> {{ 'admin.module.user.index.table.th_email'|trans({}, 'admin') }} </th>#}
-                    {#<th class="text-center"> {{ 'admin.module.user.index.table.th_last_activity'|trans({}, 'admin') }} </th>#}
-                    {#<th class="text-center"> {{ 'admin.module.user.index.table.th_status'|trans({}, 'admin') }} </th>#}
-                    {#<th class="text-center"> {{ 'admin.module.user.index.table.th_roles'|trans({}, 'admin') }}</th>#}
-                    {#<th class="text-center"> {{ 'admin.module.user.index.table.th_actions'|trans({}, 'admin') }}</th>#}
+                    <th class="text-center"> {{ 'admin.module.page.index.table.th_image'|trans({}, 'admin') }} </th>
+                    <th class="text-center"> {{ 'admin.module.page.index.table.th_title'|trans({}, 'admin') }} </th>
+                    <th class="text-center"> {{ 'admin.module.page.index.table.th_content'|trans({}, 'admin') }} </th>
+                    <th class="text-center"> {{ 'admin.module.page.index.table.th_locale'|trans({}, 'admin') }} </th>
+                    <th class="text-center"> {{ 'admin.module.page.index.table.th_status'|trans({}, 'admin') }} </th>
+                    <th class="text-center"> {{ 'admin.module.page.index.table.th_actions'|trans({}, 'admin') }}</th>
                 </tr>
                 </thead>
                 <tbody>
-                {#{% if users is not empty %}#}
-                    {#{% for user in users if user.getid != app.user.id%}#}
-                        {#<tr>#}
-                            {#<td class="text-center">#}
-                                {#{{ user.getFirstName ~' '~ user.getLastName }}#}
-                            {#</td>#}
-                            {#<td class="text-center"> {{ user.getUsername }} </td>#}
-                            {#<td class="text-center"> {{ user.getEmail }} </td>#}
-                            {#<td class="text-center"> {{ user.lastLogin|date("d.m.Y H:i") }} </td>#}
-                            {#<td class="text-center">#}
-                                {#{% if user.isEnabled %}#}
-                                    {#<span class="label label-sm label-info">#}
-                                        {#{{ 'admin.module.user.index.table.td_active'|trans({}, 'admin') }}#}
-                                    {#</span>#}
-                                {#{% else %}#}
-                                    {#<span class="label label-sm label-danger">#}
-                                        {#{{ 'admin.module.user.index.table.td_banned'|trans({}, 'admin') }}#}
-                                    {#</span>#}
-                                {#{% endif %}#}
-                            {#</td>#}
-                            {#<td class="text-center">#}
-                                {#{% for role in user.getRoles %}#}
-                                    {#{% if loop.last %}#}
-                                        {#{{ role }}#}
-                                    {#{% else %}#}
-                                        {#{{ role }},#}
-                                    {#{% endif %}#}
-                                {#{% endfor %}#}
-                            {#</td>#}
-                            {#<td class="text-center" style="width: 20%;">#}
-                                {#{% if user.isEnabled %}#}
-                                    {#<a class="btn purple btn-sm tooltips" type="button" data-container="body"#}
-                                       {#data-placement="top"#}
-                                       {#data-original-title="{{ 'admin.module.user.index.table.td_hide'|trans({}, 'admin') }}"#}
-                                       {#data-action="hide"#}
-                                       {#data-user-id="{{ user.getId }}"#}
-                                       {#data-btn-ok-label="{{ 'admin.global.buttons.yes'|trans({}, 'admin') }}"#}
-                                       {#data-btn-cancel-label="{{ 'admin.global.buttons.no'|trans({}, 'admin') }}"#}
-                                       {#data-toggle="confirmation"#}
-                                       {#data-popout="true"#}
-                                       {#data-on-confirm="modifyUser">#}
-                                        {#<i class="icon-close"></i>#}
-                                    {#</a>#}
-                                {#{% else %}#}
-                                    {#<a class="btn default btn-sm tooltips" type="button" data-container="body"#}
-                                       {#data-placement="top"#}
-                                       {#data-original-title="{{ 'admin.module.user.index.table.td_show'|trans({}, 'admin') }}"#}
-                                       {#data-action="show"#}
-                                       {#data-user-id="{{ user.getId }}"#}
-                                       {#data-btn-ok-label="{{ 'admin.global.buttons.yes'|trans({}, 'admin') }}"#}
-                                       {#data-btn-cancel-label="{{ 'admin.global.buttons.no'|trans({}, 'admin') }}"#}
-                                       {#data-toggle="confirmation"#}
-                                       {#data-popout="true"#}
-                                       {#data-on-confirm="modifyUser">#}
-                                        {#<i class="icon-check"></i>#}
-                                    {#</a>#}
-                                {#{% endif %}#}
-                                {#<a href="{{ path('admin_user_edit', {'id': user.getId}) }}"#}
-                                   {#class="btn blue btn-sm tooltips"#}
-                                   {#type="button"#}
-                                   {#data-container="body"#}
-                                   {#data-placement="top"#}
-                                   {#data-original-title="{{ 'admin.module.user.index.table.td_edit'|trans({}, 'admin') }}">#}
-                                    {#<i class="icon-pencil"></i>#}
-                                {#</a>#}
+                {% if pages is not empty %}
+                    {% for page in pages %}
+                        <tr>
+                            <td class="text-center" style="width: 1%;">
+                                <img src="https://s-media-cache-ak0.pinimg.com/236x/af/d7/98/afd79881c08754c9e22e52486d942858.jpg" width="50%"/>
+                            </td>
+                            <td class="text-center"> {{ page.getTitle }} </td>
+                            <td class="text-center"> {{ page.getContent }} </td>
+                            <td class="text-center"> <span class="badge badge-warning badge-roundless"> {{ page.getLocale|upper }} </span> </td>
+                            <td class="text-center">
+                                {% if page.getStatus == 1%}
+                                    <span class="label label-sm label-info">
+                                        {{ 'admin.module.page.index.table.td_active'|trans({}, 'admin') }}
+                                    </span>
+                                {% else %}
+                                    <span class="label label-sm label-danger">
+                                        {{ 'admin.module.page.index.table.td_hidden'|trans({}, 'admin') }}
+                                    </span>
+                                {% endif %}
+                            </td>
+                            <td class="text-center" style="width: 20%;">
+                                {% if page.getStatus == 1%}
+                                    <a class="btn purple btn-sm tooltips" type="button" data-container="body"
+                                       data-placement="top"
+                                       data-original-title="{{ 'admin.module.page.index.table.td_hide'|trans({}, 'admin') }}"
+                                       data-action="hide"
+                                       data-page-id="{{ page.getId }}"
+                                       data-btn-ok-label="{{ 'admin.global.buttons.yes'|trans({}, 'admin') }}"
+                                       data-btn-cancel-label="{{ 'admin.global.buttons.no'|trans({}, 'admin') }}"
+                                       data-toggle="confirmation"
+                                       data-popout="true"
+                                       data-on-confirm="modifyPage">
+                                        <i class="icon-close"></i>
+                                    </a>
+                                {% else %}
+                                    <a class="btn default btn-sm tooltips" type="button" data-container="body"
+                                       data-placement="top"
+                                       data-original-title="{{ 'admin.module.page.index.table.td_show'|trans({}, 'admin') }}"
+                                       data-action="show"
+                                       data-page-id="{{ page.getId }}"
+                                       data-btn-ok-label="{{ 'admin.global.buttons.yes'|trans({}, 'admin') }}"
+                                       data-btn-cancel-label="{{ 'admin.global.buttons.no'|trans({}, 'admin') }}"
+                                       data-toggle="confirmation"
+                                       data-popout="true"
+                                       data-on-confirm="modifyPage">
+                                        <i class="icon-check"></i>
+                                    </a>
+                                {% endif %}
+                                <a href="{{ path('admin_page_edit', {'id': page.getId}) }}"
+                                   class="btn blue btn-sm tooltips"
+                                   type="button"
+                                   data-container="body"
+                                   data-placement="top"
+                                   data-original-title="{{ 'admin.module.page.index.table.td_edit'|trans({}, 'admin') }}">
+                                    <i class="icon-pencil"></i>
+                                </a>
 
-                                {#<a class="btn btn-danger btn-sm tooltips"#}
-                                   {#type="button" data-container="body"#}
-                                   {#data-placement="top"#}
-                                   {#data-original-title="{{ 'admin.module.user.index.table.td_delete'|trans({}, 'admin') }}"#}
-                                   {#data-action="delete"#}
-                                   {#data-user-id="{{ user.getId }}"#}
-                                   {#data-toggle="confirmation"#}
-                                   {#data-btn-ok-label="{{ 'admin.global.buttons.yes'|trans({}, 'admin') }}"#}
-                                   {#data-btn-cancel-label="{{ 'admin.global.buttons.no'|trans({}, 'admin') }}"#}
-                                   {#data-popout="true"#}
-                                   {#data-on-confirm="modifyUser">#}
-                                    {#<i class="icon-trash"></i>#}
-                                {#</a>#}
+                                <a class="btn btn-danger btn-sm tooltips"
+                                   type="button" data-container="body"
+                                   data-placement="top"
+                                   data-original-title="{{ 'admin.module.page.index.table.td_delete'|trans({}, 'admin') }}"
+                                   data-action="delete"
+                                   data-page-id="{{ page.getId }}"
+                                   data-toggle="confirmation"
+                                   data-btn-ok-label="{{ 'admin.global.buttons.yes'|trans({}, 'admin') }}"
+                                   data-btn-cancel-label="{{ 'admin.global.buttons.no'|trans({}, 'admin') }}"
+                                   data-popout="true"
+                                   data-on-confirm="modifyPage">
+                                    <i class="icon-trash"></i>
+                                </a>
 
-                            {#</td>#}
-                        {#</tr>#}
-                    {#{% endfor %}#}
-                {#{% endif %}#}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                {% endif %}
                 </tbody>
             </table>
         </div>
@@ -171,22 +161,22 @@
 
     <script>
         $(document).ready(function() {
-            $('#user').DataTable();
+            $('#page').DataTable();
         });
 
-        function modifyUser() {
+        function modifyPage() {
             var status = $(this).data('action'),
-                id     = $(this).data('user-id'),
+                id     = $(this).data('page-id'),
                 locale = '{{ app.request.attributes.get('_locale') }}'
                 ;
 
             $.ajax({
-                url: Routing.generate('admin_user_modify', {id: id, status: status}),
+                url: Routing.generate('admin_page_modify', {id: id, status: status}),
                 method: 'POST'
             }).done(function (data) {
                 console.log(data);
                 data == 'success'?
-                    window.location.replace(Routing.generate('admin_user', {'_locale': locale}))
+                    window.location.replace(Routing.generate('admin_page', {'_locale': locale}))
                     : null;
             }).fail(function (data) {
                 console.log("There was an error");

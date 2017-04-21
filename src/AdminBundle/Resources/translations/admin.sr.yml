@@ -8,6 +8,7 @@ admin:
         buttons:
             yes: Da
             no: Ne
+            go_back: Nazad
         form:
             button_submit: Potvrdi
             button_cancel: Otkaži
@@ -76,6 +77,7 @@ admin:
                 create: Novi Korisnik
                 edit: Izmena Korisnika
             index:
+                pagetitle: Korisnici
                 pagetitle_small: administracija svih backend korisnika
                 create_btn: Dodaj Novog Korisnika
                 caption: Lista
@@ -98,7 +100,7 @@ admin:
                 pagetitle: Novi Korisnik
                 caption: Forma za kreiranje Novog Korisnika
             edit:
-                pagetitle: Izmena Korisnika:
+                pagetitle: Izmena Korisnika
                 caption: Forma za izmenu Korisnika
             form:
                 first_name_label: Ime
@@ -121,3 +123,34 @@ admin:
                     editor: Editor
                     author: Autor
                     visitor: Bez privilegija
+        page:
+            name: Stranice
+            breadcrumb:
+                page: Stranice
+                create: Nova Stranica
+                edit: Izmena Stranice
+            index:
+                pagetitle: Stranice
+                pagetitle_small: administracija svih stranica
+                create_btn: Dodaj Novu Stranicu
+                caption: Lista
+                caption_small: svih stranica
+                table:
+                    th_image: Fotografija
+                    th_title: Naslov
+                    th_content: Podaci
+                    th_locale: Jezik
+                    th_status: Status
+                    th_actions: Akcije
+                    td_active: Aktivna
+                    td_hidden: Sakrivena
+                    td_delete: Obriši stranicu ?
+                    td_show: Aktiviraj stranicu ?
+                    td_hide: Sakrij stranicu ?
+                    td_edit: Izmeni stranicu ?
+            create:
+                pagetitle: Nova Stranice
+                caption: Forma za kreiranje Nove Stranice
+            edit:
+                pagetitle: Izmena Stranice
+                caption: Forma za izmenu Stranice

@@ -1,6 +1,6 @@
 <?php
 
-namespace AdminBundle\Entity;
+namespace AdminBundle\Model\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Model\User as BaseUser;
@@ -9,7 +9,7 @@ use FOS\UserBundle\Model\User as BaseUser;
  * User
  *
  * @ORM\Table(name="user", uniqueConstraints={@ORM\UniqueConstraint(name="email_UNIQUE", columns={"email"})})
- * @ORM\Entity(repositoryClass="AdminBundle\Repository\UserRepository")
+ * @ORM\Entity(repositoryClass="AdminBundle\Model\Repository\UserRepository")
  */
 class User extends BaseUser
 {

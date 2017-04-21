@@ -2,7 +2,7 @@
 
 namespace AdminBundle\Controller;
 
-use AdminBundle\Entity\User;
+use AdminBundle\Model\Entity\User;
 use AdminBundle\Form\User\UserType;
 use App\CoreBundle\Controller\CoreController;
 use App\CoreBundle\Service\Validator\Validator;

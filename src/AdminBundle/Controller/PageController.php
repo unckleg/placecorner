@@ -2,51 +2,43 @@
 
 namespace AdminBundle\Controller;
 
-use AdminBundle\Entity\Page;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use AdminBundle\Model\Entity\Page;
+use App\CoreBundle\Controller\CoreController;
+use App\CoreBundle\Service\Validator\Validator;
+use Symfony\Component\HttpFoundation\Request;
 
-class PageController extends Controller
+class PageController extends CoreController
 {
-    public function indexAction()
+    public function indexAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
-        $page = $em->getRepository(Page::class)->find(1);
-        dump($page->translate('ru')); exit();
+        $repository = $em->getRepository(Page::class);
 
-        $page = new Page();
-        $page->setImage('English.jpg')->setIsDeleted(0)->setStatus(1)->setOrderNumber(0);
-        $page->translate('en')->setTitle('English');
-        $page->translate('en')->setContent('English content');
-        $page->translate('en')->setSeoTitle('English seo title');
-        $page->translate('en')->setSeoDescription('English seo desc');
-        $page->translate('en')->setSeoKeywords('keyowrd, keyos');
+        $locale = $request->getDefaultLocale();
+        $pages  = $repository->findAllByLocale($locale);
 
-        $em->persist($page);
-        $page->mergeNewTranslations();
-        $em->flush($page);
-
-        $page2 = new Page();
-        $page2->setImage('Serbian.jpg')->setIsDeleted(0)->setStatus(1)->setOrderNumber(1);
-        $page2->translate('sr')->setTitle('Engleski');
-        $page2->translate('sr')->setContent('Engleski conent');
-        $page2->translate('sr')->setSeoTitle('Engleski naslov');
-        $page2->translate('sr')->setSeoDescription('Engleski seo opis');
-        $page2->translate('sr')->setSeoKeywords('rec1, rec2');
-
-        $em->persist($page2);
-        $page2->mergeNewTranslations();
-        $em->flush($page2);
-
-        $enPage = $page->translate('en');
-        $srPage = $page2->translate('sr');
-        dump($enPage);
-        dump($srPage); exit();
-
-        return $this->render('@Admin/Page/index.html.twig');
+        return $this->render('@Admin/Page/index.html.twig', [
+            'pages' => $pages
+        ]);
     }
 
     public function createAction()
     {
+        return $this->render('@Admin/Page/create.html.twig', []);
+    }
 
+    public function editAction()
+    {}
+
+    public function modifyAction($id, $status, Request $request)
+    {
+        if ($request->isXmlHttpRequest()) {
+            $repository = $this->getDoctrine()->getRepository(Page::class);
+            $modifiedPage = $repository->modifyPage($id, $status);
+
+            return Validator::isValid($modifiedPage) ?
+                $this->json('success')
+                : $this->json('There was an error while updating Page data');
+        }
     }
 }
