@@ -106,6 +106,9 @@ class HtmlLibrariesExtension extends \Twig_Extension
             'toastr' => [
                 '/skins/backend/assets/vendors/toastr/toastr.min.css',
                 '/skins/backend/assets/vendors/toastr/toastr.min.js'
+            ],
+            'ckeditor' => [
+                '/skins/backend/assets/vendors/ckeditor/ckeditor.js'
             ]
         ];
 

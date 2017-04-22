@@ -1,3 +1,6 @@
+parameters:
+    property_accessor.class: App\CoreBundle\Form\PropertyAccessor
+
 services:
     html_libraries_extension:
         class: AdminBundle\Twig\HtmlLibrariesExtension
@@ -7,4 +10,14 @@ services:
     sidebar_extension:
         class: AdminBundle\Twig\SidebarExtension
         arguments: ["@request_stack"]
+        tags: [{ name: twig.extension }]
+
+    # DONT REMOVE THIS, will break all multilanguage forms
+    # Read App\CoreBundle\Form\PropertyAccessor class docs for more info
+    property_accessor:
+        class: '%property_accessor.class%'
+        arguments: [true]
+
+    twig.extension.text:
+        class: Twig_Extensions_Extension_Text
         tags: [{ name: twig.extension }]

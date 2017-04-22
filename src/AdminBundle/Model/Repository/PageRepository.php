@@ -4,6 +4,7 @@ namespace AdminBundle\Model\Repository;
 
 use AdminBundle\Model\Entity\Page;
 use App\CoreBundle\Model\Constants;
+use App\CoreBundle\Service\Validator\Validator;
 use Doctrine\ORM\EntityRepository;
 
 /**
@@ -57,13 +58,41 @@ class PageRepository extends EntityRepository implements Constants
         return $this
             ->createQueryBuilder('p')
             ->select('p, t')
-            ->join('p.translations', 't')
+            ->leftJoin('p.translations', 't')
             ->where('t.locale = :locale')
             ->andWhere('p.isDeleted = :deleted')
             ->setParameter('deleted', Constants::IS_ACTIVE)
             ->setParameter('locale', $locale)
             ->getQuery()
             ->getResult()
+        ;
+    }
+
+    /**
+     * Returns null or array if found translated content for provided Id
+     * @param  string $locale
+     * @param  integer $id
+     * @return array|null
+     */
+    public function findOrFailByLocale($locale, $id)
+    {
+        // validation of passed variables
+        Validator::isValid($locale, Validator::IS_STRING);
+        Validator::isValid($id, Validator::IS_NUMERIC);
+        $locale = strtolower($locale);
+
+        return $this
+            ->createQueryBuilder('p')
+            ->select('p, t')
+            ->leftJoin('p.translations', 't')
+            ->where('t.locale = :locale')
+            ->andWhere('p.isDeleted = :deleted')
+            ->andWhere('p.id = :id')
+            ->setParameter('locale', $locale)
+            ->setParameter('deleted', Constants::IS_ACTIVE)
+            ->setParameter('id', $id)
+            ->getQuery()
+            ->getOneOrNullResult()
         ;
     }
 }

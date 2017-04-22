@@ -32,35 +32,35 @@ class Page
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="image", type="string", length=255, nullable=true)
      */
-    private $image;
+    protected $image;
 
     /**
      * @var int
      *
      * @ORM\Column(name="status", type="smallint")
      */
-    private $status;
+    protected $status = 1;
 
     /**
      * @var int
      *
      * @ORM\Column(name="is_deleted", type="smallint")
      */
-    private $isDeleted;
+    protected $isDeleted = 0;
 
     /**
      * @var int
      *
      * @ORM\Column(name="order_number", type="integer")
      */
-    private $orderNumber;
+    protected $orderNumber = 0;
 
 
     /**

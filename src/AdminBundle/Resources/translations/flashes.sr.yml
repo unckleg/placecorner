@@ -8,3 +8,8 @@ admin:
         user:
             create_succesfully: Korisnik je uspešno kreiran
             edit_successfully: Korisnik %s je uspešno ažuriran
+
+        page:
+            create_successfully: Stranica je uspešno kreirana
+            edit_successfully: Stranica %s je uspešno ažuriran
+            no_content_notice: Ne postoji prevod za ovu stranicu!

@@ -1,0 +1,72 @@
+body {
+    background-color: #372356;
+}
+.page-header.navbar {
+    border-bottom: 2px solid #e7ecf1;
+    background-color: #4a3272;
+}
+.page-sidebar, .page-sidebar-closed.page-sidebar-fixed {
+    background-color: #372356;
+}
+.page-logo {
+    background-color: #4a3272;
+}
+.page-sidebar .page-sidebar-menu>li.active.open>a, .page-sidebar .page-sidebar-menu>li.active>a, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu>li.active.open>a, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu>li.active>a {
+    background: #4a3272;
+    color: #fff;
+}
+.page-sidebar .page-sidebar-menu>li.active.open>a:hover, .page-sidebar .page-sidebar-menu>li.active>a:hover, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu>li.active.open>a:hover, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu>li.active>a:hover {
+    background: #4a3272;
+}
+.page-sidebar .page-sidebar-menu>li>a, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu>li>a {
+    border-top: 0px solid #3d4957;
+}
+.page-sidebar .page-sidebar-menu>li.open>a, .page-sidebar .page-sidebar-menu>li:hover>a, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu>li.open>a, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu>li:hover>a {
+    background: rgb(74, 50, 114);
+    color: #b4bcc8;
+}
+.page-sidebar .page-sidebar-menu .sub-menu>li.active>a, .page-sidebar .page-sidebar-menu .sub-menu>li.open>a, .page-sidebar .page-sidebar-menu .sub-menu>li:hover>a, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu .sub-menu>li.active>a, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu .sub-menu>li.open>a, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu .sub-menu>li:hover>a {
+    background: #673ab7!important;
+}
+.page-sidebar .page-sidebar-menu>li>a, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu>li>a {
+    color: #998eaa;
+}
+.page-sidebar .page-sidebar-menu>li>a>i[class*=icon-], .page-sidebar .page-sidebar-menu>li>a>i[class^=icon-], .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu>li>a>i[class*=icon-], .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu>li>a>i[class^=icon-] {
+    color: #998eaa;
+}
+.sub-menu {
+    background-color: rgba(65, 45, 99, 0.52);
+    margin: 1px 0 !important;
+}
+.page-header.navbar .top-menu .navbar-nav>li.dropdown .dropdown-toggle:hover, .page-header.navbar .top-menu .navbar-nav>li.dropdown.open .dropdown-toggle {
+    background-color: rgba(63, 79, 98, 0);
+}
+.page-container-bg-solid .page-bar, .page-content-white .page-bar {
+    background-color: #f1f4f7 !important;
+}
+
+.page-sidebar .page-sidebar-menu>li.heading>h3, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu>li.heading>h3 {
+    color: #7655af;
+}
+.page-content {
+    background: #eef1f5;
+}
+table.dataTable.no-footer {
+    border-bottom: transparent !important;
+}
+.control-label .required, .form-group .required {
+    color: #000 !important;
+    font-weight: 400 !important;
+    padding-left: 0px !important;
+}
+.toast-success {
+    background-color: #8775a7 !important;
+}
+
+
+.cke_chrome {
+    border: 1px solid rgba(74, 50, 114, 0.42) !important;
+}
+.cke_bottom {
+     background: rgba(74, 50, 114, 0.8) !important;
+ }

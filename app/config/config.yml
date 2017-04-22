@@ -41,6 +41,8 @@ framework:
 twig:
     debug: '%kernel.debug%'
     strict_variables: '%kernel.debug%'
+    globals:
+        languages: '%app.languages%'
 
 # Doctrine Configuration
 doctrine:
@@ -59,7 +61,7 @@ doctrine:
             AdminBundle:
                 mapping:   true
                 type:      annotation
-                dir:       'Model/Entity'
+                dir:       'Model'
                 alias:     'AdminBundle'
                 prefix:    'AdminBundle\Model'
                 is_bundle: true
@@ -83,6 +85,7 @@ assetic:
     use_controller: '%kernel.debug%'
     filters:
         cssrewrite: ~
+
 # FOSUser Configuration
 fos_user:
     db_driver: orm

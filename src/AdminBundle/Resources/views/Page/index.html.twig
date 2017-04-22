@@ -70,7 +70,7 @@
                                 <img src="https://s-media-cache-ak0.pinimg.com/236x/af/d7/98/afd79881c08754c9e22e52486d942858.jpg" width="50%"/>
                             </td>
                             <td class="text-center"> {{ page.getTitle }} </td>
-                            <td class="text-center"> {{ page.getContent }} </td>
+                            <td class="text-center"> {{ page.getContent | striptags | truncate(80) }} </td>
                             <td class="text-center"> <span class="badge badge-warning badge-roundless"> {{ page.getLocale|upper }} </span> </td>
                             <td class="text-center">
                                 {% if page.getStatus == 1%}
@@ -111,7 +111,7 @@
                                         <i class="icon-check"></i>
                                     </a>
                                 {% endif %}
-                                <a href="{{ path('admin_page_edit', {'id': page.getId}) }}"
+                                <a href="{{ path('admin_page_edit', {'id': page.getId, 'lang': page.getLocale}) }}"
                                    class="btn blue btn-sm tooltips"
                                    type="button"
                                    data-container="body"

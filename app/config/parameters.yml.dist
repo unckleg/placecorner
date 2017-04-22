@@ -17,3 +17,10 @@ parameters:
 
     # A secret key that's used to generate certain security-related tokens
     secret: ThisTokenIsNotSoSecretChangeIt
+
+    knp.doctrine_behaviors.translatable_subscriber.translatable_trait: App\CoreBundle\Model\Translation\TranslatableTrait
+    knp.doctrine_behaviors.translatable_subscriber.translation_trait: App\CoreBundle\Model\Translation\TranslationTrait
+    app.languages:
+        - { name: English, short: en }
+        - { name: Russian, short: ru }
+        - { name: Serbian, short: sr }

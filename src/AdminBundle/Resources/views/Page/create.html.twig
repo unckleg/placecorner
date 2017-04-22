@@ -39,5 +39,55 @@
 {% endblock %}
 
 {% block content %}
+    <div class="row">
+        <div class="col-md-12">
+            <div id="form-wizard" class="block form-wizard">
+                <ul class="form-wizard-levels">
+                    <li class="active">
+                        <a href="/page/editcontent/page/1/lang/2">
+                            EN
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/page/editcontent/page/1/lang/2">
+                            SR
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/page/editcontent/page/1/lang/2">
+                            RU
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="portlet light bordered">
+                <div class="portlet-title">
+                    <div class="caption font-dark">
+                        <i class="icon-grid font-dark"></i>
+                        <span class="caption-subject bold uppercase"> {{ 'admin.module.page.create.caption'|trans({}, 'admin') }} </span>
+                    </div>
+                </div>
+                <div class="portlet-body form">
+                   {% include '@Admin/Page/forms/create.html.twig' %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
 
+{% block javascripts %}
+    {{ parent() }}
+    {{ loadLibrary('ckeditor', 'js')|raw }}
+
+    <script>
+        CKEDITOR.replace('page_content');
+        CKEDITOR.config.skin = 'office2013';
+    </script>
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>.cke_chrome {border: 1px solid rgba(74, 50, 114, 0.42) !important;}
+        .cke_bottom {background: rgba(74, 50, 114, 0.8) !important;}
+    </style>
 {% endblock %}

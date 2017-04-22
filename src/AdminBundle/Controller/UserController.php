@@ -73,7 +73,7 @@ class UserController extends CoreController
             $form = $this->createForm(UserType::class, $user);
             $form->handleRequest($request);
 
-            if ($form->isSubmitted() && $form->isValid()) {
+                    if ($form->isSubmitted() && $form->isValid()) {
                 $formPass = $form->getData()->getPassword();
 
                 // check if password is passed trough POST

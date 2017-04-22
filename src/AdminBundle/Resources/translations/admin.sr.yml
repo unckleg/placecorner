@@ -149,8 +149,18 @@ admin:
                     td_hide: Sakrij stranicu ?
                     td_edit: Izmeni stranicu ?
             create:
-                pagetitle: Nova Stranice
+                pagetitle: Nova Stranica
                 caption: Forma za kreiranje Nove Stranice
             edit:
                 pagetitle: Izmena Stranice
                 caption: Forma za izmenu Stranice
+            form:
+                page_title_label: Naslov Stranice
+                page_title_placeholder: Unesite naslov za ovu stranicu
+                page_content_label: Editor za sadržaj stranice
+                page_seo_title_label: SEO Naslov
+                page_seo_title_placeholder: Unesite SEO naslov za ovu stranicu
+                page_seo_description_label: SEO Opis
+                page_seo_description_placeholder: Unesite SEO opis za ovu stranicu
+                page_seo_keywords_label: SEO Reči
+                page_seo_keywords_placeholder: Unesite SEO reči za ovu stranicu

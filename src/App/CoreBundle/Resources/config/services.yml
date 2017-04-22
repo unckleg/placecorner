@@ -1,4 +1,0 @@
-services:
-    core_controller:
-        class: App\CoreBundle\Controller\CoreController
-        arguments: ["@request_stack"]

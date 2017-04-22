@@ -21,6 +21,14 @@ class Validator implements Constants
             throw new NotFoundHttpException('Provided data is empty.');
         };
 
+        if (is_array($data)) {
+            foreach ($data as $datas) {
+                if (empty($datas)) {
+                    throw new NotFoundHttpException('Provided data is empty. Data: ' . $datas);
+                }
+            }
+        }
+
         if (isset($additionalCheck)) {
             if (!method_exists(new self(), $additionalCheck)) {
                 $methods = implode(PHP_EOL, get_class_methods(self::class));
@@ -28,7 +36,14 @@ class Validator implements Constants
                     'Provided method: ' . $additionalCheck . 'not found. ' .
                     'List of all available methodes: ' . PHP_EOL . $methods);
             }
-            return self::$additionalCheck($data) == self::VALID ? true : false;
+
+            if (is_array($data)) {
+                foreach ($data as $datas) {
+                    return self::$additionalCheck($datas) == self::VALID ? true : false;
+                }
+            } else {
+                return self::$additionalCheck($data) == self::VALID ? true : false;
+            }
         }
 
         return true;

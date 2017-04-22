@@ -24,26 +24,26 @@ class UserType extends AbstractType
                 'attr'  => [
                     'class'       => 'form-control',
                     'placeholder' => 'admin.module.user.form.first_name_placeholder'
-                ]])
+            ]])
             ->add('last_name', TextType::class, [
                 'label' => 'admin.module.user.form.last_name_label',
                 'required' => false,
                 'attr'  => [
                     'class'       => 'form-control',
                     'placeholder' => 'admin.module.user.form.last_name_placeholder'
-                ]])
+            ]])
             ->add('username', TextType::class, [
                 'label' => 'admin.module.user.form.username_label',
                 'attr'  => [
                     'class'       => 'form-control',
                     'placeholder' => 'admin.module.user.form.username_placeholder'
-                ]])
+            ]])
             ->add('email', EmailType::class, [
                 'label' => 'admin.module.user.form.email_label',
                 'attr'  => [
                     'class'       => 'form-control',
                     'placeholder' => 'admin.module.user.form.email_placeholder'
-                ]])
+            ]])
             ->add('password', RepeatedType::class, [
                     'type' => PasswordType::class,
                     'invalid_message' => 'admin.module.user.form.password_invalid',
@@ -56,7 +56,7 @@ class UserType extends AbstractType
                     'first_options'  => ['label' => 'admin.module.user.form.password_first_option'],
                     'second_options' => ['label' => 'admin.module.user.form.password_second_option'],
                     'required' => true,
-                ])
+            ])
             ->add('roles', ChoiceType::class, [
                 'label' => 'admin.module.user.form.roles_label',
                 'attr'  => ['class' => 'form-control'],
@@ -69,12 +69,12 @@ class UserType extends AbstractType
                         'admin.module.user.form.choices.editor'      => 'ROLE_EDITOR',
                         'admin.module.user.form.choices.author'      => 'ROLE_AUTHOR',
                         'admin.module.user.form.choices.visitor'     => 'ROLE_USER'
-                    ]]
-                ])
+                ]]
+            ])
             ->add('save', SubmitType::class, [
                 'label'   => 'admin.global.form.button_submit',
                 'attr'    => ['class' => 'btn blue'],
-                ])
+            ])
         ;
 
         // If form is populated with Entity data add "disabled" to username field

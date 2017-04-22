@@ -23,8 +23,8 @@ class AppKernel extends Kernel
             new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
             new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
             new App\CoreBundle\AppCoreBundle(),
-            new \BeSimple\I18nRoutingBundle\BeSimpleI18nRoutingBundle(),
-            new \Knp\DoctrineBehaviors\Bundle\DoctrineBehaviorsBundle()
+            new BeSimple\I18nRoutingBundle\BeSimpleI18nRoutingBundle(),
+            new Knp\DoctrineBehaviors\Bundle\DoctrineBehaviorsBundle()
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

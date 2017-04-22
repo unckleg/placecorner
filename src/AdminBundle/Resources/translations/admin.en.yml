@@ -20,7 +20,7 @@ admin:
     sidebar:
         heading:
             near: NEAR.ME
-            admin: Adminsitration
+            admin: Administration
         dashboard: Dashboard
         page:
           title: Page
@@ -154,3 +154,13 @@ admin:
             edit:
                 pagetitle: Editing Page:
                 caption: Edit Page Form
+            form:
+                page_title_label: Page Title
+                page_title_placeholder: Insert title for this Page
+                page_content_label: Page Content Editor
+                page_seo_title_label: SEO Title
+                page_seo_title_placeholder: Insert SEO title for this Page
+                page_seo_description_label: SEO Description
+                page_seo_description_placeholder: Insert SEO description for this Page
+                page_seo_keywords_label: SEO Keywords
+                page_seo_keywords_placeholder: Insert SEO keywords for this Page

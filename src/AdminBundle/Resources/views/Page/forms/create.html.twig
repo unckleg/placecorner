@@ -1,0 +1,43 @@
+{{ form_start(form) }}
+
+    {{ form_errors(form) }}
+    {{ form_row(form._token) }}
+
+    <div class="form-group">
+        {{ form_label(form.title) }}
+        {{ form_errors(form.title) }}
+        {{ form_widget(form.title) }}
+    </div>
+
+    <div class="form-group">
+        {{ form_label(form.content) }}
+        {{ form_errors(form.content) }}
+        {{ form_widget(form.content) }}
+    </div>
+
+    <div class="row">
+        <div class="form-group col-md-4">
+            {{ form_label(form.seo_title) }}
+            {{ form_errors(form.seo_title) }}
+            {{ form_widget(form.seo_title) }}
+        </div>
+
+        <div class="form-group col-md-4">
+            {{ form_label(form.seo_description) }}
+            {{ form_errors(form.seo_description) }}
+            {{ form_widget(form.seo_description) }}
+        </div>
+
+        <div class="form-group col-md-4">
+            {{ form_label(form.seo_keywords) }}
+            {{ form_errors(form.seo_keywords) }}
+            {{ form_widget(form.seo_keywords) }}
+        </div>
+    </div>
+
+    {{ form_widget(form.save) }}
+    <a href="{{ path('admin_page') }}"
+       class="btn default">{{ 'admin.global.form.button_cancel'|trans({}, 'admin') }}
+    </a>
+
+{{ form_end(form) }}
