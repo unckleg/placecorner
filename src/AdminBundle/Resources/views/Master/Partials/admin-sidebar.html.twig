@@ -36,15 +36,15 @@
                     </li>
                 </ul>
             </li>
-            <li class="nav-item">
+            <li class="nav-item  {{ isActive('admin_category', 'parent') }}">
                 <a href="javascript:;" class="nav-link nav-toggle">
                     <i class="icon-list"></i>
                     <span class="title">{{ 'admin.sidebar.category.title'|trans({}, 'admin') }}</span>
                     <span class="arrow"></span>
                 </a>
                 <ul class="sub-menu">
-                    <li class="nav-item start ">
-                        <a href="" class="nav-link ">
+                    <li class="nav-item start {{ isActive('admin_category', 'child') }}">
+                        <a href="{{ path('admin_category') }}" class="nav-link">
                             <span class="title">{{ 'admin.sidebar.category.categories'|trans({}, 'admin') }} </span>
                         </a>
                     </li>

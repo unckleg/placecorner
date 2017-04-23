@@ -48,7 +48,7 @@
                 <ul class="form-wizard-levels">
                     {% for language in languages %}
                         <li {% if app.request.get('lang') == language.short|lower %} class="active" {% endif %}>
-                            <a href="{{ path('admin_page_edit', {'id': page.getId(), lang: language.short|lower}) }}">
+                            <a href="{{ path('admin_page_edit', {'id': page.getTranslatable().getId(), lang: language.short|lower}) }}">
                                 {{ language.short|upper }}
                             </a>
                         </li>
@@ -77,6 +77,7 @@
     <script>
         CKEDITOR.replace('page_content');
         CKEDITOR.config.skin = 'office2013';
+        CKEDITOR.config.height = '400px';
     </script>
 {% endblock %}
 

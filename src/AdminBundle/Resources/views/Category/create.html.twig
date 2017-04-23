@@ -1,5 +1,5 @@
 {% extends 'AdminBundle:Master/Layouts:admin.html.twig' %}
-{% set page_title = 'admin.module.page.breadcrumb.create'|trans({}, 'admin') %}
+{% set page_title = 'admin.module.category.breadcrumb.create'|trans({}, 'admin') %}
 
 {% block breadcrumbs %}
     <div class="page-bar">
@@ -11,14 +11,14 @@
                 <i class="fa fa-circle"></i>
             </li>
             <li>
-                <a href="{{ path('admin_page') }}">
-                    {{ 'admin.module.page.breadcrumb.page'|trans({}, 'admin') }}
+                <a href="{{ path('admin_category') }}">
+                    {{ 'admin.module.category.breadcrumb.category'|trans({}, 'admin') }}
                 </a>
                 <i class="fa fa-circle"></i>
             </li>
             <li class="active">
-                <a href="{{ path('admin_page_create') }}">
-                    {{ 'admin.module.page.breadcrumb.create'|trans({}, 'admin') }}
+                <a href="{{ path('admin_category_create') }}">
+                    {{ 'admin.module.category.breadcrumb.create'|trans({}, 'admin') }}
                 </a>
             </li>
         </ul>
@@ -26,11 +26,11 @@
 {% endblock %}
 
 {% block toptitle %}
-    <h1 class="page-title"> {{ 'admin.module.page.name'|trans({}, 'admin') }}
-        <small> {{ 'admin.module.page.create.pagetitle'|trans({}, 'admin') }}</small>
+    <h1 class="page-title"> {{ 'admin.module.category.name'|trans({}, 'admin') }}
+        <small> {{ 'admin.module.category.create.pagetitle'|trans({}, 'admin') }}</small>
         <div class="pull-right">
             <div class="btn-group">
-                <a class="btn blue btn-circle btn-md" href="{{ path('admin_page') }}">
+                <a class="btn blue btn-circle btn-md" href="{{ path('admin_category') }}">
                     {{ 'admin.global.buttons.go_back'|trans({}, 'admin') }}
                 </a>
             </div>
@@ -45,7 +45,7 @@
                 <ul class="form-wizard-levels">
                     {% for language in languages %}
                         <li {% if loop.first %} class="active" {% else %}
-                            class="tooltips" data-container="body" data-placement="top" data-original-title="{{ 'admin.module.page.create.fill_for_first'|trans({}, 'admin') }}" {% endif %}>
+                            class="tooltips" data-container="body" data-placement="top" data-original-title="{{ 'admin.module.category.create.fill_for_first'|trans({}, 'admin') }}" {% endif %}>
                             <a>
                                 {{ language.short|upper }}
                             </a>
@@ -56,32 +56,26 @@
             <div class="portlet light bordered">
                 <div class="portlet-title">
                     <div class="caption font-dark">
-                        <i class="icon-grid font-dark"></i>
-                        <span class="caption-subject bold uppercase"> {{ 'admin.module.page.create.caption'|trans({}, 'admin') }} </span>
+                        <i class="icon-list font-dark"></i>
+                        <span class="caption-subject bold uppercase"> {{ 'admin.module.category.create.caption'|trans({}, 'admin') }} </span>
                     </div>
                 </div>
                 <div class="portlet-body form">
-                   {% include '@Admin/Page/forms/create.html.twig' %}
+                    {% include '@Admin/Category/forms/create.html.twig' %}
                 </div>
             </div>
         </div>
     </div>
 {% endblock %}
 
-{% block javascripts %}
-    {{ parent() }}
-    {{ loadLibrary('ckeditor', 'js')|raw }}
-
-    <script>
-        CKEDITOR.replace('page_content');
-        CKEDITOR.config.skin = 'office2013';
-        CKEDITOR.config.height = '400px';
-    </script>
-{% endblock %}
-
 {% block stylesheets %}
     {{ parent() }}
-    <style>.cke_chrome {border: 1px solid rgba(74, 50, 114, 0.42) !important;}
-        .cke_bottom {background: rgba(74, 50, 114, 0.8) !important;}
-    </style>
+    <link src="{{ asset('skins/backend/assets/global/plugins/dropzone/dropzone.min.css') }}" type="text/css">
+    <link src="{{ asset('skins/backend/assets/global/plugins/dropzone/basic.min.css') }}" type="text/css">
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('skins/backend/assets/global/plugins/dropzone/dropzone.min.js') }}"></script>
+    <script src="{{ asset('skins/backend/assets/pages/scripts/form-dropzone.min.js') }}"></script>
 {% endblock %}

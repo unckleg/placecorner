@@ -4,6 +4,8 @@ namespace AdminBundle\Controller;
 
 use AdminBundle\Form\Page\PageType;
 use AdminBundle\Model\Entity\Page;
+use AdminBundle\Model\Entity\Translation\PageTranslation;
+use AdminBundle\Model\Repository\PageRepository;
 use App\CoreBundle\Controller\CoreController;
 use App\CoreBundle\Service\Validator\Validator;
 use Symfony\Component\HttpFoundation\Request;
@@ -56,20 +58,22 @@ class PageController extends CoreController
         Validator::isValid($id, Validator::IS_NUMERIC);
 
         $em = $this->getDoctrine()->getManager();
-        $repository = $em->getRepository(Page::class);
 
-        if (empty($repository->findOrFailByLocale($lang, $id))) {
+        /** @var PageRepository $repository */
+        $repository = $em->getRepository(Page::class);
+        $pageResult = $repository->findOrFailByLocale($lang, $id);
+
+        if (empty($pageResult)) {
             $this->addFlash('notice', $this->trans(
                 'admin.module.page.no_content_notice', [], 'flashes'
             ));
-            return $this->redirectToRoute('admin_page_create');
+            return $this->redirectToRoute('admin_page_translate', ['id' => $id, 'lang' => $lang]);
         }
 
-        /** @var Page $page */
-        $page = $repository->find($id);
+        /** @var PageTranslation $page */
+        $page = $pageResult->translate($lang, false);
         Validator::isValid($page);
 
-        $page = $page->translate($lang);
         if ($request->isMethod(Request::METHOD_POST)) {
 
             // First create form instance and assign Page Entity
@@ -92,7 +96,52 @@ class PageController extends CoreController
 
         return $this->render('@Admin/Page/edit.html.twig', [
             'form' => $form->createView(),
-            'page' => $page->getTranslatable()
+            'page' => $page
+        ]);
+    }
+
+    public function translateAction($id, $lang, Request $request)
+    {
+        // check if $id is numeric and not null or zero
+        Validator::isValid($id, Validator::IS_NUMERIC);
+
+        $em = $this->getDoctrine()->getManager();
+
+        /** @var PageRepository $repository */
+        $repository = $em->getRepository(Page::class);
+        $pageResult = $repository->findOrFailByLocale($lang, $id);
+
+        if (!empty($pageResult)) {
+            $this->addFlash('notice', $this->trans(
+                'admin.module.page.no_content_notice', [], 'flashes'
+            ));
+            return $this->redirectToRoute('admin_page_edit', ['id'   => $id, 'lang' => $lang]);
+        }
+
+
+        $page = $em->find(Page::class, $id);
+        $form = $this->createForm(PageType::class, $page->translate($lang, false));
+        $em   = $this->getDoctrine()->getManager();
+
+        if ($request->isMethod(Request::METHOD_POST)) {
+            $form->handleRequest($request);
+
+            if ($form->isSubmitted() && $form->isValid()) {
+                $em->persist($page->translate($lang, false));
+                $page->mergeNewTranslations();
+                $em->flush();
+            }
+
+            $this->addFlash('sucess', sprintf($this->trans(
+                'admin.module.page.content_successfully', [], 'flashes'
+            ), strtoupper($lang)));
+
+            return $this->redirectToRoute('admin_page');
+        }
+
+        return $this->render('@Admin/Page/translate.html.twig', [
+            'form' => $form->createView(),
+            'id'   => $id
         ]);
     }
 

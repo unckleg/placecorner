@@ -81,7 +81,7 @@ class PageRepository extends EntityRepository implements Constants
         Validator::isValid($id, Validator::IS_NUMERIC);
         $locale = strtolower($locale);
 
-        return $this
+        $qb = $this
             ->createQueryBuilder('p')
             ->select('p, t')
             ->leftJoin('p.translations', 't')
@@ -94,5 +94,6 @@ class PageRepository extends EntityRepository implements Constants
             ->getQuery()
             ->getOneOrNullResult()
         ;
+        return $qb;
     }
 }

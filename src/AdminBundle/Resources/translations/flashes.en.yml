@@ -12,3 +12,4 @@ admin:
             create_successfully: New page is created successfully
             edit_successfully: Page %s is updated successfully
             no_content_notice: No content filled for this page!
+            content_successfully: Page content filled successfully for language %s

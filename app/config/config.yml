@@ -103,3 +103,9 @@ knp_doctrine_behaviors:
     sluggable:      true
     translatable:   true
     # All others behaviors are disabled
+
+# JMS Global Routing Configuration
+jms_i18n_routing:
+    default_locale: '%locale%'
+    locales: '%i18n_languages%'
+    strategy: prefix_except_default

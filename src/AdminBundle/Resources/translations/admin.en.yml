@@ -68,7 +68,7 @@ admin:
             settings: Settings
             layout: Layout
 
-    # List of modules (User, Page, Sitemap)
+    # List of modules
     module:
         user:
             name: User
@@ -129,6 +129,7 @@ admin:
                 page: Page
                 create: Page Create
                 edit: Page Edit
+                translate: Page Translate
             index:
                 pagetitle: Pages
                 pagetitle_small: administration of all pages
@@ -151,9 +152,13 @@ admin:
             create:
                 pagetitle: New Page
                 caption: New Page Form
+                fill_for_first: You must create content for primary language
             edit:
                 pagetitle: Editing Page:
                 caption: Edit Page Form
+            translate:
+                new_translation: New Translation
+                caption: New Translation Form
             form:
                 page_title_label: Page Title
                 page_title_placeholder: Insert title for this Page
@@ -164,3 +169,25 @@ admin:
                 page_seo_description_placeholder: Insert SEO description for this Page
                 page_seo_keywords_label: SEO Keywords
                 page_seo_keywords_placeholder: Insert SEO keywords for this Page
+        category:
+            name: Category
+            breadcrumb:
+                category: Category
+                create: Category Create
+                edit: Category Edit
+                translate: Category Translate
+            index:
+                pagetitle: Categories
+                pagetitle_small: administration of all categories
+                create_btn: Create New Category
+                caption: List
+                caption_small: of all categories
+                btn_sublist: Subcategories
+                btn_delete: Delete Category ?
+                btn_show: Activate Category ?
+                btn_hide: Hide Category ?
+                btn_edit: Edit Category ?
+            create:
+                pagetitle: New Category
+                caption: New Category Form
+                fill_for_first: You must first create content for primary language.

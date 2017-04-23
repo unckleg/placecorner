@@ -62,3 +62,54 @@ table.dataTable.no-footer {
 .toast-success {
     background-color: #8775a7 !important;
 }
+#toast-container > div {
+    opacity: 1 !important;
+}
+
+.category-image {
+    position:  relative;
+    width: 100%;
+    -webkit-transition: all .25s;
+    -moz-transition: all .25s;
+    transition: all .25s;
+    -webkit-transform: perspective(0);
+    -moz-transform: perspective(0);
+    transform: perspective(0);
+}
+
+.category-image > h2.category-name {
+    position: absolute;
+    background: rgba(0,0,0,.6);
+    color: white;
+    width: 100%;
+    padding: 10px;
+    font-size: 17px;
+    text-align: center;
+    font-weight: 400;
+}
+
+.action-buttons {
+    padding: 5px;
+    text-align: center;
+    border-bottom: 1px solid rgba(74, 50, 114, 0.35);
+    border-left: 1px solid rgba(74, 50, 114, 0.35);
+    border-right: 1px solid rgba(74, 50, 114, 0.35);
+}
+
+.category-image:hover {
+    z-index: 1;
+    box-shadow: 0 12px 48px rgba(0, 0, 0, .15);
+    -webkit-transform: translateY(-2px) translateZ(0);
+    -moz-transform: translateY(-2px) translateZ(0);
+    transform: translateY(-2px) translateZ(0);
+}
+
+.category-image > p.status-hidden {
+    position: absolute;
+    color: #F44336;
+    width: 100%;
+    top: 40%;
+    font-size: 40px;
+    text-align: center;
+    font-weight: 400;
+}

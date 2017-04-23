@@ -24,3 +24,5 @@ parameters:
         - { name: English, short: en }
         - { name: Russian, short: ru }
         - { name: Serbian, short: sr }
+    router_languages: "en|sr|ru"
+    i18n_languages: [en, sr, ru]

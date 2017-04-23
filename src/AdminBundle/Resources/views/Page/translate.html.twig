@@ -1,5 +1,5 @@
 {% extends 'AdminBundle:Master/Layouts:admin.html.twig' %}
-{% set page_title = 'admin.module.page.breadcrumb.create'|trans({}, 'admin') %}
+{% set page_title = 'admin.module.page.breadcrumb.translate'|trans({}, 'admin') %}
 
 {% block breadcrumbs %}
     <div class="page-bar">
@@ -17,8 +17,8 @@
                 <i class="fa fa-circle"></i>
             </li>
             <li class="active">
-                <a href="{{ path('admin_page_create') }}">
-                    {{ 'admin.module.page.breadcrumb.create'|trans({}, 'admin') }}
+                <a>
+                    {{ 'admin.module.page.breadcrumb.translate'|trans({}, 'admin') }}
                 </a>
             </li>
         </ul>
@@ -27,7 +27,7 @@
 
 {% block toptitle %}
     <h1 class="page-title"> {{ 'admin.module.page.name'|trans({}, 'admin') }}
-        <small> {{ 'admin.module.page.create.pagetitle'|trans({}, 'admin') }}</small>
+        <small> {{ 'admin.module.page.translate.new_translation'|trans({}, 'admin') }}</small>
         <div class="pull-right">
             <div class="btn-group">
                 <a class="btn blue btn-circle btn-md" href="{{ path('admin_page') }}">
@@ -44,9 +44,8 @@
             <div id="form-wizard" class="block form-wizard">
                 <ul class="form-wizard-levels">
                     {% for language in languages %}
-                        <li {% if loop.first %} class="active" {% else %}
-                            class="tooltips" data-container="body" data-placement="top" data-original-title="{{ 'admin.module.page.create.fill_for_first'|trans({}, 'admin') }}" {% endif %}>
-                            <a>
+                        <li {% if app.request.get('lang') == language.short|lower %} class="active" {% endif %}>
+                            <a href="{{ path('admin_page_edit', {'id': id, lang: language.short|lower}) }}">
                                 {{ language.short|upper }}
                             </a>
                         </li>
@@ -57,11 +56,11 @@
                 <div class="portlet-title">
                     <div class="caption font-dark">
                         <i class="icon-grid font-dark"></i>
-                        <span class="caption-subject bold uppercase"> {{ 'admin.module.page.create.caption'|trans({}, 'admin') }} </span>
+                        <span class="caption-subject bold uppercase"> {{ 'admin.module.page.translate.caption'|trans({}, 'admin') }} </span>
                     </div>
                 </div>
                 <div class="portlet-body form">
-                   {% include '@Admin/Page/forms/create.html.twig' %}
+                    {% include '@Admin/Page/forms/create.html.twig' %}
                 </div>
             </div>
         </div>
