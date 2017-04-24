@@ -1,0 +1,20 @@
+libraries:
+    datatable:
+        - '/skins/backend/assets/global/plugins/datatables/datatables.min.css'
+        - '/skins/backend/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css'
+        - '/skins/backend/assets/global/scripts/datatable.js'
+        - '/skins/backend/assets/global/plugins/datatables/datatables.min.js'
+        - '/skins/backend/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js'
+    confirmation:
+        - '/skins/backend/assets/global/plugins/bootstrap-confirmation/bootstrap-confirmation.min.js'
+        - '/skins/backend/assets/pages/scripts/ui-confirmations.min.js'
+    toastr:
+        - '/skins/backend/assets/vendors/toastr/toastr.min.css'
+        - '/skins/backend/assets/vendors/toastr/toastr.min.js'
+    ckeditor:
+        - '/skins/backend/assets/vendors/ckeditor/ckeditor.js'
+    dropzone:
+        - '/skins/backend/assets/global/plugins/dropzone/dropzone.min.css'
+        - '/skins/backend/assets/global/plugins/dropzone/basic.min.css'
+        - '/skins/backend/assets/global/plugins/dropzone/dropzone.min.js'
+        - '/skins/backend/assets/pages/scripts/form-dropzone.min.js'

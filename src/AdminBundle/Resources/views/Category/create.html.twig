@@ -68,14 +68,6 @@
     </div>
 {% endblock %}
 
-{% block stylesheets %}
-    {{ parent() }}
-    <link src="{{ asset('skins/backend/assets/global/plugins/dropzone/dropzone.min.css') }}" type="text/css">
-    <link src="{{ asset('skins/backend/assets/global/plugins/dropzone/basic.min.css') }}" type="text/css">
-{% endblock %}
-
-{% block javascripts %}
-    {{ parent() }}
-    <script src="{{ asset('skins/backend/assets/global/plugins/dropzone/dropzone.min.js') }}"></script>
-    <script src="{{ asset('skins/backend/assets/pages/scripts/form-dropzone.min.js') }}"></script>
+{% block libraries %}
+    {{ loadLibraries('dropzone')|raw }}
 {% endblock %}

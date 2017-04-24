@@ -2,14 +2,9 @@ parameters:
     property_accessor.class: App\CoreBundle\Form\PropertyAccessor
 
 services:
-    html_libraries_extension:
-        class: AdminBundle\Twig\HtmlLibrariesExtension
-        public: false
-        tags: [{ name: twig.extension }]
-
     sidebar_extension:
         class: AdminBundle\Twig\SidebarExtension
-        arguments: ["@request_stack"]
+        arguments: ['@request_stack']
         tags: [{ name: twig.extension }]
 
     # DONT REMOVE THIS, will break all multilanguage forms
@@ -20,4 +15,10 @@ services:
 
     twig.extension.text:
         class: Twig_Extensions_Extension_Text
+        tags: [{ name: twig.extension }]
+
+    twig.libraries_extension:
+        class: AdminBundle\Twig\LibrariesExtension
+        arguments: ['@service_container']
+        public: false
         tags: [{ name: twig.extension }]

@@ -3,8 +3,7 @@
     app.session.flashBag.get('notice'),
     app.session.flashBag.get('error') %}
 
-{{ loadLibrary('toastr', 'css')|raw }}
-{{ loadLibrary('toastr', 'js')|raw }}
+{{ loadLibraries('toastr')|raw }}
 
 {% if sucess is not empty %}
     <script>

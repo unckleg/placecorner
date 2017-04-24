@@ -57,7 +57,8 @@ class SidebarExtension extends \Twig_Extension
 
             return $class;
         }
-            return '';
+
+        return '';
     }
 
     public function getFunctions()

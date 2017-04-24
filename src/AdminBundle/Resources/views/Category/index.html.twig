@@ -145,11 +145,14 @@
     </div>
 {% endblock %}
 
+{% block libraries %}
+    {{ loadLibraries('confirmation')|raw }}
+{% endblock %}
+
 {% block javascripts %}
     {{ parent() }}
     <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
     <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
-    {{ loadLibrary('confirmation', 'js')|raw }}
 
     <script>
 

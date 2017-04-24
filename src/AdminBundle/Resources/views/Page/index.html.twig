@@ -145,19 +145,17 @@
 {% endblock %}
 
 
-{% block stylesheets %}
-    {{ parent() }}
-    {{ loadLibrary('datatable', 'css')|raw }}
+{% block libraries %}
+    {{ loadLibraries({
+        1:'datatable',
+        2:'confirmation'
+    })|raw }}
 {% endblock %}
 
 {% block javascripts %}
     {{ parent() }}
     <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
     <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
-    {{ loadLibrary({
-        1: 'datatable',
-        2: 'confirmation'
-    }, 'js')|raw }}
 
     <script>
         $(document).ready(function() {
@@ -168,7 +166,7 @@
             var status = $(this).data('action'),
                 id     = $(this).data('page-id'),
                 locale = '{{ app.request.attributes.get('_locale') }}'
-                ;
+            ;
 
             $.ajax({
                 url: Routing.generate('admin_page_modify', {id: id, status: status}),

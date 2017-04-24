@@ -67,9 +67,12 @@
     </div>
 {% endblock %}
 
+{% block libraries %}
+    {{ loadLibraries('ckeditor')|raw }}
+{% endblock %}
+
 {% block javascripts %}
     {{ parent() }}
-    {{ loadLibrary('ckeditor', 'js')|raw }}
 
     <script>
         CKEDITOR.replace('page_content');
@@ -80,7 +83,8 @@
 
 {% block stylesheets %}
     {{ parent() }}
-    <style>.cke_chrome {border: 1px solid rgba(74, 50, 114, 0.42) !important;}
+    <style>
+        .cke_chrome {border: 1px solid rgba(74, 50, 114, 0.42) !important;}
         .cke_bottom {background: rgba(74, 50, 114, 0.8) !important;}
     </style>
 {% endblock %}
