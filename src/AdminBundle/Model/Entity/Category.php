@@ -4,6 +4,7 @@ namespace AdminBundle\Model\Entity;
 
 use App\CoreBundle\Model\Translation\TranslatableTrait;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Category
@@ -32,42 +33,46 @@ class Category
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var int
      *
      * @ORM\Column(name="parent_id", type="integer")
      */
-    private $parentId = 0;
+    protected $parentId = 0;
 
     /**
      * @var string
      *
      * @ORM\Column(name="image", type="string", length=255)
+     * @Assert\File(
+     *     mimeTypes = {"image/jpeg", "image/png"},
+     *     mimeTypesMessage = "Only jpeg or png are allowed."
+     * )
      */
-    private $image;
+    protected $image;
 
     /**
      * @var int
      *
      * @ORM\Column(name="status", type="smallint")
      */
-    private $status = 1;
+    protected $status = 1;
 
     /**
      * @var bool
      *
      * @ORM\Column(name="is_deleted", type="boolean")
      */
-    private $isDeleted = 0;
+    protected $isDeleted = 0;
 
     /**
      * @var int
      *
      * @ORM\Column(name="order_number", type="integer")
      */
-    private $orderNumber = 0;
+    protected $orderNumber = 0;
 
 
     /**

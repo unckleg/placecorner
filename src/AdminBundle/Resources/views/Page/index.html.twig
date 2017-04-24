@@ -145,15 +145,12 @@
 {% endblock %}
 
 
-{% block libraries %}
-    {{ loadLibraries({
-        1:'datatable',
-        2:'confirmation'
-    })|raw }}
-{% endblock %}
-
 {% block javascripts %}
     {{ parent() }}
+    {{ loadLibraries({
+        1: 'datatable',
+        2: 'confirmation'
+    }, 'js')|raw }}
     <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
     <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
 
@@ -181,4 +178,12 @@
             });
         };
     </script>
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ loadLibraries({
+        1: 'datatable',
+        2: 'confirmation'
+    }, 'css')|raw }}
 {% endblock %}

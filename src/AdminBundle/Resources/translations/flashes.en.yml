@@ -7,9 +7,13 @@ admin:
         user:
             create_succesfully: New user is created successfully
             edit_successfully: User %s is updated successfully
-
         page:
             create_successfully: New page is created successfully
             edit_successfully: Page %s is updated successfully
             no_content_notice: No content filled for this page!
             content_successfully: Page content filled successfully for language %s
+        category:
+            create_successfully: New category is created successfully
+            edit_successfully: Category %s is updated successfully
+            no_content_notice: No content filled for this category!
+            content_successfully: Category content filled successfully for language %s

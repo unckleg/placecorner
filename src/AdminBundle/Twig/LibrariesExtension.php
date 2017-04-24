@@ -18,6 +18,8 @@ class LibrariesExtension extends \Twig_Extension
      * @var Container $container
      */
     protected $container = null;
+    protected $fileType  = null;
+
     protected $options;
     protected $isCached;
     protected $cache;
@@ -30,7 +32,7 @@ class LibrariesExtension extends \Twig_Extension
     public function __construct(Container $container, array $options = null)
     {
         $this->container = $container;
-        $this->options = $container->getParameter('libraries_extension');
+        $this->options   = $container->getParameter('libraries_extension');
     }
 
     /**
@@ -38,9 +40,10 @@ class LibrariesExtension extends \Twig_Extension
      * @throws \Exception
      * @return mixed
      */
-    public function find($libraries)
+    public function find($libraries, $type = self::EXT_JS)
     {
         if (Validator::isValid($libraries)) {
+            $this->fileType  = $type;
             $options   = $this->options;
             $container = $this->container;
 
@@ -91,9 +94,6 @@ class LibrariesExtension extends \Twig_Extension
     {
         $javascripts = [];
         $stylesheets = [];
-        $twigLb = $this->container->get('kernel')->locateResource('@AdminBundle/Resources/views/Master/Partials');
-        $loader = new \Twig_Loader_Filesystem($twigLb);
-        $twig   = new \Twig_Environment($loader);
 
         if (is_array($libraries)) {
             $libraries = new \RecursiveIteratorIterator(new \RecursiveArrayIterator($libraries));
@@ -114,27 +114,17 @@ class LibrariesExtension extends \Twig_Extension
             }
         }
 
-        $partial = $twig->render('admin-library.html.twig', [
-            'js'  => $javascripts,
-            'css' => $stylesheets
-        ]);
-
-        return $this->serve($partial, $twig);
+        return ($this->fileType == str_replace('.', '', self::EXT_JS)) ?
+            implode(PHP_EOL, $javascripts) :
+            implode(PHP_EOL, $stylesheets)
+        ;
     }
 
-    /**
-     * @param  $output
-     * @return mixed
-     */
-    protected function serve($partial, \Twig_Environment $twig)
-    {
-        $template = $twig->createTemplate();
-        return $twig->render(['']);
-    }
 
-    public function getCache(){}
+    protected function serve(){}
+    protected function getCache(){}
     protected function isCached(){}
-    private function setCache(){}
+    private function   setCache(){}
 
     /**
      * Twig getFunctions read docs for more info.

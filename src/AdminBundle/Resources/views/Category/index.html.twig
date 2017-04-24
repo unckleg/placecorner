@@ -69,14 +69,7 @@
                                     <div class="action-buttons">
                                         <a class="btn yellow-gold btn-sm tooltips" type="button" data-container="body"
                                            data-placement="top"
-                                           data-original-title="{{ 'admin.module.category.index.btn_sublist'|trans({}, 'admin') }}"
-                                           data-action="hide"
-                                           data-category-id="{{ category.getId() }}"
-                                           data-btn-ok-label="{{ 'admin.global.buttons.yes'|trans({}, 'admin') }}"
-                                           data-btn-cancel-label="{{ 'admin.global.buttons.no'|trans({}, 'admin') }}"
-                                           data-toggle="confirmation"
-                                           data-popout="true"
-                                           data-on-confirm="modifyCategory">
+                                           data-original-title="{{ 'admin.module.category.index.btn_sublist'|trans({}, 'admin') }}">
                                             <i class="icon-list"></i>
                                         </a>
 
@@ -145,8 +138,10 @@
     </div>
 {% endblock %}
 
-{% block libraries %}
-    {{ loadLibraries('confirmation')|raw }}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ loadLibraries('dropzone', 'css')|raw }}
 {% endblock %}
 
 {% block javascripts %}
@@ -154,8 +149,9 @@
     <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
     <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
 
-    <script>
+    {{ loadLibraries('confirmation', 'js')|raw }}
 
+    <script>
         function modifyCategory() {
             var status = $(this).data('action'),
                 id     = $(this).data('category-id'),

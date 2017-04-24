@@ -33,3 +33,5 @@ parameters:
             AdminBundle:
                 path: '/Resources/config'
                 file: 'libraries.yml'
+    # Upload Directories
+    categories_directory: '%kernel.root_dir%/../web/uploads/categories'

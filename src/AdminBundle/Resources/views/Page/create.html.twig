@@ -68,12 +68,9 @@
     </div>
 {% endblock %}
 
-{% block libraries %}
-    {{ loadLibraries('ckeditor')|raw }}
-{% endblock %}
-
 {% block javascripts %}
     {{ parent() }}
+    {{ loadLibraries('ckeditor', 'js')|raw }}
     <script>
         CKEDITOR.replace('page_content');
         CKEDITOR.config.skin = 'office2013';
@@ -83,6 +80,7 @@
 
 {% block stylesheets %}
     {{ parent() }}
+    {{ loadLibraries('ckeditor', 'css')|raw }}
     <style>
         .cke_chrome {border: 1px solid rgba(74, 50, 114, 0.42) !important;}
         .cke_bottom {background: rgba(74, 50, 114, 0.8) !important;}

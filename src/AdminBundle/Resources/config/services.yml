@@ -22,3 +22,7 @@ services:
         arguments: ['@service_container']
         public: false
         tags: [{ name: twig.extension }]
+
+    categories_uploader:
+        class: App\CoreBundle\Service\Upload\FileUploader
+        arguments: ['%categories_directory%']

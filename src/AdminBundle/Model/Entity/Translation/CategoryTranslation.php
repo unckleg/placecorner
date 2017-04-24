@@ -20,35 +20,35 @@ class CategoryTranslation
      *
      * @ORM\Column(name="title", type="string", length=255)
      */
-    private $title;
+    protected $title;
 
     /**
      * @var string
      *
      * @ORM\Column(name="description", type="text")
      */
-    private $description;
+    protected $description;
 
     /**
      * @var string
      *
      * @ORM\Column(name="seo_title", type="string", length=255)
      */
-    private $seoTitle;
+    protected $seoTitle;
 
     /**
      * @var string
      *
      * @ORM\Column(name="seo_description", type="string", length=500)
      */
-    private $seoDescription;
+    protected $seoDescription;
 
     /**
      * @var string
      *
      * @ORM\Column(name="seo_keywords", type="string", length=255, nullable=true)
      */
-    private $seoKeywords;
+    protected $seoKeywords;
 
 
     /**

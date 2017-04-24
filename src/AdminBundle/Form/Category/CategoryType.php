@@ -1,51 +1,55 @@
 <?php
 
-namespace AdminBundle\Form\Page;
+namespace AdminBundle\Form\Category;
 
+use AdminBundle\Model\Entity\Category;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class PageType extends AbstractType
+class CategoryType extends AbstractType
 {
-
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
             ->add('title', TextType::class, [
-                'label' => 'admin.module.page.form.page_title_label',
+                'label' => 'Category Title',
                 'attr'  => [
                     'class'       => 'form-control  input-lg',
-                    'placeholder' => 'admin.module.page.form.page_title_placeholder'
+                    'placeholder' => 'Insert Title for Category'
             ]])
-            ->add('content', TextareaType::class, [
-                'label' => 'admin.module.page.form.page_content_label',
+            ->add('description', TextareaType::class, [
+                'label' => 'Category Description',
                 'attr'  => [
-                    'class' => 'form-control',
-                    'rows'  => '10',
-                    'id'    => 'content'
+                    'class'       => 'form-control',
+                    'placeholder' => 'Insert Description for Category',
+                    'rows'        => 6
             ]])
             ->add('seo_title', TextType::class, [
-                'label' => 'admin.module.page.form.page_seo_title_label',
+                'label' => 'Category SEO Title',
                 'attr'  => [
                     'class'       => 'form-control',
-                    'placeholder' => 'admin.module.page.form.page_seo_title_placeholder'
+                    'placeholder' => 'Insert SEO Title for Category'
             ]])
             ->add('seo_description', TextType::class, [
-                'label' => 'admin.module.page.form.page_seo_description_label',
+                'label' => 'Category SEO Description',
                 'attr'  => [
                     'class'       => 'form-control',
-                    'placeholder' => 'admin.module.page.form.page_seo_description_placeholder'
+                    'placeholder' => 'Insert SEO Description for Category'
             ]])
             ->add('seo_keywords', TextType::class, [
-                'label' => 'admin.module.page.form.page_seo_keywords_label',
+                'label' => 'Category SEO Keywords',
                 'attr'  => [
                     'class'       => 'form-control',
-                    'placeholder' => 'admin.module.page.form.page_seo_keywords_placeholder'
+                    'placeholder' => 'Insert SEO Keywords for Category'
             ]])
+            ->add('image', FileType::class, [
+                'label' => 'Insert Category Image (IMG file)'
+            ])
             ->add('save', SubmitType::class, [
                 'label'   => 'admin.global.form.button_submit',
                 'attr'    => ['class' => 'btn blue'],
@@ -60,12 +64,13 @@ class PageType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
+            'data_class' => Category::class,
             'translation_domain' => 'admin'
         ]);
     }
 
     public function getName()
     {
-        return 'pagecreate';
+        return 'categorycreate';
     }
 }
