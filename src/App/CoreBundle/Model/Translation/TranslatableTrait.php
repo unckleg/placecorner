@@ -8,6 +8,13 @@ trait TranslatableTrait
 {
     use Translatable;
 
+    public function setLocale($lang)
+    {
+        $this->setDefaultLocale($lang);
+        $this->setCurrentLocale($lang);
+        return $this;
+    }
+
     /**
      * @inheritdoc
      */

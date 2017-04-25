@@ -191,3 +191,38 @@ admin:
                 pagetitle: New Category
                 caption: New Category Form
                 fill_for_first: You must first create content for primary language.
+            edit:
+                pagetitle: Editing Category:
+                caption: Edit Category Form
+            translate:
+                new_translation: New Translation
+                caption: New Translation Form
+            form:
+                category_title_label: Category Title
+                category_title_placeholder: Insert Title for Category
+                category_description_label: Category Description
+                category_description_placeholder: Insert Description for Category
+                category_seo_title_label: Category SEO Title
+                category_seo_title_placeholder: Insert SEO Title for Category
+                category_seo_description_label: Category SEO Description
+                category_seo_description_placeholder: Insert SEO Description for Category
+                category_seo_keywords_label: Category SEO Keywords
+                category_seo_keywords_placeholder: Insert SEO Keywords for category
+                category_image_label: Category Image
+        subcategory:
+            name: Subcategory
+            breadcrumb:
+                subcategory: Subcategory
+                create: Subcategory Create
+                edit: Subcategory Edit
+                translate: Subcategory Translate
+            index:
+                pagetitle: Subcategories
+                pagetitle_small: administration of all subcategories
+                create_btn: Create New Subcategory
+                caption: List
+                caption_small: of all subcategories
+                btn_delete: Delete Subcategory ?
+                btn_show: Activate Subcategory ?
+                btn_hide: Hide Subcategory ?
+                btn_edit: Edit Subcategory ?

@@ -50,6 +50,16 @@ admin_category:
     options:
         expose: true
 
+admin_category_edit:
+    path:     /admin/category/edit/id/{id}/lang/{lang}/
+    defaults: { _controller: AdminBundle:Category:edit }
+
+admin_category_translate:
+    path:     /admin/category/translate/id/{id}/lang/{lang}/
+    defaults: { _controller: AdminBundle:Category:translate }
+    requirements:
+        lang:  '%app.router_languages%'
+
 admin_category_modify:
     path:     /admin/category/modify/id/{id}/status/{status}
     defaults: { _controller: AdminBundle:Category:modify }
@@ -59,6 +69,19 @@ admin_category_modify:
 admin_category_create:
     path:     /admin/category/create
     defaults: { _controller: AdminBundle:Category:create }
+
+# Subcategory
+admin_subcategory:
+    path:     /admin/subcategory/parent/{parentId}
+    defaults: { _controller: AdminBundle:Category:subindex }
+
+admin_subcategory_create:
+    path:     /admin/subcategory/create
+    defaults: { _controller: AdminBundle:Category:subcreate }
+
+admin_subcategory_edit:
+    path:     /admin/subcategory/edit/id/{id}/lang/{lang}/
+    defaults: { _controller: AdminBundle:Category:subedit }
 
 # User
 admin_user:

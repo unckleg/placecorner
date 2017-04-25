@@ -56,6 +56,13 @@ class SidebarExtension extends \Twig_Extension
             }
 
             return $class;
+        } elseif (mb_strpos($this->currentRoute, str_replace('_', '/', $resource)) !== false) {
+            if ($type == self::PARENT) {
+                $class = ' active open';
+            } elseif ($type == self::CHILD) {
+                $class = ' active';
+            }
+            return $class;
         }
 
         return '';

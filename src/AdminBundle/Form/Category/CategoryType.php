@@ -2,7 +2,6 @@
 
 namespace AdminBundle\Form\Category;
 
-use AdminBundle\Model\Entity\Category;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -17,38 +16,38 @@ class CategoryType extends AbstractType
     {
         $builder
             ->add('title', TextType::class, [
-                'label' => 'Category Title',
+                'label' => 'admin.module.category.form.category_title_label',
                 'attr'  => [
                     'class'       => 'form-control  input-lg',
-                    'placeholder' => 'Insert Title for Category'
+                    'placeholder' => 'admin.module.category.form.category_title_placeholder'
             ]])
             ->add('description', TextareaType::class, [
-                'label' => 'Category Description',
+                'label' => 'admin.module.category.form.category_description_label',
                 'attr'  => [
                     'class'       => 'form-control',
-                    'placeholder' => 'Insert Description for Category',
+                    'placeholder' => 'admin.module.category.form.category_description_placeholder',
                     'rows'        => 6
             ]])
             ->add('seo_title', TextType::class, [
-                'label' => 'Category SEO Title',
+                'label' => 'admin.module.category.form.category_seo_title_label',
                 'attr'  => [
                     'class'       => 'form-control',
-                    'placeholder' => 'Insert SEO Title for Category'
+                    'placeholder' => 'admin.module.category.form.category_seo_title_placeholder'
             ]])
             ->add('seo_description', TextType::class, [
-                'label' => 'Category SEO Description',
+                'label' => 'admin.module.category.form.category_seo_description_label',
                 'attr'  => [
                     'class'       => 'form-control',
-                    'placeholder' => 'Insert SEO Description for Category'
+                    'placeholder' => 'admin.module.category.form.category_seo_description_placeholder'
             ]])
             ->add('seo_keywords', TextType::class, [
-                'label' => 'Category SEO Keywords',
+                'label' => 'admin.module.category.form.category_seo_keywords_label',
                 'attr'  => [
                     'class'       => 'form-control',
-                    'placeholder' => 'Insert SEO Keywords for Category'
+                    'placeholder' => 'admin.module.category.form.category_seo_keywords_placeholder'
             ]])
             ->add('image', FileType::class, [
-                'label' => 'Insert Category Image (IMG file)'
+                'label' => 'admin.module.category.form.category_image_label'
             ])
             ->add('save', SubmitType::class, [
                 'label'   => 'admin.global.form.button_submit',
@@ -64,7 +63,6 @@ class CategoryType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Category::class,
             'translation_domain' => 'admin'
         ]);
     }

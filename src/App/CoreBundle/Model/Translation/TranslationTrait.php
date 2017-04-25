@@ -9,6 +9,18 @@ trait TranslationTrait
     use Translation;
 
     /**
+     * @param $name
+     * @param $arguments
+     */
+    public function __call($name, $arguments)
+    {
+        $class = new static();
+        if (method_exists($class ,$name)) {
+            $class->$name($arguments);
+        }
+    }
+
+    /**
      * @inheritdoc
      */
     public static function getTranslatableEntityClass()

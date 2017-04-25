@@ -10,4 +10,9 @@ interface Constants
     const STATUS_ACTIVE  = 1;
     const STATUS_HIDDEN  = 0;
 
+    /**
+     * Child/Parent constants user for Category/Subcategory Module
+     */
+    const PARENT         = 0;
+    const CHILD          = 1;
 }

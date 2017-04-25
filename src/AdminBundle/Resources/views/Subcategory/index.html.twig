@@ -1,5 +1,5 @@
-{% extends 'AdminBundle:Master/Layouts:admin.html.twig' %}
-{% set page_title = 'admin.module.category.name'|trans({}, 'admin') %}
+{% extends '@Admin/Master/Layouts/admin.html.twig' %}
+{% set page_title = 'admin.module.subcategory.name'|trans({}, 'admin') %}
 
 {% block breadcrumbs %}
     <div class="page-bar">
@@ -10,9 +10,15 @@
                 </a>
                 <i class="fa fa-circle"></i>
             </li>
-            <li class="active">
+            <li>
                 <a href="{{ path('admin_category') }}">
-                    {{ 'admin.module.category.breadcrumb.category'|trans({}, 'admin') }}
+                    {{ 'admin.module.category.name'|trans({}, 'admin') }}
+                </a>
+                <i class="fa fa-circle"></i>
+            </li>
+            <li class="active">
+                <a>
+                    {{ 'admin.module.subcategory.breadcrumb.subcategory'|trans({}, 'admin') }}
                 </a>
             </li>
         </ul>
@@ -20,12 +26,12 @@
 {% endblock %}
 
 {% block toptitle %}
-    <h1 class="page-title"> {{ 'admin.module.category.name'|trans({}, 'admin') }}
-        <small> {{ 'admin.module.category.index.pagetitle_small'|trans({}, 'admin') }}</small>
+    <h1 class="page-title"> {{ 'admin.module.subcategory.name'|trans({}, 'admin') }}
+        <small> {{ 'admin.module.subcategory.index.pagetitle_small'|trans({}, 'admin') }}</small>
         <div class="pull-right">
             <div class="btn-group">
-                <a class="btn blue btn-circle btn-md" href="{{ path('admin_category_create') }}">
-                    {{ 'admin.module.category.index.create_btn'|trans({}, 'admin') }}
+                <a class="btn blue btn-circle btn-md" href="{{ path('admin_subcategory_create') }}">
+                    {{ 'admin.module.subcategory.index.create_btn'|trans({}, 'admin') }}
                 </a>
             </div>
         </div>
@@ -38,10 +44,10 @@
             <div class="caption">
                 <i class="icon-list font-grey-gallery"></i>
                 <span class="caption-subject bold font-grey-gallery uppercase">
-                        {{ 'admin.module.category.index.caption'|trans({}, 'admin') }}
+                        {{ 'admin.module.subcategory.index.caption'|trans({}, 'admin') }}
                 </span>
                 <span class="caption-helper">
-                    {{ 'admin.module.category.index.caption_small'|trans({}, 'admin') }}
+                    {{ 'admin.module.subcategory.index.caption_small'|trans({}, 'admin') }}
                 </span>
             </div>
             <div class="tools">
@@ -53,43 +59,36 @@
         <div class="portlet-body">
             <div class="row">
                 <div class="col-md-12">
-                    {% if categories is not empty %}
-                        {% for category in categories %}
+                    {% if subcategories is not empty %}
+                        {% for subcategory in subcategories %}
                             <div class="col-md-2">
                                 <div class="category-image">
-                                    <h2 class="category-name" {{ category.getStatus() == 0 ? "style='opacity: 0.4'" : ''}}>
-                                        {{ category.getTitle() }}
+                                    <h2 class="category-name" {{ subcategory.getStatus() == 0 ? "style='opacity: 0.4'" : ''}}>
+                                        {{ subcategory.getTitle() }}
                                     </h2>
 
-                                    {% if category.getStatus() == 0 %}
+                                    {% if subcategory.getStatus() == 0 %}
                                         <p class="status-hidden">&#10006;</p>
                                     {% endif %}
 
-                                    <img src="{{ asset('/uploads/categories/' ~category.getImage()) }}" width="100%"
-                                              {{ category.getStatus() == 0 ? "style='opacity: 0.2'" : ''}}>
-                                    <div class="action-buttons">
-                                        <a href="{{ path('admin_subcategory', {'parentId': category.getId()}) }}"
-                                           class="btn yellow-gold btn-sm tooltips"
-                                           type="button"
-                                           data-container="body"
-                                           data-placement="top"
-                                           data-original-title="{{ 'admin.module.category.index.btn_sublist'|trans({}, 'admin') }}">
-                                            <i class="icon-list"></i>
-                                        </a>
+                                    <img src="{{ asset('/uploads/categories/' ~subcategory.getImage()) }}" width="100%"
+                                            {{ subcategory.getStatus() == 0 ? "style='opacity: 0.2'" : ''}}>
 
-                                        {% if category.getStatus() == 1 %}
+                                    <div class="action-buttons">
+
+                                        {% if subcategory.getStatus() == 1 %}
                                             <a class="btn purple btn-sm tooltips"
                                                type="button"
                                                data-container="body"
                                                data-placement="top"
-                                               data-original-title="{{ 'admin.module.category.index.btn_hide'|trans({}, 'admin') }}"
+                                               data-original-title="{{ 'admin.module.subcategory.index.btn_hide'|trans({}, 'admin') }}"
                                                data-action="hide"
-                                               data-category-id="{{ category.getId() }}"
+                                               data-subcategory-id="{{ subcategory.getId() }}"
                                                data-btn-ok-label="{{ 'admin.global.buttons.yes'|trans({}, 'admin') }}"
                                                data-btn-cancel-label="{{ 'admin.global.buttons.no'|trans({}, 'admin') }}"
                                                data-toggle="confirmation"
                                                data-popout="true"
-                                               data-on-confirm="modifyCategory">
+                                               data-on-confirm="modifySubcategory">
                                                 <i class="icon-close"></i>
                                             </a>
                                         {% else %}
@@ -97,38 +96,38 @@
                                                type="button"
                                                data-container="body"
                                                data-placement="top"
-                                               data-original-title="{{ 'admin.module.category.index.btn_show'|trans({}, 'admin') }}"
+                                               data-original-title="{{ 'admin.module.subcategory.index.btn_show'|trans({}, 'admin') }}"
                                                data-action="show"
-                                               data-category-id="{{ category.getId() }}"
+                                               data-subcategory-id="{{ subcategory.getId() }}"
                                                data-btn-ok-label="{{ 'admin.global.buttons.yes'|trans({}, 'admin') }}"
                                                data-btn-cancel-label="{{ 'admin.global.buttons.no'|trans({}, 'admin') }}"
                                                data-toggle="confirmation"
                                                data-popout="true"
-                                               data-on-confirm="modifyCategory">
+                                               data-on-confirm="modifySubcategory">
                                                 <i class="icon-check"></i>
                                             </a>
                                         {% endif %}
 
-                                        <a href="{{ path('admin_category_edit', {'id': category.getId, 'lang': category.getLocale}) }}"
+                                        <a href="{{ path('admin_subcategory_edit', {'id': subcategory.getId, 'lang': subcategory.getLocale}) }}"
                                            class="btn blue btn-sm tooltips"
                                            type="button"
                                            data-container="body"
                                            data-placement="top"
-                                           data-original-title="{{ 'admin.module.category.index.btn_edit'|trans({}, 'admin') }}">
+                                           data-original-title="{{ 'admin.module.subcategory.index.btn_edit'|trans({}, 'admin') }}">
                                             <i class="icon-pencil"></i>
                                         </a>
 
                                         <a class="btn btn-danger btn-sm tooltips"
                                            type="button" data-container="body"
                                            data-placement="top"
-                                           data-original-title="{{ 'admin.module.category.index.btn_delete'|trans({}, 'admin') }}"
+                                           data-original-title="{{ 'admin.module.subcategory.index.btn_delete'|trans({}, 'admin') }}"
                                            data-action="delete"
-                                           data-category-id="{{ category.getId() }}"
+                                           data-subcategory-id="{{ subcategory.getId() }}"
                                            data-toggle="confirmation"
                                            data-btn-ok-label="{{ 'admin.global.buttons.yes'|trans({}, 'admin') }}"
                                            data-btn-cancel-label="{{ 'admin.global.buttons.no'|trans({}, 'admin') }}"
                                            data-popout="true"
-                                           data-on-confirm="modifyCategory">
+                                           data-on-confirm="modifySubcategory">
                                             <i class="icon-trash"></i>
                                         </a>
                                     </div>
@@ -151,9 +150,9 @@
     {{ loadLibraries('confirmation', 'js')|raw }}
 
     <script>
-        function modifyCategory() {
+        function modifySubcategory() {
             var status = $(this).data('action'),
-                id     = $(this).data('category-id'),
+                id     = $(this).data('subcategory-id'),
                 locale = '{{ app.request.attributes.get('_locale') }}'
             ;
 
@@ -161,9 +160,8 @@
                 url: Routing.generate('admin_category_modify', {id: id, status: status}),
                 method: 'POST'
             }).done(function (data) {
-                console.log(data);
                 data == 'success'?
-                    window.location.replace(Routing.generate('admin_category', {'_locale': locale}))
+                    window.location.replace(window.location.href)
                     : null;
             }).fail(function (data) {
                 console.log("There was an error");

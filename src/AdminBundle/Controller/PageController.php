@@ -119,8 +119,8 @@ class PageController extends CoreController
         }
 
 
-        $page = $em->find(Page::class, $id);
-        $form = $this->createForm(PageType::class, $page->translate($lang, false));
+        $page = $em->find(Page::class, $id)->setLocale($lang);
+        $form = $this->createForm(PageType::class, $page);
         $em   = $this->getDoctrine()->getManager();
 
         if ($request->isMethod(Request::METHOD_POST)) {

@@ -2,6 +2,8 @@
 
 namespace App\CoreBundle\Form;
 
+use Psr\Cache\CacheItemPoolInterface;
+
 /**
  * PropertyAccessor allowing magic method __call to be executed in Symfony\Component\PropertyAccessor
  * So we can work with DoctrineBehaviors Bundle.

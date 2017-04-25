@@ -4,6 +4,7 @@ namespace AdminBundle\Model\Repository;
 
 use AdminBundle\Model\Entity\Category;
 use App\CoreBundle\Model\Constants;
+use App\CoreBundle\Service\Validator\Validator;
 use Doctrine\ORM\EntityRepository;
 
 /**
@@ -44,27 +45,68 @@ class CategoryRepository extends EntityRepository
     }
 
     /**
-     * @param  string $locale
+     *
+     * @param  string  $locale
+     * @param  integer $type
      * @return array
      */
-    public function findAllParentsByLocale($locale = null)
+    public function findAllByLocale($locale = null, $type = Constants::PARENT)
     {
         $locale = !empty($locale) ?
             $locale :
             self::DEFAULT_LOCALE;
 
-        return $this
+        $qb = $this
             ->createQueryBuilder('c')
             ->select('c, t')
             ->leftJoin('c.translations', 't')
             ->where('t.locale = :locale')
             ->andWhere('c.isDeleted = :deleted')
-            ->andWhere('c.parentId  = :isParent')
             ->setParameter('deleted', Constants::IS_ACTIVE)
             ->setParameter('locale', $locale)
-            ->setParameter('isParent', 0)
-            ->getQuery()
-            ->getResult()
         ;
+
+        if ($type == Constants::PARENT) {
+            // return just parents
+            $qb->andWhere('c.parentId  = :isParent')
+               ->setParameter('isParent', Constants::PARENT);
+        } else {
+            // where not equal 0 | return just subcategories
+            $qb->andWhere('c.parentId  != :isParent')
+               ->setParameter('isParent', Constants::PARENT);
+        }
+
+        return $qb->getQuery()
+                  ->getResult();
+    }
+
+    /**
+     * Returns null or array if found translated content for provided Id
+     * @param  string $locale
+     * @param  integer $id
+     * @return array|null
+     */
+    public function findOrFailByLocale($locale, $id)
+    {
+        // validation of passed variables
+        Validator::isValid($locale, Validator::IS_STRING);
+        Validator::isValid($id, Validator::IS_NUMERIC);
+        $locale = strtolower($locale);
+
+        $qb = $this
+            ->createQueryBuilder('c')
+            ->select('c, t')
+            ->leftJoin('c.translations', 't')
+            ->where('t.locale = :locale')
+            ->andWhere('c.isDeleted = :deleted')
+            ->andWhere('c.id = :id')
+            ->setParameter('locale', $locale)
+            ->setParameter('deleted', Constants::IS_ACTIVE)
+            ->setParameter('id', $id)
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+
+        return $qb;
     }
 }

@@ -168,4 +168,43 @@ admin:
                 page_seo_description_placeholder: Unesite SEO opis za ovu stranicu
                 page_seo_keywords_label: SEO Reči
                 page_seo_keywords_placeholder: Unesite SEO reči za ovu stranicu
-
+        category:
+            name: Kategorija
+            breadcrumb:
+                category: Kategorija
+                create: Nova Kategorija
+                edit: Izmena Kategorije
+                translate: Prevod Kategorije
+            index:
+                pagetitle: Kategorije
+                pagetitle_small: administracija svih kategorija
+                create_btn: Dodaj Novu Kategoriju
+                caption: Lista
+                caption_small: svih kategorija
+                btn_sublist: Podkategorije
+                btn_delete: Obriši Kategoriju ?
+                btn_show: Prikaži Kategoriju ?
+                btn_hide: Sakrij Kategoriju ?
+                btn_edit: Izmeni Kategoriju ?
+            create:
+                pagetitle: Nova Kategorija
+                caption: Forma za kreiranje nove Kategorije
+                fill_for_first: Morate prvo popuniti sadržaj za glavni jezik
+            edit:
+                pagetitle: Izmena Kategorije:
+                caption: Forma za izmenu Kategoriju
+            translate:
+                new_translation: Novi Prevod
+                caption: Forma za dodavanje novog Prevoda
+            form:
+                category_title_label: Naslov Kategorije
+                category_title_placeholder: Unesite naslov za ovu Kategoriju
+                category_description_label: Opis Kategorije
+                category_description_placeholder: Unesite opis za ovu Kategoriju
+                category_seo_title_label: SEO Naslov
+                category_seo_title_placeholder: Unesite SEO Naslov za ovu Kategoriju
+                category_seo_description_label: SEO Opis
+                category_seo_description_placeholder: Unesite SEO Opis za ovu Kategoriju
+                category_seo_keywords_label: SEO Reči
+                category_seo_keywords_placeholder: Unesite SEO Reči za ovu Kategoriju
+                category_image_label: Fotografija

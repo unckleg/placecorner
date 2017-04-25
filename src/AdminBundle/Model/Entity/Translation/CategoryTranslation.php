@@ -2,6 +2,7 @@
 
 namespace AdminBundle\Model\Entity\Translation;
 
+use AdminBundle\Model\Entity\Page;
 use App\CoreBundle\Model\Translation\TranslationTrait;
 use Doctrine\ORM\Mapping as ORM;
 
