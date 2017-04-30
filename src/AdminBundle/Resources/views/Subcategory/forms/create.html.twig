@@ -1,0 +1,65 @@
+{{ form_start(form) }}
+
+    {{ form_errors(form) }}
+    {{ form_row(form._token) }}
+
+<div class="form-group">
+    {{ form_label(form.parent_id) }}
+    {{ form_errors(form.parent_id) }}
+    {{ form_widget(form.parent_id) }}
+</div>
+
+<div class="form-group">
+    {{ form_label(form.title) }}
+    {{ form_errors(form.title) }}
+    {{ form_widget(form.title) }}
+</div>
+
+<div class="form-group">
+    {{ form_label(form.description) }}
+    {{ form_errors(form.description) }}
+    {{ form_widget(form.description) }}
+</div>
+
+<div class="row">
+    <div class="form-group col-md-4">
+        {{ form_label(form.seo_title) }}
+        {{ form_errors(form.seo_title) }}
+        {{ form_widget(form.seo_title) }}
+    </div>
+
+    <div class="form-group col-md-4">
+        {{ form_label(form.seo_description) }}
+        {{ form_errors(form.seo_description) }}
+        {{ form_widget(form.seo_description) }}
+    </div>
+
+    <div class="form-group col-md-4">
+        {{ form_label(form.seo_keywords) }}
+        {{ form_errors(form.seo_keywords) }}
+        {{ form_widget(form.seo_keywords) }}
+    </div>
+</div>
+
+{% if image is defined and image is not empty %}
+    <div class="row">
+        <div class="form-group col-md-12">
+            <img src="{{ asset('/uploads/categories/'~image) }}" style="width: 31.7%"/>
+        </div>
+    </div>
+{% endif %}
+
+<div class="form-group">
+    {{ form_label(form.image) }}
+    {{ form_errors(form.image) }}
+    {{ form_widget(form.image) }}
+</div>
+
+<div class="form-group">
+    {{ form_widget(form.save) }}
+    <a href="{{ path('admin_subcategory', {'parentId': parentCategory.getId}) }}"
+       class="btn default">{{ 'admin.global.form.button_cancel'|trans({}, 'admin') }}
+    </a>
+</div>
+
+{{ form_end(form) }}

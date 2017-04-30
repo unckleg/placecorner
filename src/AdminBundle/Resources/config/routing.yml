@@ -76,12 +76,23 @@ admin_subcategory:
     defaults: { _controller: AdminBundle:Category:subindex }
 
 admin_subcategory_create:
-    path:     /admin/subcategory/create
+    path:     /admin/subcategory/create/parent/{parentId}
     defaults: { _controller: AdminBundle:Category:subcreate }
 
 admin_subcategory_edit:
     path:     /admin/subcategory/edit/id/{id}/lang/{lang}/
     defaults: { _controller: AdminBundle:Category:subedit }
+
+admin_subcategory_translate:
+    path:     /admin/subcategory/translate/id/{id}/lang/{lang}/
+    defaults: { _controller: AdminBundle:Category:subtranslate }
+    requirements:
+        lang:  '%app.router_languages%'
+
+# Tag
+admin_tag:
+    path:     /admin/tag
+    defaults: { _controller: AdminBundle:Tag:index }
 
 # User
 admin_user:

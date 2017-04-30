@@ -48,18 +48,12 @@
                             <span class="title">{{ 'admin.sidebar.category.categories'|trans({}, 'admin') }} </span>
                         </a>
                     </li>
-                    <li class="nav-item start {{ isActive('admin_subcategory', 'child') }}">
-                        <a href="" class="nav-link ">
-                            <span class="title">{{ 'admin.sidebar.category.subcategories'|trans({}, 'admin') }} </span>
-                        </a>
-                    </li>
                 </ul>
             </li>
-            <li class="nav-item">
-                <a href="javascript:;" class="nav-link nav-toggle">
+            <li class="nav-item {{ isActive('admin_tag', 'parent') }}">
+                <a href="{{ path('admin_tag') }}" class="nav-link nav-toggle">
                     <i class="icon-tag"></i>
                     <span class="title">{{ 'admin.sidebar.tags.title'|trans({}, 'admin') }}</span>
-                    <span class="arrow"></span>
                 </a>
             </li>
             <li class="nav-item">

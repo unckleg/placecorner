@@ -41,9 +41,7 @@ class PageController extends CoreController
             }
 
             $this->addFlash('sucess', $this->trans(
-                'admin.module.page.create_successfully', [], 'flashes'
-            ));
-
+    'admin.module.page.create_successfully', [], 'flashes'));
             return $this->redirectToRoute('admin_page');
         }
 
@@ -59,18 +57,15 @@ class PageController extends CoreController
 
         $em = $this->getDoctrine()->getManager();
 
-        /** @var PageRepository $repository */
         $repository = $em->getRepository(Page::class);
         $pageResult = $repository->findOrFailByLocale($lang, $id);
 
         if (empty($pageResult)) {
             $this->addFlash('notice', $this->trans(
-                'admin.module.page.no_content_notice', [], 'flashes'
-            ));
+    'admin.module.page.no_content_notice', [], 'flashes'));
             return $this->redirectToRoute('admin_page_translate', ['id' => $id, 'lang' => $lang]);
         }
 
-        /** @var PageTranslation $page */
         $page = $pageResult->translate($lang, false);
         Validator::isValid($page);
 
@@ -81,14 +76,15 @@ class PageController extends CoreController
             $form->handleRequest($request);
 
             if ($form->isSubmitted() && $form->isValid()) {
+
+                // save object changes and flush-update to DB
                 $em->flush();
 
                 $this->addFlash('sucess', sprintf($this->trans(
-                    'admin.module.page.edit_successfully', [], 'flashes'
-                ), $page->getTitle()));
-
+        'admin.module.page.edit_successfully', [], 'flashes'), $page->getTitle()));
                 return $this->redirectToRoute('admin_page');
             }
+
         } else {
             $form = $this->createForm(PageType::class, $page);
             $form->setData($page);
@@ -106,22 +102,17 @@ class PageController extends CoreController
         Validator::isValid($id, Validator::IS_NUMERIC);
 
         $em = $this->getDoctrine()->getManager();
-
-        /** @var PageRepository $repository */
         $repository = $em->getRepository(Page::class);
-        $pageResult = $repository->findOrFailByLocale($lang, $id);
 
+        $pageResult = $repository->findOrFailByLocale($lang, $id);
         if (!empty($pageResult)) {
             $this->addFlash('notice', $this->trans(
-                'admin.module.page.no_content_notice', [], 'flashes'
-            ));
+                'admin.module.page.no_content_notice', [], 'flashes'));
             return $this->redirectToRoute('admin_page_edit', ['id'   => $id, 'lang' => $lang]);
         }
 
-
         $page = $em->find(Page::class, $id)->setLocale($lang);
         $form = $this->createForm(PageType::class, $page);
-        $em   = $this->getDoctrine()->getManager();
 
         if ($request->isMethod(Request::METHOD_POST)) {
             $form->handleRequest($request);
@@ -133,9 +124,7 @@ class PageController extends CoreController
             }
 
             $this->addFlash('sucess', sprintf($this->trans(
-                'admin.module.page.content_successfully', [], 'flashes'
-            ), strtoupper($lang)));
-
+    'admin.module.page.content_successfully', [], 'flashes'), strtoupper($lang)));
             return $this->redirectToRoute('admin_page');
         }
 

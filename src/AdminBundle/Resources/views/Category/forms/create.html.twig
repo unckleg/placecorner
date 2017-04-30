@@ -35,10 +35,10 @@
         </div>
     </div>
 
-    {% if image is not empty %}
+    {% if image is defined and image is not empty %}
         <div class="row">
             <div class="form-group col-md-12">
-                <img src="{{ asset('/uploads/categories/'~image) }}"/>
+                <img src="{{ asset('/uploads/categories/'~image) }}" style="width: 31.7%"/>
             </div>
         </div>
     {% endif %}

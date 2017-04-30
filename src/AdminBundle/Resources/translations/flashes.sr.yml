@@ -1,5 +1,4 @@
 admin:
-    test: idemo
     global:
         sucess: Uspešno
         error: Greška
@@ -8,8 +7,12 @@ admin:
         user:
             create_succesfully: Korisnik je uspešno kreiran
             edit_successfully: Korisnik %s je uspešno ažuriran
-
         page:
             create_successfully: Stranica je uspešno kreirana
             edit_successfully: Stranica %s je uspešno ažuriran
-            no_content_notice: Ne postoji prevod za ovu stranicu!
+            no_content_notice: Prevod za ovu stranicu još nije unešen!
+        category:
+            create_successfully: Kategorija je uspešno kreirana
+            edit_successfully: Kategorija %s je uspešo ažurirana
+            no_content_notice: Prevod za ovu kategorije još nije unešen!
+            content_successfully: Uspešno unešen prevod za %s kategoriju

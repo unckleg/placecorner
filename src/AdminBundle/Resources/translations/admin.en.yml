@@ -226,3 +226,39 @@ admin:
                 btn_show: Activate Subcategory ?
                 btn_hide: Hide Subcategory ?
                 btn_edit: Edit Subcategory ?
+            create:
+                pagetitle: New Subcategory
+                caption: New Subcategory Form
+                fill_for_first: You must first create content for primary language.
+            edit:
+                pagetitle: Editing Subcategory:
+                caption: Edit Subcategory Form
+            translate:
+                new_translation: New Translation
+                caption: New Translation Form
+            form:
+                subcategory_title_label: Subcategory Title
+                subcategory_title_placeholder: Insert Title for Subcategory
+                subcategory_description_label: Subcategory Description
+                subcategory_description_placeholder: Insert Description for Subcategory
+                subcategory_seo_title_label: Subcategory SEO Title
+                subcategory_seo_title_placeholder: Insert SEO Title for Subcategory
+                subcategory_seo_description_label: Subcategory SEO Description
+                subcategory_seo_description_placeholder: Insert SEO Description for Subcategory
+                subcategory_seo_keywords_label: Subcategory SEO Keywords
+                subcategory_seo_keywords_placeholder: Insert SEO Keywords for Subcategory
+                subcategory_image_label: Subcategory Image
+                subcategory_parent_label: Chose Parent Category
+        tag:
+            name: Tag
+            breadcrumb:
+                tag: Tag
+                create: Tag Create
+                edit: Tag Edit
+                translate: Tag Translate
+            index:
+                pagetitle: Tags
+                pagetitle_small: administration of all tags
+                create_btn: Create New Tag
+                caption: List
+                caption_small: of all tags

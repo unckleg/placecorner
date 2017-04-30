@@ -13,12 +13,14 @@
             <li>
                 <a href="{{ path('admin_category') }}">
                     {{ 'admin.module.category.name'|trans({}, 'admin') }}
+
                 </a>
                 <i class="fa fa-circle"></i>
             </li>
             <li class="active">
                 <a>
-                    {{ 'admin.module.subcategory.breadcrumb.subcategory'|trans({}, 'admin') }}
+                    {{ 'admin.module.subcategory.name'|trans({}, 'admin') }}:
+                    <strong> {{ parentCategory.getTitle }} </strong>
                 </a>
             </li>
         </ul>
@@ -30,7 +32,7 @@
         <small> {{ 'admin.module.subcategory.index.pagetitle_small'|trans({}, 'admin') }}</small>
         <div class="pull-right">
             <div class="btn-group">
-                <a class="btn blue btn-circle btn-md" href="{{ path('admin_subcategory_create') }}">
+                <a class="btn blue btn-circle btn-md" href="{{ path('admin_subcategory_create', {'parentId': parentCategory.getId}) }}">
                     {{ 'admin.module.subcategory.index.create_btn'|trans({}, 'admin') }}
                 </a>
             </div>

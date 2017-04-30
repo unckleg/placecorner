@@ -3,6 +3,7 @@
 namespace AdminBundle\Controller;
 
 use AdminBundle\Form\Category\CategoryType;
+use AdminBundle\Form\Subcategory\SubcategoryType;
 use AdminBundle\Model\Entity\Category;
 use App\CoreBundle\Controller\CoreController;
 use App\CoreBundle\Model\Constants;
@@ -63,22 +64,18 @@ class CategoryController extends CoreController
         Validator::isValid($id, Validator::IS_NUMERIC);
 
         $em = $this->getDoctrine()->getManager();
-
         $repository = $em->getRepository(Category::class);
-        $categoryResult = $repository->findOrFailByLocale($lang, $id);
 
+        $categoryResult = $repository->findOrFailByLocale($lang, $id);
         if (empty($categoryResult)) {
             $this->addFlash('notice', $this->trans(
-                'admin.module.category.no_content_notice', [], 'flashes'
-            ));
+    'admin.module.category.no_content_notice', [], 'flashes'));
             return $this->redirectToRoute('admin_category_translate', ['id' => $id, 'lang' => $lang]);
         }
 
-        $category = $categoryResult->translate($lang, false);
-        $category->setImage(new File(
-            $this->getParameter('categories_directory') .'/'.
-            $category->getImage(), false));
-        Validator::isValid($categoryResult);
+        $category = $em->find(Category::class, $id)->setLocale($lang);
+        $oldImage = $category->getImage();
+        $category->setImage(new File($oldImage, false));
 
         if ($request->isMethod(Request::METHOD_POST)) {
 
@@ -92,6 +89,8 @@ class CategoryController extends CoreController
                 if ($image instanceof UploadedFile) {
                     $fileName = $this->get('categories_uploader')->upload($image);
                     $category->setImage($fileName);
+                } else {
+                    $category->setImage(new File($oldImage, false));
                 }
 
                 // update object and flush to DB
@@ -100,9 +99,9 @@ class CategoryController extends CoreController
                 $this->addFlash('sucess', sprintf($this->trans(
                     'admin.module.category.edit_successfully', [], 'flashes'
                 ), $category->getTitle()));
-
                 return $this->redirectToRoute('admin_category');
             }
+
         } else {
             $form = $this->createForm(CategoryType::class, $category);
             $form->setData($category);
@@ -121,24 +120,18 @@ class CategoryController extends CoreController
         Validator::isValid($id, Validator::IS_NUMERIC);
 
         $em = $this->getDoctrine()->getManager();
-
         $repository = $em->getRepository(Category::class);
-        $categoryResult = $repository->findOrFailByLocale($lang, $id);
 
+        $categoryResult = $repository->findOrFailByLocale($lang, $id);
         if (!empty($categoryResult)) {
-            $this->addFlash('notice', $this->trans(
-                'admin.module.category.no_content_notice', [], 'flashes'
-            ));
             return $this->redirectToRoute('admin_category_edit', ['id'   => $id, 'lang' => $lang]);
         }
 
         $category = $em->find(Category::class, $id)->setLocale($lang);
-        $category->setImage(new File(
-            $this->getParameter('categories_directory') .'/'.
-            $category->getImage(), false));
+        $oldImage = $category->getImage();
+        $category->setImage(new File($oldImage, false));
 
         $form = $this->createForm(CategoryType::class, $category);
-        $em   = $this->getDoctrine()->getManager();
 
         if ($request->isMethod(Request::METHOD_POST)) {
             $form->handleRequest($request);
@@ -150,6 +143,8 @@ class CategoryController extends CoreController
                 if ($image instanceof UploadedFile) {
                     $fileName = $this->get('categories_uploader')->upload($image);
                     $category->setImage($fileName);
+                } else {
+                    $category->setImage($oldImage);
                 }
 
                 // fill object - persist - flush
@@ -161,7 +156,6 @@ class CategoryController extends CoreController
             $this->addFlash('sucess', sprintf($this->trans(
                 'admin.module.category.content_successfully', [], 'flashes'
             ), strtoupper($lang)));
-
             return $this->redirectToRoute('admin_category');
         }
 
@@ -169,6 +163,186 @@ class CategoryController extends CoreController
             'form'  => $form->createView(),
             'id'    => $id,
             'image' => $category->getImage()
+        ]);
+    }
+
+    public function subindexAction($parentId, Request $request)
+    {
+        $em            = $this->getDoctrine()->getManager();
+        $repository    = $em->getRepository(Category::class);
+        $locale        = $request->getDefaultLocale();
+        $subcategories = $repository->findAllByLocale($locale, Constants::CHILD, $parentId);
+        $category      = $repository->find($parentId);
+
+        return $this->render('@Admin/Subcategory/index.html.twig', [
+            'subcategories'  => $subcategories,
+            'parentCategory' => $category
+        ]);
+    }
+
+    public function subcreateAction($parentId, Request $request)
+    {
+        $em   = $this->getDoctrine()->getManager();
+        $repository = $em->getRepository(Category::class);
+
+        $parentCategory   = $repository->find($parentId);
+        $parentCategories = $repository->findParentsForSubcategoryForm();
+
+        $category = new Category();
+        $form = $this->createForm(SubcategoryType::class, $category, [
+            'parentCategories' => $parentCategories,
+            'selectedCategory' => $parentId
+        ]);
+
+        if ($request->isMethod(Request::METHOD_POST)) {
+            $form->handleRequest($request);
+
+            if ($form->isSubmitted() && $form->isValid()) {
+                $image = $category->getImage();
+                $fileName = $this->get('categories_uploader')->upload($image);
+                $category->setImage($fileName);
+
+                $em->persist($category);
+                $category->mergeNewTranslations();
+                $em->flush();
+            }
+
+            $this->addFlash('sucess', $this->trans(
+                'admin.module.subcategory.create_successfully', [], 'flashes'
+            ));
+
+            return $this->redirectToRoute('admin_subcategory', ['parentId' => $parentId]);
+        }
+
+        return $this->render('@Admin/Subcategory/create.html.twig', [
+            'form' => $form->createView(),
+            'parentCategory' => $parentCategory
+        ]);
+    }
+
+    public function subeditAction($id, $lang, Request $request)
+    {
+        // check if $id is numeric and not null or zero
+        Validator::isValid($id, Validator::IS_NUMERIC);
+
+        $em = $this->getDoctrine()->getManager();
+        $repository = $em->getRepository(Category::class);
+
+        $parentCategory   = $repository->find($repository->find($id)->getParentId());
+        $parentCategories = $repository->findParentsForSubcategoryForm();
+        $categoryResult   = $repository->findOrFailByLocale($lang, $id);
+
+        if (empty($categoryResult)) {
+            $this->addFlash('notice', $this->trans(
+                'admin.module.subcategory.no_content_notice', [], 'flashes'
+            ));
+            return $this->redirectToRoute('admin_subcategory_translate', ['id' => $id, 'lang' => $lang]);
+        }
+
+        $category = $em->find(Category::class, $id)->setLocale($lang);
+        $oldImage = $category->getImage();
+        $category->setImage(new File($oldImage, false));
+
+        if ($request->isMethod(Request::METHOD_POST)) {
+
+            // First create form instance and assign Page Entity
+            $form = $this->createForm(SubcategoryType::class, $category, [
+                'parentCategories' => $parentCategories,
+                'selectedCategory' => $parentCategory->getId()]);
+            $form->handleRequest($request);
+
+            if ($form->isSubmitted() && $form->isValid()) {
+
+                $image = $category->getImage();
+                if ($image instanceof UploadedFile) {
+                    $fileName = $this->get('categories_uploader')->upload($image);
+                    $category->setImage($fileName);
+                } else {
+                    $category->setImage(new File($oldImage, false));
+                }
+
+                // update object and flush to DB
+                $em->flush();
+
+                $this->addFlash('sucess', sprintf($this->trans(
+                    'admin.module.subcategory.edit_successfully', [], 'flashes'
+                ), $category->getTitle()));
+
+                return $this->redirectToRoute('admin_subcategory', ['parentId' => $category->getParentId()]);
+            }
+
+        } else {
+            $form = $this->createForm(SubcategoryType::class, $category, [
+                'parentCategories' => $parentCategories,
+                'selectedCategory' => $parentCategory->getId()
+            ]);
+            $form->setData($category);
+        }
+
+        return $this->render('@Admin/Subcategory/edit.html.twig', [
+            'form'     => $form->createView(),
+            'category' => $category,
+            'image'    => $category->getTranslatable()->getImage(),
+            'parentCategory' => $parentCategory
+        ]);
+    }
+
+    public function subtranslateAction($id, $lang, Request $request)
+    {
+        // check if $id is numeric and not null or zero
+        Validator::isValid($id, Validator::IS_NUMERIC);
+
+        $em = $this->getDoctrine()->getManager();
+        $repository = $em->getRepository(Category::class);
+
+        $parentCategory   = $repository->find($repository->find($id)->getParentId());
+        $parentCategories = $repository->findParentsForSubcategoryForm();
+        $categoryResult   = $repository->findOrFailByLocale($lang, $id);
+
+        if (!empty($categoryResult)) {
+            return $this->redirectToRoute('admin_subcategory_edit', ['id'   => $id, 'lang' => $lang]);
+        }
+
+        $category = $em->find(Category::class, $id)->setLocale($lang);
+        $oldImage = $category->getImage();
+        $category->setImage(new File($oldImage, false));
+
+        $form = $this->createForm(SubcategoryType::class, $category, [
+            'parentCategories' => $parentCategories,
+            'selectedCategory' => $parentCategory->getId()]);
+
+        if ($request->isMethod(Request::METHOD_POST)) {
+            $form->handleRequest($request);
+
+            if ($form->isSubmitted() && $form->isValid()) {
+
+                // if image is uploaded then assign it to object
+                $image = $category->getImage();
+                if ($image instanceof UploadedFile) {
+                    $fileName = $this->get('categories_uploader')->upload($image);
+                    $category->setImage($fileName);
+                } else {
+                    $category->setImage($oldImage);
+                }
+
+                // fill object - persist - flush
+                $em->persist($category->translate($lang, false));
+                $category->mergeNewTranslations();
+                $em->flush();
+            }
+
+            $this->addFlash('sucess', sprintf($this->trans(
+                'admin.module.subcategory.content_successfully', [], 'flashes'
+            ), strtoupper($lang)));
+
+            return $this->redirectToRoute('admin_subcategory', ['parentId' => $parentCategory->getId()]);
+        }
+
+        return $this->render('@Admin/Subcategory/translate.html.twig', [
+            'form'  => $form->createView(),
+            'id'    => $id,
+            'image' => $category->getImage(),
+            'parentCategory' => $parentCategory
         ]);
     }
 
@@ -184,18 +358,4 @@ class CategoryController extends CoreController
         }
     }
 
-    public function subindexAction($parentId, Request $request)
-    {
-        $em          = $this->getDoctrine()->getManager();
-        $repository  = $em->getRepository(Category::class);
-        $locale      = $request->getDefaultLocale();
-        $subcategories = $repository->findAllByLocale($locale, Constants::CHILD);
-
-        return $this->render('@Admin/Subcategory/index.html.twig', [
-            'subcategories' => $subcategories
-        ]);
-    }
-
-    public function subeditAction($id, $lang, Request $request)
-    {}
 }

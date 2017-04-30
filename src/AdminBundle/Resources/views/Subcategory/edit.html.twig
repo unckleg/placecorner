@@ -1,5 +1,5 @@
 {% extends 'AdminBundle:Master/Layouts:admin.html.twig' %}
-{% set page_title = 'admin.module.category.breadcrumb.translate'|trans({}, 'admin') %}
+{% set page_title = 'admin.module.subcategory.breadcrumb.edit'|trans({}, 'admin') %}
 
 {% block breadcrumbs %}
     <div class="page-bar">
@@ -16,9 +16,16 @@
                 </a>
                 <i class="fa fa-circle"></i>
             </li>
+            <li>
+                <a href="{{ path('admin_subcategory', {'parentId': parentCategory.getId}) }}">
+                    {{ 'admin.module.subcategory.name'|trans({}, 'admin') }}:
+                    <strong> {{ parentCategory.getTitle }} </strong>
+                </a>
+                <i class="fa fa-circle"></i>
+            </li>
             <li class="active">
                 <a>
-                    {{ 'admin.module.category.breadcrumb.translate'|trans({}, 'admin') }}
+                    {{ 'admin.module.subcategory.breadcrumb.edit'|trans({}, 'admin') }}
                 </a>
             </li>
         </ul>
@@ -26,11 +33,14 @@
 {% endblock %}
 
 {% block toptitle %}
-    <h1 class="page-title"> {{ 'admin.module.category.name'|trans({}, 'admin') }}
-        <small> {{ 'admin.module.category.translate.new_translation'|trans({}, 'admin') }}</small>
+    <h1 class="page-title"> {{ 'admin.module.subcategory.name'|trans({}, 'admin') }}
+        <small>
+            {{ 'admin.module.subcategory.edit.pagetitle'|trans({}, 'admin') }}
+            <strong> {{ category.getTitle() }}</strong>
+        </small>
         <div class="pull-right">
             <div class="btn-group">
-                <a class="btn blue btn-circle btn-md" href="{{ path('admin_category') }}">
+                <a class="btn blue btn-circle btn-md" href="{{ path('admin_subcategory', {'parentId': parentCategory.getId}) }}">
                     {{ 'admin.global.buttons.go_back'|trans({}, 'admin') }}
                 </a>
             </div>
@@ -45,7 +55,7 @@
                 <ul class="form-wizard-levels">
                     {% for language in languages %}
                         <li {% if app.request.get('lang') == language.short|lower %} class="active" {% endif %}>
-                            <a href="{{ path('admin_category_edit', {'id': id, lang: language.short|lower}) }}">
+                            <a href="{{ path('admin_subcategory_edit', {'id': category.getTranslatable().getId(), lang: language.short|lower}) }}">
                                 {{ language.short|upper }}
                             </a>
                         </li>
@@ -56,11 +66,11 @@
                 <div class="portlet-title">
                     <div class="caption font-dark">
                         <i class="icon-grid font-dark"></i>
-                        <span class="caption-subject bold uppercase"> {{ 'admin.module.page.translate.caption'|trans({}, 'admin') }} </span>
+                        <span class="caption-subject bold uppercase"> {{ 'admin.module.subcategory.edit.caption'|trans({}, 'admin') }} </span>
                     </div>
                 </div>
                 <div class="portlet-body form">
-                    {% include '@Admin/Category/forms/create.html.twig' %}
+                    {% include 'AdminBundle:Subcategory/forms:create.html.twig' %}
                 </div>
             </div>
         </div>

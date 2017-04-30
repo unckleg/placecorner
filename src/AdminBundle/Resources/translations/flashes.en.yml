@@ -17,3 +17,8 @@ admin:
             edit_successfully: Category %s is updated successfully
             no_content_notice: No content filled for this category!
             content_successfully: Category content filled successfully for language %s
+        subcategory:
+            create_successfully: New subcategory is created successfully
+            edit_successfully: Subcategory %s is updated successfully
+            no_content_notice: No content filled for this subcategory!
+            content_successfully: Subcategory content filled successfully for language %s

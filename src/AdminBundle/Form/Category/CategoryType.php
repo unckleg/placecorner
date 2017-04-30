@@ -47,7 +47,8 @@ class CategoryType extends AbstractType
                     'placeholder' => 'admin.module.category.form.category_seo_keywords_placeholder'
             ]])
             ->add('image', FileType::class, [
-                'label' => 'admin.module.category.form.category_image_label'
+                'label' => 'admin.module.category.form.category_image_label',
+                'required'  => false
             ])
             ->add('save', SubmitType::class, [
                 'label'   => 'admin.global.form.button_submit',
