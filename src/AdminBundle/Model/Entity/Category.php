@@ -17,16 +17,6 @@ class Category
     use TranslatableTrait;
 
     /**
-     * @param  string $method
-     * @param  array $arguments
-     * @return mixed
-     */
-    public function __call($method, $arguments)
-    {
-        return $this->proxyCurrentLocaleTranslation($method, $arguments);
-    }
-
-    /**
      * @var int
      *
      * @ORM\Column(name="id", type="integer")

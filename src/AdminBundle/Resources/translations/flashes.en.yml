@@ -22,3 +22,8 @@ admin:
             edit_successfully: Subcategory %s is updated successfully
             no_content_notice: No content filled for this subcategory!
             content_successfully: Subcategory content filled successfully for language %s
+        tag:
+            create_successfully: New tag is created successfully
+            edit_successfully: Tag %s is updated successfully
+            no_content_notice: No content filled for this tag!
+            content_successfully: Tag content filled successfully for language %s

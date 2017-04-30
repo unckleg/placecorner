@@ -1,0 +1,69 @@
+{% extends 'AdminBundle:Master/Layouts:admin.html.twig' %}
+{% set page_title = 'admin.module.tag.breadcrumb.create'|trans({}, 'admin') %}
+
+{% block breadcrumbs %}
+    <div class="page-bar">
+        <ul class="page-breadcrumb">
+            <li>
+                <a href="{{ path('admin_dashboard') }}">
+                    {{ 'admin.global.breadcrumb.home'|trans({}, 'admin') }}
+                </a>
+                <i class="fa fa-circle"></i>
+            </li>
+            <li>
+                <a href="{{ path('admin_tag') }}">
+                    {{ 'admin.module.tag.breadcrumb.tag'|trans({}, 'admin') }}
+                </a>
+                <i class="fa fa-circle"></i>
+            </li>
+            <li class="active">
+                <a href="{{ path('admin_tag_create') }}">
+                    {{ 'admin.module.tag.breadcrumb.create'|trans({}, 'admin') }}
+                </a>
+            </li>
+        </ul>
+    </div>
+{% endblock %}
+
+{% block toptitle %}
+    <h1 class="page-title"> {{ 'admin.module.tag.name'|trans({}, 'admin') }}
+        <small> {{ 'admin.module.tag.create.pagetitle'|trans({}, 'admin') }}</small>
+        <div class="pull-right">
+            <div class="btn-group">
+                <a class="btn blue btn-circle btn-md" href="{{ path('admin_tag') }}">
+                    {{ 'admin.global.buttons.go_back'|trans({}, 'admin') }}
+                </a>
+            </div>
+        </div>
+    </h1>
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-12">
+            <div id="form-wizard" class="block form-wizard">
+                <ul class="form-wizard-levels">
+                    {% for language in languages %}
+                        <li {% if loop.first %} class="active" {% else %}
+                            class="tooltips" data-container="body" data-placement="top" data-original-title="{{ 'admin.module.tag.create.fill_for_first'|trans({}, 'admin') }}" {% endif %}>
+                            <a>
+                                {{ language.short|upper }}
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="portlet light bordered">
+                <div class="portlet-title">
+                    <div class="caption font-dark">
+                        <i class="icon-grid font-dark"></i>
+                        <span class="caption-subject bold uppercase"> {{ 'admin.module.tag.create.caption'|trans({}, 'admin') }} </span>
+                    </div>
+                </div>
+                <div class="portlet-body form">
+                    {% include '@Admin/Tag/forms/create.html.twig' %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

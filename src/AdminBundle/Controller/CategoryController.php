@@ -47,9 +47,7 @@ class CategoryController extends CoreController
             }
 
             $this->addFlash('sucess', $this->trans(
-                'admin.module.category.create_successfully', [], 'flashes'
-            ));
-
+                'admin.module.category.create_successfully', [], 'flashes'));
             return $this->redirectToRoute('admin_category');
         }
 
@@ -69,8 +67,9 @@ class CategoryController extends CoreController
         $categoryResult = $repository->findOrFailByLocale($lang, $id);
         if (empty($categoryResult)) {
             $this->addFlash('notice', $this->trans(
-    'admin.module.category.no_content_notice', [], 'flashes'));
-            return $this->redirectToRoute('admin_category_translate', ['id' => $id, 'lang' => $lang]);
+                'admin.module.category.no_content_notice', [], 'flashes'));
+            return $this->redirectToRoute('admin_category_translate',
+                ['id' => $id, 'lang' => $lang]);
         }
 
         $category = $em->find(Category::class, $id)->setLocale($lang);

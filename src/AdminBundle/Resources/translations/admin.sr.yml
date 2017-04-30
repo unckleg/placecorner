@@ -208,3 +208,68 @@ admin:
                 category_seo_keywords_label: SEO Reči
                 category_seo_keywords_placeholder: Unesite SEO Reči za ovu Kategoriju
                 category_image_label: Fotografija
+        subcategory:
+            name: Podkategorije
+            breadcrumb:
+                subcategory: Podkategorije
+                create: Nova Podkategorija
+                edit: Izmena Podkategorije
+                translate: Prevod Podkategorije
+            index:
+                pagetitle: Podkategorije
+                pagetitle_small: administracija svih podkategorija
+                create_btn: Dodaj Novu Podkategoriju
+                caption: Lista
+                caption_small: svih podkategorija
+                btn_delete: Obriši Podkategoriju ?
+                btn_show: Prikaži Podkategoriju ?
+                btn_hide: Sakrij Podkategoriju ?
+                btn_edit: Izmeni Podkategoriju ?
+            create:
+                pagetitle: Nova Podkategorija
+                caption: Forma za kreiranje nove Podkategorije
+                fill_for_first: Morate prvo uneti sadržaj za glavni jezik
+            edit:
+                pagetitle: Izmena Podkategorije:
+                caption: Forma za izmenu Podkategorije
+            translate:
+                new_translation: Novi Prevod
+                caption: Forma za dodavanje novog prevoda
+            form:
+                subcategory_title_label: Naslov Podkategorije
+                subcategory_title_placeholder: Unesite naslov za ovu Podkategoriju
+                subcategory_description_label: Opis Podkategorije
+                subcategory_description_placeholder: Unesite opis za ovu Podkategoriju
+                subcategory_seo_title_label: SEO Naslov
+                subcategory_seo_title_placeholder: Unesite SEO Naslov za ovu Podkategoriju
+                subcategory_seo_description_label: SEO Opis
+                subcategory_seo_description_placeholder: Unesite SEO Opis za ovu Podkategoriju
+                subcategory_seo_keywords_label: SEO Reči
+                subcategory_seo_keywords_placeholder: Unesite SEO Reči za ovu Podkategoriju
+                subcategory_image_label: Fotografija
+                subcategory_parent_label: Izaberite Roditelj Kategoriju
+        tag:
+            name: Oznake
+            breadcrumb:
+                tag: Oznake
+                create: Nova Oznaka
+                edit: Izmena Oznake
+                translate: Prevod Oznake
+            index:
+                pagetitle: Oznake
+                pagetitle_small: administracija svih oznaka
+                create_btn: Dodaj Novu Oznaku
+                caption: Lista
+                caption_small: svih oznaka
+                table:
+                    th_count: '#'
+                    th_title: Naslov
+                    th_locale: Jezik
+                    th_status: Status
+                    th_actions: Akcije
+                    td_active: Vidljiva
+                    td_hidden: Sakrivena
+                    td_delete: Obriši Oznaku ?
+                    td_show: Prikaži Oznaku ?
+                    td_hide: Sakrij Oznaku ?
+                    td_edit: Izmeni Oznaku ?

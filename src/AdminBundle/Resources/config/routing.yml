@@ -93,6 +93,28 @@ admin_subcategory_translate:
 admin_tag:
     path:     /admin/tag
     defaults: { _controller: AdminBundle:Tag:index }
+    options:
+        expose: true
+
+admin_tag_create:
+    path:     /admin/tag/create
+    defaults: { _controller: AdminBundle:Tag:create }
+
+admin_tag_edit:
+    path:     /admin/tag/edit/id/{id}/lang/{lang}/
+    defaults: { _controller: AdminBundle:Tag:edit }
+
+admin_tag_translate:
+    path:     /admin/tag/translate/id/{id}/lang/{lang}/
+    defaults: { _controller: AdminBundle:Tag:translate }
+    requirements:
+        lang:  '%app.router_languages%'
+
+admin_tag_modify:
+    path:     /admin/tag/modify/id/{id}/status/{status}
+    defaults: { _controller: AdminBundle:Tag:modify }
+    options:
+        expose: true
 
 # User
 admin_user:

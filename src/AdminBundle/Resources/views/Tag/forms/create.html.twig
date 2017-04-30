@@ -1,0 +1,19 @@
+{{ form_start(form) }}
+
+    {{ form_errors(form) }}
+    {{ form_row(form._token) }}
+
+    <div class="form-group">
+        {{ form_label(form.title) }}
+        {{ form_errors(form.title) }}
+        {{ form_widget(form.title) }}
+    </div>
+
+    <div class="form-group">
+        {{ form_widget(form.save) }}
+        <a href="{{ path('admin_tag') }}"
+           class="btn default">{{ 'admin.global.form.button_cancel'|trans({}, 'admin') }}
+        </a>
+    </div>
+
+{{ form_end(form) }}

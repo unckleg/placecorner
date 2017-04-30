@@ -81,7 +81,7 @@ class PageController extends CoreController
                 $em->flush();
 
                 $this->addFlash('sucess', sprintf($this->trans(
-        'admin.module.page.edit_successfully', [], 'flashes'), $page->getTitle()));
+                    'admin.module.page.edit_successfully', [], 'flashes'), $page->getTitle()));
                 return $this->redirectToRoute('admin_page');
             }
 
@@ -124,7 +124,7 @@ class PageController extends CoreController
             }
 
             $this->addFlash('sucess', sprintf($this->trans(
-    'admin.module.page.content_successfully', [], 'flashes'), strtoupper($lang)));
+                'admin.module.page.content_successfully', [], 'flashes'), strtoupper($lang)));
             return $this->redirectToRoute('admin_page');
         }
 

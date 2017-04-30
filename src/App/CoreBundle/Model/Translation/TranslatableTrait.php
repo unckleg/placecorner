@@ -24,4 +24,14 @@ trait TranslatableTrait
         $entityClass = array_pop($explodedNamespace);
         return '\\'.implode('\\', $explodedNamespace).'\\Translation\\'.$entityClass.'Translation';
     }
+
+    /**
+     * @param  string $method
+     * @param  array $arguments
+     * @return mixed
+     */
+    public function __call($method, $arguments)
+    {
+        return $this->proxyCurrentLocaleTranslation($method, $arguments);
+    }
 }
