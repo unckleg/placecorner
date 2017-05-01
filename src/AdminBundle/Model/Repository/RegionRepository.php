@@ -2,13 +2,13 @@
 
 namespace AdminBundle\Model\Repository;
 
-use AdminBundle\Model\Entity\Country;
+use AdminBundle\Model\Entity\Region;
 use App\CoreBundle\Model\Constants;
 use App\CoreBundle\Service\Validator\Validator;
 use Doctrine\ORM\AbstractQuery;
 use Doctrine\ORM\EntityRepository;
 
-class CountryRepository extends EntityRepository implements Constants
+class RegionRepository extends EntityRepository implements Constants
 {
     private static $modifyFields = [
         'hide'   => 'status',
@@ -21,7 +21,7 @@ class CountryRepository extends EntityRepository implements Constants
      * @param  string $status
      * @return mixed
      */
-    public function modifyCountry($id, $status)
+    public function modifyRegion($id, $status)
     {
         $id     = (int) $id;
         $status = (string) $status;
@@ -30,9 +30,9 @@ class CountryRepository extends EntityRepository implements Constants
         return $this
             ->getEntityManager()
             ->createQueryBuilder()
-            ->update(Country::class, 'c')
-            ->set('c.' . $field, '1-c.'.$field)
-            ->where('c.id = :id')
+            ->update(Region::class, 'r')
+            ->set('r.' . $field, '1-r.'.$field)
+            ->where('r.id = :id')
             ->setParameter('id', $id)
             ->getQuery()
             ->execute()
@@ -47,14 +47,14 @@ class CountryRepository extends EntityRepository implements Constants
     public function findAllByLocale($locale = null)
     {
         $locale = !empty($locale) ?
-        $locale : self::DEFAULT_LOCALE;
+            $locale : self::DEFAULT_LOCALE;
 
         return $this
-            ->createQueryBuilder('c')
-            ->select('c, t')
-            ->leftJoin('c.translations', 't')
+            ->createQueryBuilder('r')
+            ->select('r, t')
+            ->leftJoin('r.translations', 't')
             ->where('t.locale = :locale')
-            ->andWhere('c.isDeleted = :deleted')
+            ->andWhere('r.isDeleted = :deleted')
             ->setParameter('deleted', self::IS_ACTIVE)
             ->setParameter('locale', $locale)
             ->getQuery()
@@ -76,41 +76,17 @@ class CountryRepository extends EntityRepository implements Constants
         $locale = strtolower($locale);
 
         return $this
-            ->createQueryBuilder('country')
-            ->select('country, t')
-            ->leftJoin('country.translations', 't')
+            ->createQueryBuilder('region')
+            ->select('region, t')
+            ->leftJoin('region.translations', 't')
             ->where('t.locale = :locale')
-            ->andWhere('country.isDeleted = :deleted')
-            ->andWhere('country.id = :id')
+            ->andWhere('region.isDeleted = :deleted')
+            ->andWhere('region.id = :id')
             ->setParameter('locale', $locale)
             ->setParameter('deleted', self::IS_ACTIVE)
             ->setParameter('id', $id)
             ->getQuery()
             ->getOneOrNullResult()
-        ;
-    }
-    /**
-     * findCountries Method used for fetching assoc array for RegionType form
-     *  - create
-     *  - edit
-     *  - translate
-     * @return array
-     */
-    public function findCountries()
-    {
-        $locale = !empty($locale) ?
-        $locale : self::DEFAULT_LOCALE;
-
-        return $this
-            ->createQueryBuilder('c')
-            ->select(['t.name', 'c.id', 'c', 't'])
-            ->leftJoin('c.translations', 't')
-            ->where('t.locale = :locale')
-            ->andWhere('c.isDeleted = :deleted')
-            ->setParameter('deleted', self::IS_ACTIVE)
-            ->setParameter('locale', self::DEFAULT_LOCALE)
-            ->getQuery()
-            ->getResult(AbstractQuery::HYDRATE_ARRAY)
         ;
     }
 }

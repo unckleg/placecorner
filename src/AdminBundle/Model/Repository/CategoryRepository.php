@@ -5,6 +5,7 @@ namespace AdminBundle\Model\Repository;
 use AdminBundle\Model\Entity\Category;
 use App\CoreBundle\Model\Constants;
 use App\CoreBundle\Service\Validator\Validator;
+use Doctrine\ORM\AbstractQuery;
 use Doctrine\ORM\EntityRepository;
 
 /**
@@ -131,6 +132,6 @@ class CategoryRepository extends EntityRepository implements Constants
         ;
 
         return $qb->getQuery()
-                  ->getResult(\Doctrine\ORM\AbstractQuery::HYDRATE_ARRAY);
+                  ->getResult(AbstractQuery::HYDRATE_ARRAY);
     }
 }

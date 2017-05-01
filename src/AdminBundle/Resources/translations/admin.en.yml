@@ -328,3 +328,46 @@ admin:
                 country_map_label: Country GeoLocation
                 country_map_placeholder: Pick Country Latitude/Longitude
                 geo_map_text: Country Latitude/Longitude
+        region:
+            name: Region
+            breadcrumb:
+                region: Region
+                create: Region Create
+                edit: Region Edit
+                translate: Region Translate
+            index:
+                pagetitle: Regions
+                pagetitle_small: administration of all regions
+                create_btn: Create New Region
+                caption: List
+                caption_small: of all regions
+                table:
+                    th_count: '#'
+                    th_parent: Country
+                    th_title:  Region
+                    th_locale: Language
+                    th_status: Status
+                    th_actions: Actions
+                    td_active: Active
+                    td_hidden: Hidden
+                    td_delete: Delete Region ?
+                    td_show: Activate Region ?
+                    td_hide: Hide Region  ?
+                    td_edit: Edit Region  ?
+            create:
+                pagetitle: New Region
+                caption: New Region Form
+                fill_for_first: You must first create content for primary language.
+            edit:
+                pagetitle: Editing Region:
+                caption: Edit Region Form
+            translate:
+                new_translation: New Translation
+                caption: New Translation Form
+            form:
+                region_country_label: Pick Region Country
+                region_name_label: Region Title
+                region_name_placeholder: Insert Title for Region
+                region_map_label: Region GeoLocation
+                region_map_placeholder: Pick Region Latitude/Longitude
+                geo_map_text: Region Latitude/Longitude

@@ -32,3 +32,8 @@ admin:
             edit_successfully: Country %s is updated successfully
             no_content_notice: No content filled for this country!
             content_successfully: Country content filled successfully for language %s
+        region:
+            create_successfully: New region is created successfully
+            edit_successfully: Region %s is updated successfully
+            no_content_notice: No content filled for this region!
+            content_successfully: Region content filled successfully for language %s

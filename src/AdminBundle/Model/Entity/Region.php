@@ -7,12 +7,12 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Country
+ * Region
  *
- * @ORM\Table(name="country")
- * @ORM\Entity(repositoryClass="AdminBundle\Model\Repository\CountryRepository")
+ * @ORM\Table(name="region")
+ * @ORM\Entity(repositoryClass="AdminBundle\Model\Repository\RegionRepository")
  */
-class Country
+class Region
 {
     use TranslatableTrait;
 
@@ -23,57 +23,41 @@ class Country
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
-     * @ORM\OneToMany(targetEntity="Region", mappedBy="countryId")
+     * @ORM\ManyToOne(targetEntity="Country", inversedBy="regions")
+     * @ORM\JoinColumn(name="country_id", referencedColumnName="id")
      */
-    protected $regions;
+    protected $countryId;
 
     /**
-     * Country constructor.
-     */
-    public function __construct() {
-        $this->regions = new ArrayCollection();
-    }
-
-    /**
-     * Get regions
+     * @var bool
      *
-     * @return ArrayCollection
+     * @ORM\Column(name="status", type="boolean")
      */
-    public function getRegions()
-    {
-        return $this->regions;
-    }
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="status", type="smallint")
-     */
-    private $status = 1;
+    protected $status = 1;
 
     /**
      * @var bool
      *
      * @ORM\Column(name="is_deleted", type="boolean")
      */
-    private $isDeleted = 0;
+    protected $isDeleted = 0;
 
     /**
      * @var int
      *
      * @ORM\Column(name="order_number", type="integer")
      */
-    private $orderNumber = 0;
+    protected $orderNumber = 0;
 
     /**
      * @var string
      *
      * @ORM\Column(name="map", type="string", length=500)
      */
-    private $map;
+    protected $map;
 
 
     /**
@@ -87,11 +71,34 @@ class Country
     }
 
     /**
+     * Set countryId
+     *
+     * @param integer $countryId
+     *
+     * @return Region
+     */
+    public function setCountry($countryId)
+    {
+        $this->countryId = $countryId;
+        return $this;
+    }
+
+    /**
+     * Get countryId
+     *
+     * @return int
+     */
+    public function getCountry()
+    {
+        return $this->countryId;
+    }
+
+    /**
      * Set status
      *
-     * @param integer $status
+     * @param boolean $status
      *
-     * @return Country
+     * @return Region
      */
     public function setStatus($status)
     {
@@ -103,7 +110,7 @@ class Country
     /**
      * Get status
      *
-     * @return int
+     * @return bool
      */
     public function getStatus()
     {
@@ -115,7 +122,7 @@ class Country
      *
      * @param boolean $isDeleted
      *
-     * @return Country
+     * @return Region
      */
     public function setIsDeleted($isDeleted)
     {
@@ -139,7 +146,7 @@ class Country
      *
      * @param integer $orderNumber
      *
-     * @return Country
+     * @return Region
      */
     public function setOrderNumber($orderNumber)
     {
@@ -163,7 +170,7 @@ class Country
      *
      * @param string $map
      *
-     * @return Country
+     * @return Region
      */
     public function setMap($map)
     {

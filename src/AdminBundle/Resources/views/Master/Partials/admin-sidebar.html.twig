@@ -36,7 +36,15 @@
                     </li>
                 </ul>
             </li>
-            <li class="nav-item  {{ isActive('admin_category', 'parent') }}">
+            <li class="nav-item
+                {{ isActive('admin_category', 'parent') }}
+                {{ isActive('admin_category_create', 'parent') }}
+                {{ isActive('admin_category_edit', 'parent') }}
+                {{ isActive('admin_category_translate', 'parent') }}
+                {{ isActive('admin_subcategory', 'parent') }}
+                {{ isActive('admin_subcategory_create', 'parent') }}
+                {{ isActive('admin_subcategory_edit', 'parent') }}
+                {{ isActive('admin_subcategory_translate', 'parent') }}">
                 <a href="javascript:;" class="nav-link nav-toggle">
                     <i class="icon-list"></i>
                     <span class="title">{{ 'admin.sidebar.category.title'|trans({}, 'admin') }}</span>
@@ -50,7 +58,11 @@
                     </li>
                 </ul>
             </li>
-            <li class="nav-item {{ isActive('admin_tag', 'parent') }}">
+            <li class="nav-item
+                {{ isActive('admin_tag', 'parent') }}
+                {{ isActive('admin_tag_create', 'parent') }}
+                {{ isActive('admin_tag_edit', 'parent') }}
+                {{ isActive('admin_tag_translate', 'parent') }}">
                 <a href="{{ path('admin_tag') }}" class="nav-link nav-toggle">
                     <i class="icon-tag"></i>
                     <span class="title">{{ 'admin.sidebar.tags.title'|trans({}, 'admin') }}</span>
@@ -75,7 +87,18 @@
                     </li>
                 </ul>
             </li>
-            <li class="nav-item {{ isActive('admin_country', 'parent') }}">
+            <li class="nav-item
+                {{ isActive('admin_country', 'parent') }}
+                {{ isActive('admin_country_create', 'parent') }}
+                {{ isActive('admin_country_edit', 'parent') }}
+                {{ isActive('admin_country_translate', 'parent') }}
+                {{ isActive('admin_region', 'parent') }}
+                {{ isActive('admin_region_create', 'parent') }}
+                {{ isActive('admin_region_edit', 'parent') }}
+                {{ isActive('admin_region_translate', 'parent') }}
+                {{ isActive('admin_city_create', 'child') }}
+                {{ isActive('admin_city', 'child') }}
+                {{ isActive('admin_municipality', 'child') }}">
                 <a href="javascript:;" class="nav-link nav-toggle">
                     <i class="icon-location-pin"></i>
                     <span class="title">{{ 'admin.sidebar.place.title'|trans({}, 'admin') }}</span>
@@ -87,14 +110,14 @@
                             <span class="title">{{ 'admin.sidebar.place.countries'|trans({}, 'admin') }} </span>
                         </a>
                     </li>
+                    <li class="nav-item start {{ isActive('admin_region', 'child') }}">
+                        <a href="{{ path('admin_region') }}" class="nav-link ">
+                            <span class="title">{{ 'admin.sidebar.place.regions'|trans({}, 'admin') }} </span>
+                        </a>
+                    </li>
                     <li class="nav-item start {{ isActive('admin_city', 'child') }}">
                         <a href="" class="nav-link ">
                             <span class="title">{{ 'admin.sidebar.place.cities'|trans({}, 'admin') }} </span>
-                        </a>
-                    </li>
-                    <li class="nav-item start {{ isActive('admin_region', 'child') }}">
-                        <a href="" class="nav-link ">
-                            <span class="title">{{ 'admin.sidebar.place.regions'|trans({}, 'admin') }} </span>
                         </a>
                     </li>
                     <li class="nav-item start {{ isActive('admin_municipality', 'child') }}">
