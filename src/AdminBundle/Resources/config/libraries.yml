@@ -18,3 +18,5 @@ libraries:
         - '/skins/backend/assets/global/plugins/dropzone/basic.min.css'
         - '/skins/backend/assets/global/plugins/dropzone/dropzone.min.js'
         - '/skins/backend/assets/pages/scripts/form-dropzone.min.js'
+    gmaps:
+        - '/skins/backend/assets/vendors/gmaps/gmaps.min.js'

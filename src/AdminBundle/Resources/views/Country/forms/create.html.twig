@@ -1,0 +1,33 @@
+{{ form_start(form) }}
+
+    {{ form_errors(form) }}
+    {{ form_row(form._token) }}
+
+    <div class="row">
+
+        <div class="form-group col-md-6">
+            {{ form_label(form.name) }}
+            {{ form_errors(form.name) }}
+            {{ form_widget(form.name) }}
+        </div>
+
+        <div class="form-group col-md-6">
+            {{ form_label(form.map) }}
+            {{ form_errors(form.map) }}
+            {{ form_widget(form.map) }}
+        </div>
+
+        <div class="form-group col-md-12">
+            <div id="map" style="width: 100%; height: 350px;"></div>
+        </div>
+
+    </div>
+
+    <div class="form-group">
+        {{ form_widget(form.save) }}
+        <a href="{{ path('admin_country') }}"
+           class="btn default">{{ 'admin.global.form.button_cancel'|trans({}, 'admin') }}
+        </a>
+    </div>
+
+{{ form_end(form) }}

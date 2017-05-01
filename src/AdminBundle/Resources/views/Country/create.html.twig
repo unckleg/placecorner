@@ -1,0 +1,101 @@
+{% extends 'AdminBundle:Master/Layouts:admin.html.twig' %}
+{% set page_title = 'admin.module.country.breadcrumb.create'|trans({}, 'admin') %}
+
+{% block breadcrumbs %}
+    <div class="page-bar">
+        <ul class="page-breadcrumb">
+            <li>
+                <a href="{{ path('admin_dashboard') }}">
+                    {{ 'admin.global.breadcrumb.home'|trans({}, 'admin') }}
+                </a>
+                <i class="fa fa-circle"></i>
+            </li>
+            <li>
+                <a href="{{ path('admin_country') }}">
+                    {{ 'admin.module.tag.breadcrumb.tag'|trans({}, 'admin') }}
+                </a>
+                <i class="fa fa-circle"></i>
+            </li>
+            <li class="active">
+                <a href="{{ path('admin_country_create') }}">
+                    {{ 'admin.module.country.breadcrumb.create'|trans({}, 'admin') }}
+                </a>
+            </li>
+        </ul>
+    </div>
+{% endblock %}
+
+{% block toptitle %}
+    <h1 class="page-title"> {{ 'admin.module.country.name'|trans({}, 'admin') }}
+        <small> {{ 'admin.module.country.create.pagetitle'|trans({}, 'admin') }}</small>
+        <div class="pull-right">
+            <div class="btn-group">
+                <a class="btn blue btn-circle btn-md" href="{{ path('admin_country') }}">
+                    {{ 'admin.global.buttons.go_back'|trans({}, 'admin') }}
+                </a>
+            </div>
+        </div>
+    </h1>
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-12">
+            <div id="form-wizard" class="block form-wizard">
+                <ul class="form-wizard-levels">
+                    {% for language in languages %}
+                        <li {% if loop.first %} class="active" {% else %}
+                            class="tooltips" data-container="body" data-placement="top" data-original-title="{{ 'admin.module.country.create.fill_for_first'|trans({}, 'admin') }}" {% endif %}>
+                            <a>
+                                {{ language.short|upper }}
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="portlet light bordered">
+                <div class="portlet-title">
+                    <div class="caption font-dark">
+                        <i class="icon-grid font-dark"></i>
+                        <span class="caption-subject bold uppercase"> {{ 'admin.module.country.create.caption'|trans({}, 'admin') }} </span>
+                    </div>
+                </div>
+                <div class="portlet-body form">
+                    {% include '@Admin/Country/forms/create.html.twig' %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ loadLibraries('gmaps', 'js')|raw }}
+    <script src="http://maps.google.com/maps/api/js?key=AIzaSyD07QN1C5ATB6dgzP9l5kF_CDn7ihVXric"></script>
+
+    <script>
+        var map = new GMaps({
+            el: '#map',
+            lat: 44.1888188,
+            lng: 18.7563459,
+            zoom: 7,
+            click: function(event) {
+
+                // first remove markers if exist
+                map.removeMarkers();
+                var lat = event.latLng.lat(),
+                    lng = event.latLng.lng(),
+                    coordinates = lat +', '+lng;
+
+                map.addMarker({
+                    lat: lat,
+                    lng: lng,
+                    title: '{{ 'admin.module.country.form.geo_map_text'|trans({}, 'admin') }}'
+                });
+
+                // setting map input coordinates
+                $('#country_map').val(coordinates);
+            },
+        });
+    </script>
+{% endblock %}

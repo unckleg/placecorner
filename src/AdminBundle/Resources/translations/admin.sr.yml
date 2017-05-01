@@ -228,7 +228,7 @@ admin:
             create:
                 pagetitle: Nova Podkategorija
                 caption: Forma za kreiranje nove Podkategorije
-                fill_for_first: Morate prvo uneti sadržaj za glavni jezik
+                fill_for_first: Morate prvo uneti sadržaj za glavni jezik.
             edit:
                 pagetitle: Izmena Podkategorije:
                 caption: Forma za izmenu Podkategorije
@@ -273,3 +273,17 @@ admin:
                     td_show: Prikaži Oznaku ?
                     td_hide: Sakrij Oznaku ?
                     td_edit: Izmeni Oznaku ?
+            create:
+                pagetitle: Nova Oznaka
+                caption: Forma za kreiranje nove Oznake
+                fill_for_first: Morate prvo uneti sadržaj za glavni jezik.
+            edit:
+                pagetitle: Izmena Oznake:
+                caption: Forma za izmenu Oznake
+            translate:
+                new_translation: Novi Prevod
+                caption: Forma za dodavanje novog prevoda
+            form:
+                tag_title_label: Naslov Oznake
+                tag_title_placeholder: Unesite naslov za ovu Oznaku
+        country:

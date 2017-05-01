@@ -27,3 +27,8 @@ admin:
             edit_successfully: Tag %s is updated successfully
             no_content_notice: No content filled for this tag!
             content_successfully: Tag content filled successfully for language %s
+        country:
+            create_successfully: New country is created successfully
+            edit_successfully: Country %s is updated successfully
+            no_content_notice: No content filled for this country!
+            content_successfully: Country content filled successfully for language %s

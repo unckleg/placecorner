@@ -62,7 +62,7 @@ class PageController extends CoreController
 
         if (empty($pageResult)) {
             $this->addFlash('notice', $this->trans(
-    'admin.module.page.no_content_notice', [], 'flashes'));
+                'admin.module.page.no_content_notice', [], 'flashes'));
             return $this->redirectToRoute('admin_page_translate', ['id' => $id, 'lang' => $lang]);
         }
 
@@ -141,8 +141,8 @@ class PageController extends CoreController
             $modifiedPage = $repository->modifyPage($id, $status);
 
             return Validator::isValid($modifiedPage) ?
-                $this->json('success')
-                : $this->json('There was an error while updating Page data');
+                $this->json('success') :
+                $this->json('There was an error while updating Page data');
         }
     }
 }

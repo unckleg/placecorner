@@ -1,0 +1,184 @@
+{% extends 'AdminBundle:Master/Layouts:admin.html.twig' %}
+{% set page_title = 'admin.module.country.name'|trans({}, 'admin') %}
+
+{% block breadcrumbs %}
+    <div class="page-bar">
+        <ul class="page-breadcrumb">
+            <li>
+                <a href="{{ path('admin_dashboard') }}">
+                    {{ 'admin.global.breadcrumb.home'|trans({}, 'admin') }}
+                </a>
+                <i class="fa fa-circle"></i>
+            </li>
+            <li class="active">
+                <a href="{{ path('admin_country') }}">
+                    {{ 'admin.module.country.breadcrumb.country'|trans({}, 'admin') }}
+                </a>
+            </li>
+        </ul>
+    </div>
+{% endblock %}
+
+{% block toptitle %}
+    <h1 class="page-title"> {{ 'admin.module.country.name'|trans({}, 'admin') }}
+        <small> {{ 'admin.module.country.index.pagetitle_small'|trans({}, 'admin') }}</small>
+        <div class="pull-right">
+            <div class="btn-group">
+                <a class="btn blue btn-circle btn-md" href="{{ path('admin_country_create') }}">
+                    {{ 'admin.module.country.index.create_btn'|trans({}, 'admin') }}
+                </a>
+            </div>
+        </div>
+    </h1>
+{% endblock %}
+
+{% block content %}
+    <div class="portlet light">
+        <div class="portlet-title">
+            <div class="caption">
+                <i class="icon-country font-grey-gallery"></i>
+                <span class="caption-subject bold font-grey-gallery uppercase">
+                    {{ 'admin.module.country.index.caption'|trans({}, 'admin') }}
+            </span>
+                <span class="caption-helper">
+                {{ 'admin.module.country.index.caption_small'|trans({}, 'admin') }}
+            </span>
+            </div>
+            <div class="tools">
+                <a href="" class="collapse" data-original-title="" title=""> </a>
+                <a href="#portlet-config" data-toggle="modal" class="config" data-original-title="" title=""> </a>
+                <a href="" class="fullscreen" data-original-title="" title=""> </a>
+            </div>
+        </div>
+        <div class="portlet-body" style="display: block;">
+            <table class="table table-bordered table-hover" id="page">
+                <thead>
+                <tr>
+                    <th class="text-center"> {{ 'admin.module.country.index.table.th_count'|trans({}, 'admin') }} </th>
+                    <th class="text-center"> {{ 'admin.module.country.index.table.th_title'|trans({}, 'admin') }} </th>
+                    <th class="text-center"> {{ 'admin.module.country.index.table.th_status'|trans({}, 'admin') }} </th>
+                    <th class="text-center"> {{ 'admin.module.country.index.table.th_actions'|trans({}, 'admin') }} </th>
+                </tr>
+                </thead>
+                <tbody>
+                {% if countries is not empty %}
+                    {% for country in countries %}
+                        <tr>
+                            <td class="text-center" style="width: 1%;">
+                                {{ loop.index }}
+                            </td>
+                            <td class="text-center"> {{ country.getName }} </td>
+                            <td class="text-center">
+                                {% if country.getStatus == 1%}
+                                    <span class="label label-sm label-info">
+                                    {{ 'admin.module.country.index.table.td_active'|trans({}, 'admin') }}
+                                </span>
+                                {% else %}
+                                    <span class="label label-sm label-danger">
+                                    {{ 'admin.module.country.index.table.td_hidden'|trans({}, 'admin') }}
+                                </span>
+                                {% endif %}
+                            </td>
+                            <td class="text-center" style="width: 20%;">
+                                {% if country.getStatus == 1 %}
+                                    <a class="btn purple btn-sm tooltips" type="button" data-container="body"
+                                       data-placement="top"
+                                       data-original-title="{{ 'admin.module.country.index.table.td_hide'|trans({}, 'admin') }}"
+                                       data-action="hide"
+                                       data-country-id="{{ country.getId }}"
+                                       data-btn-ok-label="{{ 'admin.global.buttons.yes'|trans({}, 'admin') }}"
+                                       data-btn-cancel-label="{{ 'admin.global.buttons.no'|trans({}, 'admin') }}"
+                                       data-toggle="confirmation"
+                                       data-popout="true"
+                                       data-on-confirm="modifyCountry">
+                                        <i class="icon-close"></i>
+                                    </a>
+                                {% else %}
+                                    <a class="btn default btn-sm tooltips" type="button" data-container="body"
+                                       data-placement="top"
+                                       data-original-title="{{ 'admin.module.country.index.table.td_show'|trans({}, 'admin') }}"
+                                       data-action="show"
+                                       data-country-id="{{ country.getId }}"
+                                       data-btn-ok-label="{{ 'admin.global.buttons.yes'|trans({}, 'admin') }}"
+                                       data-btn-cancel-label="{{ 'admin.global.buttons.no'|trans({}, 'admin') }}"
+                                       data-toggle="confirmation"
+                                       data-popout="true"
+                                       data-on-confirm="modifyCountry">
+                                        <i class="icon-check"></i>
+                                    </a>
+                                {% endif %}
+                                <a href="{{ path('admin_country_edit', {'id': country.getId, 'lang': country.getLocale}) }}"
+                                   class="btn blue btn-sm tooltips"
+                                   type="button"
+                                   data-container="body"
+                                   data-placement="top"
+                                   data-original-title="{{ 'admin.module.country.index.table.td_edit'|trans({}, 'admin') }}">
+                                    <i class="icon-pencil"></i>
+                                </a>
+
+                                <a class="btn btn-danger btn-sm tooltips"
+                                   type="button" data-container="body"
+                                   data-placement="top"
+                                   data-original-title="{{ 'admin.module.country.index.table.td_delete'|trans({}, 'admin') }}"
+                                   data-action="delete"
+                                   data-country-id="{{ country.getId }}"
+                                   data-toggle="confirmation"
+                                   data-btn-ok-label="{{ 'admin.global.buttons.yes'|trans({}, 'admin') }}"
+                                   data-btn-cancel-label="{{ 'admin.global.buttons.no'|trans({}, 'admin') }}"
+                                   data-popout="true"
+                                   data-on-confirm="modifyCountry">
+                                    <i class="icon-trash"></i>
+                                </a>
+
+                            </td>
+                        </tr>
+                    {% endfor %}
+                {% endif %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ loadLibraries({
+        1: 'datatable',
+        2: 'confirmation'
+    }, 'js')|raw }}
+    <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+    <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('#page').DataTable();
+        });
+
+        function modifyCountry() {
+            var status = $(this).data('action'),
+                id     = $(this).data('country-id'),
+                locale = '{{ app.request.attributes.get('_locale') }}'
+            ;
+
+            $.ajax({
+                url: Routing.generate('admin_country_modify', {id: id, status: status}),
+                method: 'POST'
+            }).done(function (data) {
+                console.log(data);
+                data == 'success'?
+                    window.location.replace(Routing.generate('admin_country', {'_locale': locale}))
+                    : null;
+            }).fail(function (data) {
+                console.log("There was an error");
+            });
+        };
+    </script>
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ loadLibraries({
+        1: 'datatable',
+        2: 'confirmation'
+    }, 'css')|raw }}
+{% endblock %}

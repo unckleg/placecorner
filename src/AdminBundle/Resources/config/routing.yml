@@ -116,6 +116,33 @@ admin_tag_modify:
     options:
         expose: true
 
+# Country
+admin_country:
+    path:     /admin/country
+    defaults: { _controller: AdminBundle:Country:index }
+    options:
+        expose: true
+
+admin_country_create:
+    path:     /admin/country/create
+    defaults: { _controller: AdminBundle:Country:create }
+
+admin_country_edit:
+    path:     /admin/country/edit/id/{id}/lang/{lang}/
+    defaults: { _controller: AdminBundle:Country:edit }
+
+admin_country_translate:
+    path:     /admin/country/translate/id/{id}/lang/{lang}/
+    defaults: { _controller: AdminBundle:Country:translate }
+    requirements:
+        lang:  '%app.router_languages%'
+
+admin_country_modify:
+    path:     /admin/country/modify/id/{id}/status/{status}
+    defaults: { _controller: AdminBundle:Country:modify }
+    options:
+        expose: true
+
 # User
 admin_user:
     path:     /admin/user
