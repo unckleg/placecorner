@@ -1,5 +1,5 @@
 {% extends 'AdminBundle:Master/Layouts:admin.html.twig' %}
-{% set page_title = 'admin.module.region.breadcrumb.create'|trans({}, 'admin') %}
+{% set page_title = 'admin.module.city.breadcrumb.create'|trans({}, 'admin') %}
 
 {% block breadcrumbs %}
     <div class="page-bar">
@@ -11,14 +11,14 @@
                 <i class="fa fa-circle"></i>
             </li>
             <li>
-                <a href="{{ path('admin_region') }}">
-                    {{ 'admin.module.region.breadcrumb.region'|trans({}, 'admin') }}
+                <a href="{{ path('admin_city') }}">
+                    {{ 'admin.module.city.breadcrumb.city'|trans({}, 'admin') }}
                 </a>
                 <i class="fa fa-circle"></i>
             </li>
             <li class="active">
-                <a href="{{ path('admin_region_create') }}">
-                    {{ 'admin.module.region.breadcrumb.create'|trans({}, 'admin') }}
+                <a href="{{ path('admin_city_create') }}">
+                    {{ 'admin.module.city.breadcrumb.create'|trans({}, 'admin') }}
                 </a>
             </li>
         </ul>
@@ -26,11 +26,11 @@
 {% endblock %}
 
 {% block toptitle %}
-    <h1 class="page-title"> {{ 'admin.module.region.name'|trans({}, 'admin') }}
-        <small> {{ 'admin.module.region.create.pagetitle'|trans({}, 'admin') }}</small>
+    <h1 class="page-title"> {{ 'admin.module.city.name'|trans({}, 'admin') }}
+        <small> {{ 'admin.module.city.create.pagetitle'|trans({}, 'admin') }}</small>
         <div class="pull-right">
             <div class="btn-group">
-                <a class="btn blue btn-circle btn-md" href="{{ path('admin_region') }}">
+                <a class="btn blue btn-circle btn-md" href="{{ path('admin_city') }}">
                     {{ 'admin.global.buttons.go_back'|trans({}, 'admin') }}
                 </a>
             </div>
@@ -45,7 +45,7 @@
                 <ul class="form-wizard-levels">
                     {% for language in languages %}
                         <li {% if loop.first %} class="active" {% else %}
-                            class="tooltips" data-container="body" data-placement="top" data-original-title="{{ 'admin.module.region.create.fill_for_first'|trans({}, 'admin') }}" {% endif %}>
+                            class="tooltips" data-container="body" data-placement="top" data-original-title="{{ 'admin.module.city.create.fill_for_first'|trans({}, 'admin') }}" {% endif %}>
                             <a>
                                 {{ language.short|upper }}
                             </a>
@@ -57,11 +57,11 @@
                 <div class="portlet-title">
                     <div class="caption font-dark">
                         <i class="icon-grid font-dark"></i>
-                        <span class="caption-subject bold uppercase"> {{ 'admin.module.region.create.caption'|trans({}, 'admin') }} </span>
+                        <span class="caption-subject bold uppercase"> {{ 'admin.module.city.create.caption'|trans({}, 'admin') }} </span>
                     </div>
                 </div>
                 <div class="portlet-body form">
-                    {% include '@Admin/Region/forms/create.html.twig' %}
+                    {% include '@Admin/City/forms/create.html.twig' %}
                 </div>
             </div>
         </div>
@@ -90,11 +90,15 @@
                 map.addMarker({
                     lat: lat,
                     lng: lng,
-                    title: '{{ 'admin.module.region.form.geo_map_text'|trans({}, 'admin') }}'
+                    icon: {
+                        url: 'http://icons.iconarchive.com/icons/paomedia/small-n-flat/1024/map-marker-icon.png',
+                        scaledSize: new google.maps.Size(60, 60),
+                    },
+                    title: '{{ 'admin.module.city.form.geo_map_text'|trans({}, 'admin') }}'
                 });
 
                 // setting map input coordinates
-                $('#region_map').val(coordinates);
+                $('#city_map').val(coordinates);
             },
         });
     </script>

@@ -113,3 +113,16 @@ table.dataTable.no-footer {
     text-align: center;
     font-weight: 400;
 }
+
+.hover-city-img {
+    display: none;
+    position: absolute;
+    width: 23%;
+    top: 10%;
+    left: -2%;
+    border: 2px solid rgba(74, 50, 114, 0.51);
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.37);
+    -webkit-transform: translateY(-2px) translateZ(0);
+    -moz-transform: translateY(-2px) translateZ(0);
+    transform: translateY(-2px) translateZ(0);
+}

@@ -32,6 +32,28 @@ class Region
     protected $countryId;
 
     /**
+     * @ORM\OneToMany(targetEntity="City", mappedBy="regionId")
+     */
+    protected $cities;
+
+    /**
+     * Country constructor.
+     */
+    public function __construct() {
+        $this->cities = new ArrayCollection();
+    }
+
+    /**
+     * Get cities
+     *
+     * @return ArrayCollection
+     */
+    public function getCities()
+    {
+        return $this->cities;
+    }
+
+    /**
      * @var bool
      *
      * @ORM\Column(name="status", type="boolean")

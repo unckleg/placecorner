@@ -1,5 +1,5 @@
 {% extends 'AdminBundle:Master/Layouts:admin.html.twig' %}
-{% set page_title = 'admin.module.region.breadcrumb.create'|trans({}, 'admin') %}
+{% set page_title = 'admin.module.city.breadcrumb.translate'|trans({}, 'admin') %}
 
 {% block breadcrumbs %}
     <div class="page-bar">
@@ -11,14 +11,14 @@
                 <i class="fa fa-circle"></i>
             </li>
             <li>
-                <a href="{{ path('admin_region') }}">
-                    {{ 'admin.module.region.breadcrumb.region'|trans({}, 'admin') }}
+                <a href="{{ path('admin_city') }}">
+                    {{ 'admin.module.city.breadcrumb.city'|trans({}, 'admin') }}
                 </a>
                 <i class="fa fa-circle"></i>
             </li>
             <li class="active">
-                <a href="{{ path('admin_region_create') }}">
-                    {{ 'admin.module.region.breadcrumb.create'|trans({}, 'admin') }}
+                <a>
+                    {{ 'admin.module.city.breadcrumb.translate'|trans({}, 'admin') }}
                 </a>
             </li>
         </ul>
@@ -26,11 +26,11 @@
 {% endblock %}
 
 {% block toptitle %}
-    <h1 class="page-title"> {{ 'admin.module.region.name'|trans({}, 'admin') }}
-        <small> {{ 'admin.module.region.create.pagetitle'|trans({}, 'admin') }}</small>
+    <h1 class="page-title"> {{ 'admin.module.city.name'|trans({}, 'admin') }}
+        <small> {{ 'admin.module.city.translate.new_translation'|trans({}, 'admin') }}</small>
         <div class="pull-right">
             <div class="btn-group">
-                <a class="btn blue btn-circle btn-md" href="{{ path('admin_region') }}">
+                <a class="btn blue btn-circle btn-md" href="{{ path('admin_city') }}">
                     {{ 'admin.global.buttons.go_back'|trans({}, 'admin') }}
                 </a>
             </div>
@@ -44,9 +44,8 @@
             <div id="form-wizard" class="block form-wizard">
                 <ul class="form-wizard-levels">
                     {% for language in languages %}
-                        <li {% if loop.first %} class="active" {% else %}
-                            class="tooltips" data-container="body" data-placement="top" data-original-title="{{ 'admin.module.region.create.fill_for_first'|trans({}, 'admin') }}" {% endif %}>
-                            <a>
+                        <li {% if app.request.get('lang') == language.short|lower %} class="active" {% endif %}>
+                            <a href="{{ path('admin_city_edit', {'id': id, lang: language.short|lower}) }}">
                                 {{ language.short|upper }}
                             </a>
                         </li>
@@ -57,16 +56,17 @@
                 <div class="portlet-title">
                     <div class="caption font-dark">
                         <i class="icon-grid font-dark"></i>
-                        <span class="caption-subject bold uppercase"> {{ 'admin.module.region.create.caption'|trans({}, 'admin') }} </span>
+                        <span class="caption-subject bold uppercase"> {{ 'admin.module.city.translate.caption'|trans({}, 'admin') }} </span>
                     </div>
                 </div>
                 <div class="portlet-body form">
-                    {% include '@Admin/Region/forms/create.html.twig' %}
+                    {% include '@Admin/City/forms/create.html.twig' %}
                 </div>
             </div>
         </div>
     </div>
 {% endblock %}
+
 
 {% block javascripts %}
     {{ parent() }}
@@ -74,10 +74,12 @@
     <script src="http://maps.google.com/maps/api/js?key=AIzaSyD07QN1C5ATB6dgzP9l5kF_CDn7ihVXric"></script>
 
     <script>
+        var unsplitedGeoLocation = '{{ city.getTranslatable().getMap() }}';
+        var cityGeolocation = unsplitedGeoLocation.split(', ');
         var map = new GMaps({
             el: '#map',
-            lat: 44.1888188,
-            lng: 18.7563459,
+            lat: cityGeolocation[0],
+            lng: cityGeolocation[1],
             zoom: 7,
             click: function(event) {
 
@@ -90,12 +92,25 @@
                 map.addMarker({
                     lat: lat,
                     lng: lng,
-                    title: '{{ 'admin.module.region.form.geo_map_text'|trans({}, 'admin') }}'
+                    icon: {
+                        url: 'http://icons.iconarchive.com/icons/paomedia/small-n-flat/1024/map-marker-icon.png',
+                        scaledSize: new google.maps.Size(60, 60),
+                    },
+                    title: '{{ 'admin.module.city.form.geo_map_text'|trans({}, 'admin') }}'
                 });
 
                 // setting map input coordinates
-                $('#region_map').val(coordinates);
+                $('#city_map').val(coordinates);
             },
+        });
+
+        map.addMarker({
+            lat: cityGeolocation[0],
+            lng: cityGeolocation[1],
+            icon: {
+                url: 'http://icons.iconarchive.com/icons/paomedia/small-n-flat/1024/map-marker-icon.png',
+                scaledSize: new google.maps.Size(60, 60),
+            }
         });
     </script>
 {% endblock %}

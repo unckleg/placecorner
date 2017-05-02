@@ -22,49 +22,48 @@ class City
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="region_id", type="integer")
+     * @ORM\ManyToOne(targetEntity="Region", inversedBy="cities")
+     * @ORM\JoinColumn(name="region_id", referencedColumnName="id")
      */
-    private $regionId;
+    protected $regionId;
 
     /**
      * @var string
      *
      * @ORM\Column(name="image", type="string", length=500)
      */
-    private $image;
+    protected $image;
 
     /**
      * @var bool
      *
      * @ORM\Column(name="status", type="boolean")
      */
-    private $status = 1;
+    protected $status = 1;
 
     /**
      * @var bool
      *
      * @ORM\Column(name="is_deleted", type="boolean")
      */
-    private $isDeleted = 0;
+    protected $isDeleted = 0;
 
     /**
      * @var int
      *
      * @ORM\Column(name="order_number", type="integer")
      */
-    private $orderNumber = 0;
+    protected $orderNumber = 0;
 
     /**
      * @var string
      *
      * @ORM\Column(name="map", type="string", length=500)
      */
-    private $map;
+    protected $map;
 
 
     /**
@@ -84,7 +83,7 @@ class City
      *
      * @return City
      */
-    public function setRegionId($regionId)
+    public function setRegion($regionId)
     {
         $this->regionId = $regionId;
 
@@ -96,7 +95,7 @@ class City
      *
      * @return int
      */
-    public function getRegionId()
+    public function getRegion()
     {
         return $this->regionId;
     }

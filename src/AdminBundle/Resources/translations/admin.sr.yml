@@ -287,3 +287,139 @@ admin:
                 tag_title_label: Naslov Oznake
                 tag_title_placeholder: Unesite naslov za ovu Oznaku
         country:
+            name: Država
+            breadcrumb:
+                country: Država
+                create: Nova Država
+                edit: Izmena Države
+                translate: Prevod Države
+            index:
+                pagetitle: Države
+                pagetitle_small: administracija svih država
+                create_btn: Dodaj Novu Državu
+                caption: Lista
+                caption_small: svih država
+                table:
+                    th_count: '#'
+                    th_title: Država
+                    th_locale: Jezik
+                    th_status: Status
+                    th_actions: Akcije
+                    td_active: Vidljiva
+                    td_hidden: Sakrivena
+                    td_delete: Obriši Državu ?
+                    td_show: Prikaži Državu ?
+                    td_hide: Sakrij Državu ?
+                    td_edit: Izmeni Državu ?
+            create:
+                pagetitle: Nova Država
+                caption: Forma za dodavanje kreiranje nove Države
+                fill_for_first: Morate prvo uneti sadržaj za glavni jezik.
+            edit:
+                pagetitle: Izmena Države':'
+                caption: Forma za izmenu Države
+            translate:
+                new_translation: Novi Prevod
+                caption: Forma za dodavanje novog prevoda
+            form:
+                country_name_label: Ime Države
+                country_name_placeholder: Unesite Ime za ovu Državu
+                country_map_label: Geolokacija Države
+                country_map_placeholder: Izaberite Geolokaciju za ovu Državu klikom na mapu
+                geo_map_text: Latitude-longitude Države
+        region:
+            name: Region
+            breadcrumb:
+                region: Region
+                create: Novi Region
+                edit: Izmena Regiona
+                translate: Prevod Regiona
+            index:
+                pagetitle: Regioni
+                pagetitle_small: administracija svih regiona
+                create_btn: Dodaj Novi Region
+                caption: Lista
+                caption_small: svih regiona
+                table:
+                    th_count: '#'
+                    th_parent: Država
+                    th_title:  Region
+                    th_locale: Jezik
+                    th_status: Status
+                    th_actions: Akcije
+                    td_active: Vidljiv
+                    td_hidden: Sakriven
+                    td_delete: Obriši Region ?
+                    td_show: Prikaži Region ?
+                    td_hide: Sakrij Region  ?
+                    td_edit: Izmeni Region  ?
+            create:
+                pagetitle: Novi Region
+                caption: Forma za kreiranje novog Regiona
+                fill_for_first: Morate prvo uneti sadržaj za glavni jezik.
+            edit:
+                pagetitle: Izmena Regiona':'
+                caption: Forma za izmenu Regiona
+            translate:
+                new_translation: Novi Prevod
+                caption: Forma za dodavanje novog prevoda
+            form:
+                region_country_label: Izaberi Državu kojoj pripada Region
+                region_name_label: Naziv Regiona
+                region_name_placeholder: Unesite Naziv za ovaj Region
+                region_map_label: Geolokacija Regiona
+                region_map_placeholder: Izaberite Geolokaciju za ovaj Region klikom na mapu
+                geo_map_text: Region Latitude/Longitude
+        city:
+            name: Grad
+            breadcrumb:
+                city: Grad
+                create: Novi Grad
+                edit: Izmena Grada
+                translate: Prevod Grada
+            index:
+                pagetitle: Gradovi
+                pagetitle_small: lista svih gradova
+                create_btn: Dodaj Novi Grad
+                caption: Lista
+                caption_small: svih gradova
+                table:
+                    th_count: '#'
+                    th_image: Fotografija
+                    th_parents: Država/Region
+                    th_name:  Ime Grada
+                    th_map: Mapa Grada
+                    th_locale: Jezik
+                    th_status: Status
+                    th_actions: Akcije
+                    td_active: Vidljiv
+                    td_hidden: Sakriven
+                    td_delete: Obriši Grad ?
+                    td_show: Prikaži Grad ?
+                    td_hide: Sakrij Grad ?
+                    td_edit: Izmeni Grad ?
+            create:
+                pagetitle: Novi Grad
+                caption: Forma za kreiranje novog Grada
+                fill_for_first: Morate prvo uneti sadržaj za glavni jezik.
+            edit:
+                pagetitle: Izmena Grada':'
+                caption: Forma za izmenu Grada
+            translate:
+                new_translation: Novi Prevod
+                caption: Forma za dodavanje novog prevoda
+            form:
+                city_region_label: Dodeli Region za ovaj Grad
+                city_name_label: Ime Grada
+                city_name_placeholder: Unesite ime za ovaj Grad
+                city_map_label: Geolokacija Grada
+                city_map_placeholder: Izaberite Geolokaciju za ovaj grad klikom na mapu
+                city_image_label: Fotografija Grada
+                city_seo_title_label: SEO Naslov
+                city_seo_title_placeholder: Unesite SEO Naslov za ovaj Grad
+                city_seo_description_label: SEO Opis
+                city_seo_description_placeholder: Unesite SEO Opis za ovaj Grad
+                city_seo_keywords_label: SEO Reči
+                city_seo_keywords_placeholder: Unesite SEO Reči za ovaj Grad
+                geo_map_text: Grad Latitude/Longitude
+    

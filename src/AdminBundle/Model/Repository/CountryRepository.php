@@ -89,6 +89,7 @@ class CountryRepository extends EntityRepository implements Constants
             ->getOneOrNullResult()
         ;
     }
+
     /**
      * findCountries Method used for fetching assoc array for RegionType form
      *  - create
@@ -98,9 +99,6 @@ class CountryRepository extends EntityRepository implements Constants
      */
     public function findCountries()
     {
-        $locale = !empty($locale) ?
-        $locale : self::DEFAULT_LOCALE;
-
         return $this
             ->createQueryBuilder('c')
             ->select(['t.name', 'c.id', 'c', 't'])

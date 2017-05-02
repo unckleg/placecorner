@@ -384,3 +384,42 @@ admin:
                 create_btn: Create New City
                 caption: List
                 caption_small: of all cities
+                table:
+                    th_count: '#'
+                    th_image: Image
+                    th_parents: Country/Region
+                    th_name:  City Name
+                    th_map: City Map
+                    th_locale: Language
+                    th_status: Status
+                    th_actions: Actions
+                    td_active: Active
+                    td_hidden: Hidden
+                    td_delete: Delete City ?
+                    td_show: Activate City ?
+                    td_hide: Hide City  ?
+                    td_edit: Edit City  ?
+            create:
+                pagetitle: New City
+                caption: New City Form
+                fill_for_first: You must first create content for primary language.
+            edit:
+                pagetitle: Editing City':'
+                caption: Edit City Form
+            translate:
+                new_translation: New Translation
+                caption: New Translation Form
+            form:
+                city_region_label: Assign Region to this City
+                city_name_label: City Name
+                city_name_placeholder: Insert City Name
+                city_map_label: City GeoLocation
+                city_map_placeholder: Pick City Latitude/Longitude
+                city_image_label: City Image
+                city_seo_title_label: SEO Title
+                city_seo_title_placeholder: Insert SEO title for this City
+                city_seo_description_label: SEO Description
+                city_seo_description_placeholder: Insert SEO description for this City
+                city_seo_keywords_label: SEO Keywords
+                city_seo_keywords_placeholder: Insert SEO keywords for this City
+                geo_map_text: City Latitude/Longitude

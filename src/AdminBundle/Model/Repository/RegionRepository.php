@@ -89,4 +89,26 @@ class RegionRepository extends EntityRepository implements Constants
             ->getOneOrNullResult()
         ;
     }
+
+    /**
+     * findRegions Method used for fetching assoc array for RegionType form
+     *  - create
+     *  - edit
+     *  - translate
+     * @return array
+     */
+    public function findRegions()
+    {
+        return $this
+            ->createQueryBuilder('r')
+            ->select(['t.name', 'r.id', 'r', 't'])
+            ->leftJoin('r.translations', 't')
+            ->where('t.locale = :locale')
+            ->andWhere('r.isDeleted = :deleted')
+            ->setParameter('deleted', self::IS_ACTIVE)
+            ->setParameter('locale', self::DEFAULT_LOCALE)
+            ->getQuery()
+            ->getResult(AbstractQuery::HYDRATE_ARRAY)
+        ;
+    }
 }
