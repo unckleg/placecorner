@@ -37,3 +37,8 @@ admin:
             edit_successfully: Region %s is updated successfully
             no_content_notice: No content filled for this region!
             content_successfully: Region content filled successfully for language %s
+        city:
+            create_successfully: New city is created successfully
+            edit_successfully: City %s is updated successfully
+            no_content_notice: No content filled for this city!
+            content_successfully: City content filled successfully for language %s

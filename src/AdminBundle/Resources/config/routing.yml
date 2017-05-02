@@ -170,6 +170,32 @@ admin_region_modify:
     options:
         expose: true
 
+#City
+admin_city:
+    path:     /admin/city
+    defaults: { _controller: AdminBundle:City:index }
+    options:
+        expose: true
+
+admin_city_create:
+    path:     /admin/city/create
+    defaults: { _controller: AdminBundle:City:create }
+
+admin_city_edit:
+    path:     /admin/city/edit/id/{id}/lang/{lang}/
+    defaults: { _controller: AdminBundle:City:edit }
+
+admin_city_translate:
+    path:     /admin/city/translate/id/{id}/lang/{lang}/
+    defaults: { _controller: AdminBundle:City:translate }
+    requirements:
+        lang:  '%app.router_languages%'
+
+admin_city_modify:
+    path:     /admin/city/modify/id/{id}/status/{status}
+    defaults: { _controller: AdminBundle:City:modify }
+    options:
+        expose: true
 
 # User
 admin_user:

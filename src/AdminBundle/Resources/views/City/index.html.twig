@@ -1,0 +1,37 @@
+{% extends 'AdminBundle:Master/Layouts:admin.html.twig' %}
+{% set page_title = 'admin.module.city.name'|trans({}, 'admin') %}
+
+{% block breadcrumbs %}
+    <div class="page-bar">
+        <ul class="page-breadcrumb">
+            <li>
+                <a href="{{ path('admin_dashboard') }}">
+                    {{ 'admin.global.breadcrumb.home'|trans({}, 'admin') }}
+                </a>
+                <i class="fa fa-circle"></i>
+            </li>
+            <li class="active">
+                <a href="{{ path('admin_city') }}">
+                    {{ 'admin.module.city.breadcrumb.city'|trans({}, 'admin') }}
+                </a>
+            </li>
+        </ul>
+    </div>
+{% endblock %}
+
+{% block toptitle %}
+    <h1 class="page-title"> {{ 'admin.module.city.name'|trans({}, 'admin') }}
+        <small> {{ 'admin.module.city.index.pagetitle_small'|trans({}, 'admin') }}</small>
+        <div class="pull-right">
+            <div class="btn-group">
+                <a class="btn blue btn-circle btn-md" href="{{ path('admin_city_create') }}">
+                    {{ 'admin.module.city.index.create_btn'|trans({}, 'admin') }}
+                </a>
+            </div>
+        </div>
+    </h1>
+{% endblock %}
+
+{% block content %}
+
+{% endblock %}

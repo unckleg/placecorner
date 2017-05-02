@@ -371,3 +371,16 @@ admin:
                 region_map_label: Region GeoLocation
                 region_map_placeholder: Pick Region Latitude/Longitude
                 geo_map_text: Region Latitude/Longitude
+        city:
+            name: City
+            breadcrumb:
+                city: City
+                create: City Create
+                edit: City Edit
+                translate: City Translate
+            index:
+                pagetitle: Cities
+                pagetitle_small: administration of all cities
+                create_btn: Create New City
+                caption: List
+                caption_small: of all cities
