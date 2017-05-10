@@ -37,10 +37,16 @@ class Region
     protected $cities;
 
     /**
+     * @ORM\OneToMany(targetEntity="Place", mappedBy="regionId")
+     */
+    protected $places;
+
+    /**
      * Country constructor.
      */
     public function __construct() {
         $this->cities = new ArrayCollection();
+        $this->places = new ArrayCollection();
     }
 
     /**

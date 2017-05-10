@@ -22,147 +22,150 @@ class Place
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var int
      *
      * @ORM\Column(name="user_type", type="integer")
      */
-    private $userType;
+    protected $userType;
 
     /**
      * @var int
      *
      * @ORM\Column(name="user_id", type="integer")
      */
-    private $userId;
+    protected $userId;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="country_id", type="integer")
+     * @ORM\ManyToOne(targetEntity="Country", inversedBy="places")
+     * @ORM\JoinColumn(name="country_id", referencedColumnName="id")
      */
-    private $countryId;
+    protected $countryId;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="region_id", type="integer")
+     * @ORM\ManyToOne(targetEntity="Region", inversedBy="places")
+     * @ORM\JoinColumn(name="region_id", referencedColumnName="id")
      */
-    private $regionId;
+    protected $regionId;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="city_id", type="integer")
+     * @ORM\ManyToOne(targetEntity="City", inversedBy="places")
+     * @ORM\JoinColumn(name="city_id", referencedColumnName="id")
      */
-    private $cityId;
+    protected $cityId;
 
     /**
      * @var int
      *
      * @ORM\Column(name="municipality_id", type="integer", nullable=true)
      */
-    private $municipalityId;
+    protected $municipalityId;
 
     /**
      * @var int
      *
      * @ORM\Column(name="gallery_id", type="integer", nullable=true)
      */
-    private $galleryId;
+    protected $galleryId;
 
     /**
      * @var string
      *
      * @ORM\Column(name="map", type="string", length=500)
      */
-    private $map;
+    protected $map;
 
     /**
      * @var string
      *
      * @ORM\Column(name="working_hours", type="text")
      */
-    private $workingHours;
+    protected $workingHours;
 
     /**
      * @var string
      *
      * @ORM\Column(name="address", type="string", length=500)
      */
-    private $address;
+    protected $address;
 
     /**
      * @var string
      *
      * @ORM\Column(name="phone", type="string", length=45)
      */
-    private $phone;
+    protected $phone;
 
     /**
      * @var string
      *
      * @ORM\Column(name="email", type="string", length=255)
      */
-    private $email;
+    protected $email;
 
     /**
      * @var string
      *
      * @ORM\Column(name="website", type="string", length=100, nullable=true)
      */
-    private $website;
+    protected $website;
 
     /**
      * @var int
      *
      * @ORM\Column(name="views", type="integer")
      */
-    private $views;
+    protected $views;
 
     /**
      * @var string
      *
      * @ORM\Column(name="social_facebook", type="string", length=1000, nullable=true)
      */
-    private $socialFacebook;
+    protected $socialFacebook;
 
     /**
      * @var string
      *
      * @ORM\Column(name="social_youtube", type="string", length=1000, nullable=true)
      */
-    private $socialYoutube;
+    protected $socialYoutube;
 
     /**
      * @var string
      *
      * @ORM\Column(name="social_instagram", type="string", length=1000, nullable=true)
      */
-    private $socialInstagram;
+    protected $socialInstagram;
 
     /**
      * @var string
      *
      * @ORM\Column(name="social_twitter", type="string", length=1000, nullable=true)
      */
-    private $socialTwitter;
+    protected $socialTwitter;
 
     /**
      * @var int
      *
      * @ORM\Column(name="status", type="integer")
      */
-    private $status;
+    protected $status = 0;
 
     /**
      * @var bool
      *
      * @ORM\Column(name="is_deleted", type="boolean")
      */
-    private $isDeleted;
+    protected $isDeleted = 0;
 
 
     /**
@@ -230,7 +233,7 @@ class Place
      *
      * @return Place
      */
-    public function setCountryId($countryId)
+    public function setCountry($countryId)
     {
         $this->countryId = $countryId;
 
@@ -242,7 +245,7 @@ class Place
      *
      * @return int
      */
-    public function getCountryId()
+    public function getCountry()
     {
         return $this->countryId;
     }
@@ -254,7 +257,7 @@ class Place
      *
      * @return Place
      */
-    public function setRegionId($regionId)
+    public function setRegion($regionId)
     {
         $this->regionId = $regionId;
 
@@ -266,7 +269,7 @@ class Place
      *
      * @return int
      */
-    public function getRegionId()
+    public function getRegion()
     {
         return $this->regionId;
     }
@@ -278,7 +281,7 @@ class Place
      *
      * @return Place
      */
-    public function setCityId($cityId)
+    public function setCity($cityId)
     {
         $this->cityId = $cityId;
 
@@ -290,7 +293,7 @@ class Place
      *
      * @return int
      */
-    public function getCityId()
+    public function getCity()
     {
         return $this->cityId;
     }
@@ -302,7 +305,7 @@ class Place
      *
      * @return Place
      */
-    public function setMunicipalityId($municipalityId)
+    public function setMunicipality($municipalityId)
     {
         $this->municipalityId = $municipalityId;
 
@@ -314,7 +317,7 @@ class Place
      *
      * @return int
      */
-    public function getMunicipalityId()
+    public function getMunicipality()
     {
         return $this->municipalityId;
     }

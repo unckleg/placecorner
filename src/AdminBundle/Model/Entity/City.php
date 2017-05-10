@@ -3,6 +3,7 @@
 namespace AdminBundle\Model\Entity;
 
 use App\CoreBundle\Model\Translation\TranslatableTrait;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -29,6 +30,18 @@ class City
      * @ORM\JoinColumn(name="region_id", referencedColumnName="id")
      */
     protected $regionId;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Place", mappedBy="cityId")
+     */
+    protected $places;
+
+    /**
+     * City constructor.
+     */
+    public function __construct() {
+        $this->places  = new ArrayCollection();
+    }
 
     /**
      * @var string

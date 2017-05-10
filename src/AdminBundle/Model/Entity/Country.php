@@ -31,10 +31,16 @@ class Country
     protected $regions;
 
     /**
+     * @ORM\OneToMany(targetEntity="Place", mappedBy="countryId")
+     */
+    protected $places;
+
+    /**
      * Country constructor.
      */
     public function __construct() {
         $this->regions = new ArrayCollection();
+        $this->places  = new ArrayCollection();
     }
 
     /**
