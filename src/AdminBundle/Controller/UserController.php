@@ -89,7 +89,7 @@ class UserController extends CoreController
 
                 // add flash message
                 $this->addFlash('sucess', sprintf($this->trans(
-        'admin.module.user.edit_successfully', [], 'flashes'),
+                    'admin.module.user.edit_successfully', [], 'flashes'),
                 $user->getFirstName() . ' ' . $user->getLastName()));
 
                 return $this->redirectToRoute('admin_user');

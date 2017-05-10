@@ -48,6 +48,14 @@ class Page
      */
     protected $status = 1;
 
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=255)
+     */
+    protected $link;
+
     /**
      * @var int
      *
@@ -85,6 +93,22 @@ class Page
         $this->image = $image;
 
         return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLink()
+    {
+        return $this->link;
+    }
+
+    /**
+     * @param string $link
+     */
+    public function setLink($link)
+    {
+        $this->link = $link;
     }
 
     /**

@@ -42,3 +42,7 @@ admin:
             edit_successfully: City %s is updated successfully
             no_content_notice: No content filled for this city!
             content_successfully: City content filled successfully for language %s
+        newsletter:
+            create_successfully: New subscriber is created successfully
+            edit_successfully: Subscriber %s is updated successfully
+            not_exist: Subscriber with searched id doesn't exist!

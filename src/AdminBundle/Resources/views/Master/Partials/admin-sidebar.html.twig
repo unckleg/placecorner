@@ -68,7 +68,7 @@
                     <span class="title">{{ 'admin.sidebar.tags.title'|trans({}, 'admin') }}</span>
                 </a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item {{ isActive('admin_place', 'parent') }}">
                 <a href="javascript:;" class="nav-link nav-toggle">
                     <i class="icon-menu"></i>
                     <span class="title">{{ 'admin.sidebar.listing.title'|trans({}, 'admin') }}</span>
@@ -76,7 +76,7 @@
                 </a>
                 <ul class="sub-menu">
                     <li class="nav-item start ">
-                        <a href="" class="nav-link ">
+                        <a href="{{ path('admin_place') }}" class="nav-link {{ isActive('admin_place', 'child') }}">
                             <span class="title">{{ 'admin.sidebar.listing.items'|trans({}, 'admin') }} </span>
                         </a>
                     </li>
@@ -126,13 +126,6 @@
                         </a>
                     </li>
                 </ul>
-            </li>
-            <li class="nav-item">
-                <a href="javascript:;" class="nav-link nav-toggle">
-                    <i class="icon-phone"></i>
-                    <span class="title">{{ 'admin.sidebar.partners.title'|trans({}, 'admin') }}</span>
-                    <span class="arrow"></span>
-                </a>
             </li>
             <li class="heading">
                 <h3 class="uppercase">{{  'admin.sidebar.heading.admin'|trans({}, 'admin') }}</h3>
@@ -203,20 +196,25 @@
                     </li>
                 </ul>
             </li>
-            <li class="nav-item">
+            <li class="nav-item {{ isActive('admin_newsletter', 'parent') }}">
                 <a href="javascript:;" class="nav-link nav-toggle">
                     <i class="icon-heart"></i>
                     <span class="title">{{ 'admin.sidebar.marketing.title'|trans({}, 'admin') }}</span>
                     <span class="arrow"></span>
                 </a>
                 <ul class="sub-menu">
+                    <li class="nav-item">
+                        <a href="javascript:;" class="nav-link nav-toggle">
+                            <span class="title">{{ 'admin.sidebar.partners.title'|trans({}, 'admin') }}</span>
+                        </a>
+                    </li>
                     <li class="nav-item start ">
                         <a href="" class="nav-link ">
                             <span class="title">{{ 'admin.sidebar.marketing.advertises'|trans({}, 'admin') }} </span>
                         </a>
                     </li>
-                    <li class="nav-item start ">
-                        <a href="" class="nav-link ">
+                    <li class="nav-item start {{ isActive('admin_newsletter', 'child') }}">
+                        <a href="{{ path('admin_newsletter') }}" class="nav-link ">
                             <span class="title">{{ 'admin.sidebar.marketing.newsletter'|trans({}, 'admin') }} </span>
                         </a>
                     </li>

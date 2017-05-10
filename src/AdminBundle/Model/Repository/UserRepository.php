@@ -2,7 +2,7 @@
 
 namespace AdminBundle\Model\Repository;
 
-use AdminBundle\Entity\User;
+use AdminBundle\Model\Entity\User;
 use Doctrine\ORM\EntityRepository;
 
 /**

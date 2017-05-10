@@ -16,22 +16,22 @@ class CityType extends AbstractType
     {
         $builder
             ->add('region', ChoiceType::class, [
-                'attr'  => ['class' => 'form-control'],
+                'attr'    => ['class' => 'form-control'],
                 'choices' => $this->flattenCountriesCollectionData($options['regions']),
                 'label'   => 'admin.module.city.form.city_region_label',
                 'data'    => $options['selectedRegion']
             ])
             ->add('name', TextType::class, [
-                'label' => 'admin.module.region.form.region_name_label',
+                'label' => 'admin.module.city.form.city_name_label',
                 'attr'  => [
                     'class'       => 'form-control',
-                    'placeholder' => 'admin.module.region.form.region_name_placeholder'
+                    'placeholder' => 'admin.module.city.form.region_name_placeholder'
             ]])
             ->add('map', TextType::class, [
-                'label' => 'admin.module.region.form.region_map_label',
+                'label' => 'admin.module.city.form.city_map_label',
                 'attr'  => [
                     'class'       => 'form-control',
-                    'placeholder' => 'admin.module.region.form.region_map_placeholder'
+                    'placeholder' => 'admin.module.city.form.region_map_placeholder'
             ]])
             ->add('seo_title', TextType::class, [
                 'label' => 'admin.module.city.form.city_seo_title_label',

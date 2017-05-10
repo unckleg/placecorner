@@ -1,0 +1,100 @@
+{% extends '@Admin/Master/Layouts/admin.html.twig' %}
+{% set page_title = 'admin.module.page.index.pagetitle'|trans({}, 'admin') %}
+
+{% block breadcrumbs %}
+    <div class="page-bar">
+        <ul class="page-breadcrumb">
+            <li>
+                <a href="{{ path('admin_dashboard') }}">
+                    {{ 'admin.global.breadcrumb.home'|trans({}, 'admin') }}
+                </a>
+                <i class="fa fa-circle"></i>
+            </li>
+            <li class="active">
+                <a href="{{ path('admin_place') }}">
+                    {{ 'admin.module.place.breadcrumb.place'|trans({}, 'admin') }}
+                </a>
+            </li>
+        </ul>
+    </div>
+{% endblock %}
+
+{% block toptitle %}
+    <h1 class="page-title"> {{ 'admin.module.place.name'|trans({}, 'admin') }}
+        <small>{{ 'admin.module.place.index.pagetitle_small'|trans({}, 'admin') }}</small>
+        <div class="pull-right">
+            <div class="btn-group">
+                <a class="btn blue btn-circle btn-md" href="{{ path('admin_place_create') }}">
+                    {{ 'admin.module.place.index.create_btn'|trans({}, 'admin') }}
+                </a>
+            </div>
+        </div>
+    </h1>
+{% endblock %}
+
+{% block content %}
+    <div class="portlet light">
+        <div class="portlet-title">
+            <div class="caption">
+                <i class="icon-menu font-grey-gallery"></i>
+                <span class="caption-subject bold font-grey-gallery uppercase">
+                        {{ 'admin.module.place.index.caption'|trans({}, 'admin') }}
+                </span>
+                <span class="caption-helper">
+                    {{ 'admin.module.place.index.caption_small'|trans({}, 'admin') }}
+                </span>
+            </div>
+            <div class="tools">
+                <a href="" class="collapse" data-original-title="" title=""> </a>
+                <a href="#portlet-config" data-toggle="modal" class="config" data-original-title="" title=""> </a>
+                <a href="" class="fullscreen" data-original-title="" title=""> </a>
+            </div>
+        </div>
+        <div class="portlet-body" style="display: block;">
+        </div>
+    </div>
+{% endblock %}
+
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ loadLibraries({
+        1: 'datatable',
+        2: 'confirmation'
+    }, 'js')|raw }}
+    <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+    <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('#page').DataTable();
+        });
+
+        function modifyPage() {
+            var status = $(this).data('action'),
+                id     = $(this).data('page-id'),
+                locale = '{{ app.request.attributes.get('_locale') }}'
+            ;
+
+            $.ajax({
+                url: Routing.generate('admin_page_modify', {id: id, status: status}),
+                method: 'POST'
+            }).done(function (data) {
+                console.log(data);
+                data == 'success'?
+                    window.location.replace(Routing.generate('admin_page', {'_locale': locale}))
+                    : null;
+            }).fail(function (data) {
+                console.log("There was an error");
+            });
+        };
+    </script>
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ loadLibraries({
+        1: 'datatable',
+        2: 'confirmation'
+    }, 'css')|raw }}
+{% endblock %}

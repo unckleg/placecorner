@@ -21,6 +21,12 @@ class PageType extends AbstractType
                     'class'       => 'form-control  input-lg',
                     'placeholder' => 'admin.module.page.form.page_title_placeholder'
             ]])
+            ->add('link', TextType::class, [
+                'label' => 'admin.module.page.form.page_link_label',
+                'attr'  => [
+                    'class'       => 'form-control',
+                    'placeholder' => 'admin.module.page.form.page_link_placeholder'
+            ]])
             ->add('content', TextareaType::class, [
                 'label' => 'admin.module.page.form.page_content_label',
                 'attr'  => [

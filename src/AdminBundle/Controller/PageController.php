@@ -66,7 +66,7 @@ class PageController extends CoreController
             return $this->redirectToRoute('admin_page_translate', ['id' => $id, 'lang' => $lang]);
         }
 
-        $page = $pageResult->translate($lang, false);
+        $page = $repository->find($id)->setLocale($lang, false);
         Validator::isValid($page);
 
         if ($request->isMethod(Request::METHOD_POST)) {
@@ -76,7 +76,6 @@ class PageController extends CoreController
             $form->handleRequest($request);
 
             if ($form->isSubmitted() && $form->isValid()) {
-
                 // save object changes and flush-update to DB
                 $em->flush();
 

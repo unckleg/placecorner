@@ -1,0 +1,39 @@
+{{ form_start(form) }}
+
+    {{ form_errors(form) }}
+    {{ form_row(form._token) }}
+
+    <div class="form-group">
+        {{ form_label(form.countryId) }}
+        {{ form_errors(form.countryId) }}
+        {{ form_widget(form.countryId) }}
+    </div>
+
+
+    <div class="form-group">
+        {{ form_label(form.email) }}
+        {{ form_errors(form.email) }}
+        {{ form_widget(form.email) }}
+    </div>
+
+    <div class="form-group">
+        {{ form_label(form.ip) }}
+        {{ form_errors(form.ip) }}
+        {{ form_widget(form.ip) }}
+    </div>
+
+    <div class="form-group">
+        {{ form_label(form.useragent) }}
+        {{ form_errors(form.useragent) }}
+        {{ form_widget(form.useragent) }}
+    </div>
+
+
+    <div class="form-group">
+        {{ form_widget(form.save) }}
+        <a href="{{ path('admin_newsletter') }}"
+           class="btn default">{{ 'admin.global.form.button_cancel'|trans({}, 'admin') }}
+        </a>
+    </div>
+
+{{ form_end(form) }}

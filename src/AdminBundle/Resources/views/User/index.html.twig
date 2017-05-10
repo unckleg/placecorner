@@ -192,6 +192,7 @@
 {% endblock %}
 
 {% block stylesheets %}
+    {{ parent() }}
     {{ loadLibraries({
         1: 'datatable',
         2: 'confirmation'

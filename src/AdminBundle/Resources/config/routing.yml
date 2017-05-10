@@ -197,6 +197,48 @@ admin_city_modify:
     options:
         expose: true
 
+#Newsletter
+admin_newsletter:
+    path:     /admin/newsletter
+    defaults: { _controller: AdminBundle:Newsletter:index }
+    options:
+        expose: true
+
+admin_newsletter_create:
+    path:     /admin/newsletter/create
+    defaults: { _controller: AdminBundle:Newsletter:create }
+
+admin_newsletter_edit:
+    path:     /admin/newsletter/edit/id/{id}
+    defaults: { _controller: AdminBundle:Newsletter:edit }
+
+admin_newsletter_modify:
+    path:     /admin/newsletter/modify/id/{id}/status/{status}
+    defaults: { _controller: AdminBundle:Newsletter:modify }
+    options:
+        expose: true
+
+# Place
+admin_place:
+    path:     /admin/place
+    defaults: { _controller: AdminBundle:Place:index }
+    options:
+        expose: true
+
+admin_place_create:
+    path:     /admin/newsletter/create
+    defaults: { _controller: AdminBundle:Newsletter:create }
+
+admin_place_edit:
+    path:     /admin/place/edit/id/{id}/lang/{lang}
+    defaults: { _controller: AdminBundle:Place:edit }
+
+admin_place_modify:
+    path:     /admin/place/modify/id/{id}/status/{status}
+    defaults: { _controller: AdminBundle:Place:modify }
+    options:
+        expose: true
+
 # User
 admin_user:
     path:     /admin/user

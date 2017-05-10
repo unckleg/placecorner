@@ -67,6 +67,7 @@ table.dataTable.no-footer {
 }
 
 .category-image {
+    margin-bottom: 20px;
     position:  relative;
     width: 100%;
     -webkit-transition: all .25s;

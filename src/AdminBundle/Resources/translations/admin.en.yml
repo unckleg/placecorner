@@ -162,6 +162,8 @@ admin:
             form:
                 page_title_label: Page Title
                 page_title_placeholder: Insert title for this Page
+                page_link_label: Page Link
+                page_link_placeholder: Insert Page Link for forwarding on click on navigation menu
                 page_content_label: Page Content Editor
                 page_seo_title_label: SEO Title
                 page_seo_title_placeholder: Insert SEO title for this Page
@@ -423,3 +425,55 @@ admin:
                 city_seo_keywords_label: SEO Keywords
                 city_seo_keywords_placeholder: Insert SEO keywords for this City
                 geo_map_text: City Latitude/Longitude
+        newsletter:
+            name: Newsletter
+            breadcrumb:
+                newsletter: Newsletter
+                create: Subscriber Create
+                edit: Subscriber Edit
+            index:
+                pagetitle: Newsletter
+                pagetitle_small: administration of all subscribers
+                create_btn: Create New Subscriber
+                caption: List
+                caption_small: of all subscribers
+                table:
+                    th_country: Subscriber Country
+                    th_email: Subscriber Email
+                    th_ip: Subscriber IP
+                    th_date: Date Subscribed
+                    th_actions: Actions
+                    th_status: Status
+                    td_active: Active
+                    td_hidden: Banned
+                    td_hide: Ban Subscriber ?
+                    td_show: Unban Subscriber ?
+                    td_delete: Delete Subscriber ?
+                    td_edit: Edit Subscriber ?
+            create:
+                pagetitle: New Subscriber
+                caption: New Subscriber Form
+            edit:
+                pagetitle: Editing Subscriber:
+                caption: Edit Subscriber Form
+            form:
+                country_label: Origin/Country
+                country_placeholder: Select Country for new Subscriber
+                email_label: Subscriber Email
+                email_placeholder: Insert Email for new Subscriber
+                ip_label: IP Address
+                ip_placeholder: Insert Subscriber's IP address
+                useragent_label: User Agent
+                useragent_placeholder: Insert User Agent for new Subscriber
+        place:
+            name: Place
+            breadcrumb:
+                place: Place
+                create: Place Create
+                edit: Place Edit
+            index:
+                pagetitle: Place
+                pagetitle_small: administration of all places/directories
+                create_btn: Create New Place
+                caption: List
+                caption_small: of all places/directories

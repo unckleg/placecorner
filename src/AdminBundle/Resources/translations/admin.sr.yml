@@ -161,6 +161,8 @@ admin:
             form:
                 page_title_label: Naslov Stranice
                 page_title_placeholder: Unesite naslov za ovu stranicu
+                page_link_label: Link Stranice
+                page_link_placeholder: Unesite kuda Link stranice vodi klikom na istu iz menija
                 page_content_label: Editor za sadržaj stranice
                 page_seo_title_label: SEO Naslov
                 page_seo_title_placeholder: Unesite SEO naslov za ovu stranicu

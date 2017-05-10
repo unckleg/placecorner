@@ -4,10 +4,10 @@ namespace FrontBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-class DefaultController extends Controller
+class IndexController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('FrontBundle:Default:index.html.twig');
+        return $this->render('FrontBundle:Index:index.html.twig');
     }
 }
