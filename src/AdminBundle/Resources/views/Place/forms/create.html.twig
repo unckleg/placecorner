@@ -1,0 +1,184 @@
+{{ form_start(form) }}
+
+    {{ form_errors(form) }}
+    {{ form_row(form._token) }}
+
+    <div class="tab-content" style="padding: 20px; background-color: white; overflow: hidden; color: #888;">
+        <div class="tab-pane active" id="general_tab">
+            <!-- PLACE DIRECTORY TITLE -->
+            <div class="form-group row">
+                {{ form_label(form.title) }}
+                <div class="col-md-6">
+                    {{ form_widget(form.title) }}
+                </div>
+                {{ form_errors(form.title) }}
+            </div>
+
+            <!-- PLACE DIRECTORY CONTENT -->
+            <div class="form-group row">
+                {{ form_label(form.content) }}
+                <div class="col-md-6">
+                    {{ form_widget(form.content) }}
+                </div>
+                {{ form_errors(form.content) }}
+            </div>
+
+            <!-- PLACE DIRECTORY WORKING HOURS -->
+            <div class="form-group row">
+                {{ form_label(form.working_hours) }}
+                <div class="col-md-6">
+                    {{ form_widget(form.working_hours) }}
+                </div>
+                {{ form_errors(form.working_hours) }}
+            </div>
+
+            <!-- PLACE DIRECTORY ADDRESS -->
+            <div class="form-group row">
+                {{ form_label(form.address) }}
+                <div class="col-md-6">
+                    {{ form_widget(form.address) }}
+                </div>
+                {{ form_errors(form.address) }}
+            </div>
+
+            <!-- PLACE DIRECTORY PHONE -->
+            <div class="form-group row">
+                {{ form_label(form.phone) }}
+                <div class="col-md-6">
+                    {{ form_widget(form.phone) }}
+                </div>
+                {{ form_errors(form.phone) }}
+            </div>
+
+            <!-- PLACE DIRECTORY EMAIL -->
+            <div class="form-group row">
+                {{ form_label(form.email) }}
+                <div class="col-md-6">
+                    {{ form_widget(form.email) }}
+                </div>
+                {{ form_errors(form.email) }}
+            </div>
+
+            <!-- PLACE DIRECTORY WEBSITE -->
+            <div class="form-group row">
+                {{ form_label(form.website) }}
+                <div class="col-md-6">
+                    {{ form_widget(form.website) }}
+                </div>
+                {{ form_errors(form.website) }}
+            </div>
+        </div>
+
+        <div class="tab-pane" id="locations_tab">
+            <!-- PLACE DIRECTORY COUNTRY -->
+            <div class="form-group row">
+                {{ form_label(form.country_id) }}
+                <div class="col-md-6">
+                    {{ form_widget(form.country_id) }}
+                </div>
+                {{ form_errors(form.country_id) }}
+            </div>
+
+            <!-- PLACE DIRECTORY REGION -->
+            <div class="form-group row">
+                {{ form_label(form.region_id) }}
+                <div class="col-md-6">
+                    {{ form_widget(form.region_id) }}
+                </div>
+                {{ form_errors(form.region_id) }}
+            </div>
+
+            <!-- PLACE DIRECTORY CITY -->
+            <div class="form-group row">
+                {{ form_label(form.city_id) }}
+                <div class="col-md-6">
+                    {{ form_widget(form.city_id) }}
+                </div>
+                {{ form_errors(form.city_id) }}
+            </div>
+
+            <!-- PLACE DIRECTORY MAP -->
+            <div class="form-group row">
+                {{ form_label(form.map) }}
+                <div class="col-md-6">
+                    {{ form_widget(form.map) }}
+                </div>
+                {{ form_errors(form.map) }}
+            </div>
+        </div>
+
+        <div class="tab-pane" id="gallery_tab">
+            <!-- PLACE DIRECTORY GALLERY -->
+            {#<div class="form-group row">#}
+                {#{{ form_label(form.gallery_id) }}#}
+                {#<div class="col-md-6">#}
+                    {#{{ form_widget(form.gallery_id) }}#}
+                {#</div>#}
+                {#{{ form_errors(form.gallery_id) }}#}
+            {#</div>#}
+        </div>
+
+        <div class="tab-pane" id="socialseo_tab">
+            <!-- PLACE DIRECTORY SEO TITLE -->
+            <div class="form-group row">
+                {{ form_label(form.seo_title) }}
+                <div class="col-md-6">
+                    {{ form_widget(form.seo_title) }}
+                </div>
+                {{ form_errors(form.seo_title) }}
+            </div>
+
+            <!-- PLACE DIRECTORY SEO DESCRIPTION -->
+            <div class="form-group row">
+                {{ form_label(form.seo_description) }}
+                <div class="col-md-6">
+                    {{ form_widget(form.seo_description) }}
+                </div>
+                {{ form_errors(form.seo_description) }}
+            </div>
+
+            <!-- PLACE DIRECTORY SEO KEYWORDS -->
+            <div class="form-group row">
+                {{ form_label(form.seo_keywords) }}
+                <div class="col-md-6">
+                    {{ form_widget(form.seo_keywords) }}
+                </div>
+                {{ form_errors(form.seo_keywords) }}
+            </div>
+
+            <div class="form-group row">
+                {{ form_label(form.social_facebook) }}
+                <div class="col-md-6">
+                    {{ form_widget(form.social_facebook) }}
+                </div>
+                {{ form_errors(form.social_facebook) }}
+            </div>
+
+            <div class="form-group row">
+                {{ form_label(form.social_youtube) }}
+                <div class="col-md-6">
+                    {{ form_widget(form.social_youtube) }}
+                </div>
+                {{ form_errors(form.social_youtube) }}
+            </div>
+
+            <div class="form-group row">
+                {{ form_label(form.social_instagram) }}
+                <div class="col-md-6">
+                    {{ form_widget(form.social_instagram) }}
+                </div>
+                {{ form_errors(form.social_instagram) }}
+            </div>
+
+            <div class="form-group row">
+                {{ form_label(form.social_twitter) }}
+                <div class="col-md-6">
+                    {{ form_widget(form.social_twitter) }}
+                </div>
+                {{ form_errors(form.social_twitter) }}
+            </div>
+        </div>
+
+    </div>
+
+{{ form_end(form) }}

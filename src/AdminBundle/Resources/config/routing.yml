@@ -226,8 +226,8 @@ admin_place:
         expose: true
 
 admin_place_create:
-    path:     /admin/newsletter/create
-    defaults: { _controller: AdminBundle:Newsletter:create }
+    path:     /admin/place/create
+    defaults: { _controller: AdminBundle:Place:create }
 
 admin_place_edit:
     path:     /admin/place/edit/id/{id}/lang/{lang}

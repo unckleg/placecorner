@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.2
--- http://www.phpmyadmin.net
+-- version 4.6.5.2
+-- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 11, 2017 at 01:57 AM
--- Server version: 10.1.19-MariaDB
--- PHP Version: 5.6.24
+-- Generation Time: May 11, 2017 at 07:11 
+-- Server version: 10.1.21-MariaDB
+-- PHP Version: 7.1.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -489,9 +489,9 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `username`, `email`, `password`, `username_canonical`, `email_canonical`, `enabled`, `salt`, `last_login`, `confirmation_token`, `password_requested_at`, `roles`, `first_name`, `last_name`, `is_deleted`) VALUES
-(1, 'djordjeadmin', 'djordjestojilljkovic@gmail.com', '$2y$13$a8NnPaP.GerWDx6hPhm0seEaj1Ywg3tY9I8T.RiB0ztfTt74BS7tO', 'djordjeadmin', 'djordjestojilljkovic@gmail.com', 1, NULL, '2017-05-10 22:42:41', NULL, NULL, 'a:1:{i:0;s:16:"ROLE_SUPER_ADMIN";}', 'Djordje ', 'Stojiljkovic', 0),
-(2, 'username', 'mejl@mejl', '$2y$13$WHB7TWLw5w7jz6fT6thoX.Hn/5H1nxLw2eR/RZFTkC0dssxrrA7aO', 'username', 'mejl@mejl', 1, NULL, '2017-04-19 22:19:27', NULL, NULL, 'a:1:{i:0;s:16:"ROLE_SUPER_ADMIN";}', 'sdawdawdawd', 'Ruta', 0),
-(3, 'metropolitan', 'metropolitan@gmail.com', '$2y$13$qoU5Pzpouwx31ZXUqERMk.qS5QrLg8km6UMpAmiJ8vxFJ42eYHQTe', 'metropolitan', 'metropolitan@gmail.com', 1, NULL, NULL, NULL, NULL, 'a:1:{i:0;s:16:"ROLE_SUPER_ADMIN";}', 'Demo', 'Korisnik', 0);
+(1, 'djordjeadmin', 'djordjestojilljkovic@gmail.com', '$2y$13$a8NnPaP.GerWDx6hPhm0seEaj1Ywg3tY9I8T.RiB0ztfTt74BS7tO', 'djordjeadmin', 'djordjestojilljkovic@gmail.com', 1, NULL, '2017-05-11 14:10:49', NULL, NULL, 'a:1:{i:0;s:16:\"ROLE_SUPER_ADMIN\";}', 'Djordje ', 'Stojiljkovic', 0),
+(2, 'username', 'mejl@mejl', '$2y$13$WHB7TWLw5w7jz6fT6thoX.Hn/5H1nxLw2eR/RZFTkC0dssxrrA7aO', 'username', 'mejl@mejl', 1, NULL, '2017-04-19 22:19:27', NULL, NULL, 'a:1:{i:0;s:16:\"ROLE_SUPER_ADMIN\";}', 'sdawdawdawd', 'Ruta', 0),
+(3, 'metropolitan', 'metropolitan@gmail.com', '$2y$13$qoU5Pzpouwx31ZXUqERMk.qS5QrLg8km6UMpAmiJ8vxFJ42eYHQTe', 'metropolitan', 'metropolitan@gmail.com', 1, NULL, NULL, NULL, NULL, 'a:1:{i:0;s:16:\"ROLE_SUPER_ADMIN\";}', 'Demo', 'Korisnik', 0);
 
 --
 -- Indexes for dumped tables

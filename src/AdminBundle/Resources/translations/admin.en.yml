@@ -477,3 +477,58 @@ admin:
                 create_btn: Create New Place
                 caption: List
                 caption_small: of all places/directories
+                table:
+                    th_title: Name
+                    th_country_region: Country/Region
+                    th_city: City
+                    th_map: Geolocation
+                    th_website: Website
+                    th_status: Status
+                    th_actions: Actions
+                    td_active: Active
+                    td_hidden: Hidden
+                    td_hide: Hide Place/Directory ?
+                    td_show: Show Place/Directory ?
+                    td_delete: Delete Place/Directory ?
+                    td_edit: Edit Place/Directory ?
+            create:
+                pagetitle: New Place/Directory
+                caption: New Place/Directory Form
+                fill_for_first: You must first create content for primary language.
+            edit:
+                pagetitle: Editing Place/Directory:
+                caption: Edit Place/Directory Form
+            form:
+                title_label: Place/Directory Title
+                title_placeholder: Insert Title for New Place/Directory
+                content_label: Place/Directory Content
+                gallery_label: Gallery
+                map_label: GeoLocation
+                map_placeholder: Pick Place/Directory - Latitude/Longitude from Map
+                working_label: Working Hours
+                working_placeholder: Insert Working hours for New Place/Directory
+                address_label: Address
+                address_placeholder: Insert Address for New Place/Directory
+                phone_label: Phone
+                phone_placeholder: Insert Phone for New Place/Directory (+381 66 5253 49)
+                email_label: Email Address
+                email_placeholder: Insert Email Address for New Place/Directory
+                website_label: Website Url
+                website_placeholder: Leave blank if there is no one
+                page_seo_title_label: SEO Title
+                page_seo_title_placeholder: Insert SEO title for this Place
+                page_seo_description_label: SEO Description
+                page_seo_description_placeholder: Insert SEO description for this Place
+                page_seo_keywords_label: SEO Keywords
+                page_seo_keywords_placeholder: Insert SEO keywords for this Place
+                facebook_label: Facebook-Page URL
+                facebook_placeholder: Leave blank if there is no one
+                youtube_label: Youtube-Channel URL
+                youtube_placeholder: Leave blank if there is no one
+                instagram_label: Instagram-Page URL
+                instagram_placeholder: Leave blank if there is no one
+                twitter_label: Twitter-Profile URL
+                twitter_placeholder: Leave blank if there is no one
+                country_label: Assign Country for New Place/Directory
+                region_label: Assign Region for New Place/Directory
+                city_label: Assign City for New Place/Directory

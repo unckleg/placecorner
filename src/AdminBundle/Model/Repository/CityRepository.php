@@ -6,6 +6,7 @@ use AdminBundle\Model\Entity\City;
 use App\CoreBundle\Model\Constants;
 use App\CoreBundle\Service\Validator\Validator;
 use Doctrine\ORM\EntityRepository;
+use Doctrine\ORM\AbstractQuery;
 
 class CityRepository extends EntityRepository implements Constants
 {
@@ -86,6 +87,28 @@ class CityRepository extends EntityRepository implements Constants
             ->setParameter('id', $id)
             ->getQuery()
             ->getOneOrNullResult()
+        ;
+    }
+
+    /**
+     * findRegions Method used for fetching assoc array for Forms
+     *  - create
+     *  - edit
+     *  - translate
+     * @return array
+     */
+    public function findCities()
+    {
+        return $this
+            ->createQueryBuilder('c')
+            ->select(['t.name', 'c.id', 'c', 't'])
+            ->leftJoin('c.translations', 't')
+            ->where('t.locale = :locale')
+            ->andWhere('c.isDeleted = :deleted')
+            ->setParameter('deleted', self::IS_ACTIVE)
+            ->setParameter('locale', self::DEFAULT_LOCALE)
+            ->getQuery()
+            ->getResult(AbstractQuery::HYDRATE_ARRAY)
         ;
     }
 }

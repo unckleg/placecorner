@@ -51,6 +51,99 @@
             </div>
         </div>
         <div class="portlet-body" style="display: block;">
+            <table class="table table-bordered table-hover" id="items">
+                <thead>
+                <tr>
+                    <th class="text-center"> {{ 'admin.module.place.index.table.th_title'|trans({}, 'admin') }} </th>
+                    <th class="text-center"> {{ 'admin.module.place.index.table.th_country_region'|trans({}, 'admin') }} </th>
+                    <th class="text-center"> {{ 'admin.module.place.index.table.th_city'|trans({}, 'admin') }} </th>
+                    <th class="text-center"> {{ 'admin.module.place.index.table.th_map'|trans({}, 'admin') }} </th>
+                    <th class="text-center"> {{ 'admin.module.place.index.table.th_website'|trans({}, 'admin') }} </th>
+                    <th class="text-center"> {{ 'admin.module.place.index.table.th_status'|trans({}, 'admin') }} </th>
+                    <th class="text-center"> {{ 'admin.module.place.index.table.th_actions'|trans({}, 'admin') }} </th>
+                </tr>
+                </thead>
+                <tbody>
+                {% if places is not empty %}
+                    {% for place in places %}
+                        <tr>
+                            <td class="text-center"> {{ place.getTitle }} </td>
+                            <td class="text-center"> {{ place.getCountry.getName ~' / '~ place.getRegion.getName}} </td>
+                            <td class="text-center"> {{ place.getCity.getName }} </td>
+                            <td class="text-center"> {{ place.getMap }} </td>
+                            <td class="text-center">
+                                <a href="{{ place.getWebsite }}" target="_blank">
+                                    {{ place.getWebsite }}
+                                </a>
+                            </td>
+                            <td class="text-center">
+                                {% if place.getStatus == 1 %}
+                                    <span class="label label-sm label-info">
+                                    {{ 'admin.module.place.index.table.td_active'|trans({}, 'admin') }}
+                                </span>
+                                {% else %}
+                                    <span class="label label-sm label-danger">
+                                    {{ 'admin.module.place.index.table.td_hidden'|trans({}, 'admin') }}
+                                </span>
+                                {% endif %}
+                            </td>
+                            <td class="text-center" style="width: 20%;">
+                                {% if place.getStatus == 1 %}
+                                    <a class="btn purple btn-sm tooltips" type="button" data-container="body"
+                                       data-placement="top"
+                                       data-original-title="{{ 'admin.module.place.index.table.td_hide'|trans({}, 'admin') }}"
+                                       data-action="hide"
+                                       data-place-id="{{ place.getId }}"
+                                       data-btn-ok-label="{{ 'admin.global.buttons.yes'|trans({}, 'admin') }}"
+                                       data-btn-cancel-label="{{ 'admin.global.buttons.no'|trans({}, 'admin') }}"
+                                       data-toggle="confirmation"
+                                       data-popout="true"
+                                       data-on-confirm="modifyPlace">
+                                        <i class="icon-close"></i>
+                                    </a>
+                                {% else %}
+                                    <a class="btn default btn-sm tooltips" type="button" data-container="body"
+                                       data-placement="top"
+                                       data-original-title="{{ 'admin.module.place.index.table.td_show'|trans({}, 'admin') }}"
+                                       data-action="show"
+                                       data-place-id="{{ place.getId }}"
+                                       data-btn-ok-label="{{ 'admin.global.buttons.yes'|trans({}, 'admin') }}"
+                                       data-btn-cancel-label="{{ 'admin.global.buttons.no'|trans({}, 'admin') }}"
+                                       data-toggle="confirmation"
+                                       data-popout="true"
+                                       data-on-confirm="modifyPlace">
+                                        <i class="icon-check"></i>
+                                    </a>
+                                {% endif %}
+                                <a href="{{ path('admin_place_edit', {'id': place.getId, 'lang': place.getLocale}) }}"
+                                   class="btn blue btn-sm tooltips"
+                                   type="button"
+                                   data-container="body"
+                                   data-placement="top"
+                                   data-original-title="{{ 'admin.module.place.index.table.td_edit'|trans({}, 'admin') }}">
+                                    <i class="icon-pencil"></i>
+                                </a>
+
+                                <a class="btn btn-danger btn-sm tooltips"
+                                   type="button" data-container="body"
+                                   data-placement="top"
+                                   data-original-title="{{ 'admin.module.place.index.table.td_delete'|trans({}, 'admin') }}"
+                                   data-action="delete"
+                                   data-place-id="{{ place.getId }}"
+                                   data-toggle="confirmation"
+                                   data-btn-ok-label="{{ 'admin.global.buttons.yes'|trans({}, 'admin') }}"
+                                   data-btn-cancel-label="{{ 'admin.global.buttons.no'|trans({}, 'admin') }}"
+                                   data-popout="true"
+                                   data-on-confirm="modifyPlace">
+                                    <i class="icon-trash"></i>
+                                </a>
+
+                            </td>
+                        </tr>
+                    {% endfor %}
+                {% endif %}
+                </tbody>
+            </table>
         </div>
     </div>
 {% endblock %}
@@ -67,22 +160,22 @@
 
     <script>
         $(document).ready(function() {
-            $('#page').DataTable();
+            $('#items').DataTable();
         });
 
-        function modifyPage() {
+        function modifyPlace() {
             var status = $(this).data('action'),
-                id     = $(this).data('page-id'),
+                id     = $(this).data('place-id'),
                 locale = '{{ app.request.attributes.get('_locale') }}'
             ;
 
             $.ajax({
-                url: Routing.generate('admin_page_modify', {id: id, status: status}),
+                url: Routing.generate('admin_place_modify', {id: id, status: status}),
                 method: 'POST'
             }).done(function (data) {
                 console.log(data);
                 data == 'success'?
-                    window.location.replace(Routing.generate('admin_page', {'_locale': locale}))
+                    window.location.replace(Routing.generate('admin_place', {'_locale': locale}))
                     : null;
             }).fail(function (data) {
                 console.log("There was an error");

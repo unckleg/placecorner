@@ -20,3 +20,5 @@ libraries:
         - '/skins/backend/assets/pages/scripts/form-dropzone.min.js'
     gmaps:
         - '/skins/backend/assets/vendors/gmaps/gmaps.min.js'
+    place_form:
+        - '/skins/backend/assets/cms/place.css'

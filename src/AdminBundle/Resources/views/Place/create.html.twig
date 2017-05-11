@@ -1,0 +1,129 @@
+{% extends 'AdminBundle:Master/Layouts:admin.html.twig' %}
+{% set page_title = 'admin.module.place.breadcrumb.create'|trans({}, 'admin') %}
+
+{% block breadcrumbs %}
+    <div class="page-bar">
+        <ul class="page-breadcrumb">
+            <li>
+                <a href="{{ path('admin_dashboard') }}">
+                    {{ 'admin.global.breadcrumb.home'|trans({}, 'admin') }}
+                </a>
+                <i class="fa fa-circle"></i>
+            </li>
+            <li>
+                <a href="{{ path('admin_place') }}">
+                    {{ 'admin.module.place.breadcrumb.place'|trans({}, 'admin') }}
+                </a>
+                <i class="fa fa-circle"></i>
+            </li>
+            <li class="active">
+                <a href="{{ path('admin_place_create') }}">
+                    {{ 'admin.module.place.breadcrumb.create'|trans({}, 'admin') }}
+                </a>
+            </li>
+        </ul>
+    </div>
+{% endblock %}
+
+{% block toptitle %}
+    <h1 class="page-title"> {{ 'admin.module.place.name'|trans({}, 'admin') }}
+        <small> {{ 'admin.module.place.create.pagetitle'|trans({}, 'admin') }}</small>
+        <div class="pull-right">
+            <div class="btn-group">
+                <a class="btn blue btn-circle btn-md" href="{{ path('admin_place') }}">
+                    {{ 'admin.global.buttons.go_back'|trans({}, 'admin') }}
+                </a>
+            </div>
+        </div>
+    </h1>
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-3 col-sm-3 col-xs-3">
+            <div class="current-logo" style="border: 0.2px solid #4a3272;background-color: #4a3272;padding-left: 18px; height: 50px;">
+                <img src="" style="max-width: 100%; max-height: 100%; padding-top: 10px;">
+            </div>
+            <ul class="nav nav-tabs tabs-left" style="margin-top: 5px;">
+                <li class="active">
+                    <a href="#general_tab" data-toggle="tab"> <i class="icon-home"></i> GENERAL </a>
+                </li>
+                <li>
+                    <a href="#locations_tab" data-toggle="tab"> <i class="icon-map"></i> LOCATIONS </a>
+                </li>
+                <li>
+                    <a href="#gallery_tab" data-toggle="tab"> <i class="icon-picture"></i> GALLERY </a>
+                </li>
+                <li>
+                    <a href="#user_tab" data-toggle="tab"> <i class="icon-people"></i> USER </a>
+                </li>
+                <li>
+                    <a href="#socialseo_tab" data-toggle="tab"> <i class="icon-social-twitter"></i> SOCIAL & SEO</a>
+                </li>
+            </ul>
+            <div class="btn-group" style="width: 100%;margin-top: -11px;padding-left: 1px;padding-right: 1px;">
+                <a class="btn blue btn-md" style="float: right; width: 100%;background-color: #3598dc; border-color: #3598dc;" onclick="$('#config').submit()"> Save Changes </a>
+            </div>
+        </div>
+        <div class="before-navigation col-md-9 col-sm-9 col-xs-9">
+            <div id="form-wizard" class="block form-wizard">
+                <ul class="form-wizard-levels">
+                    {% for language in languages %}
+                        <li {% if loop.first %} class="active" {% else %}
+                            class="tooltips" data-container="body" data-placement="top" data-original-title="{{ 'admin.module.place.create.fill_for_first'|trans({}, 'admin') }}" {% endif %}>
+                            <a>
+                                {{ language.short|upper }}
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-md-9 col-sm-9 col-xs-9" style="padding-left: 0px;">
+            {% include '@Admin/Place/forms/create.html.twig' %}
+        </div>
+
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ loadLibraries('gmaps', 'js')|raw }}
+    <script src="http://maps.google.com/maps/api/js?key=AIzaSyD07QN1C5ATB6dgzP9l5kF_CDn7ihVXric"></script>
+
+    <script>
+        var map = new GMaps({
+            el: '#map',
+            lat: 44.1888188,
+            lng: 18.7563459,
+            zoom: 7,
+            click: function(event) {
+
+                // first remove markers if exist
+                map.removeMarkers();
+                var lat = event.latLng.lat(),
+                    lng = event.latLng.lng(),
+                    coordinates = lat +', '+lng;
+
+                map.addMarker({
+                    lat: lat,
+                    lng: lng,
+                    icon: {
+                        url: 'http://icons.iconarchive.com/icons/paomedia/small-n-flat/1024/map-marker-icon.png',
+                        scaledSize: new google.maps.Size(60, 60),
+                    },
+                    title: '{{ 'admin.module.place.form.geo_map_text'|trans({}, 'admin') }}'
+                });
+
+                // setting map input coordinates
+                $('#place_map').val(coordinates);
+            },
+        });
+    </script>
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ loadLibraries('place_form', 'css')|raw }}
+{% endblock %}

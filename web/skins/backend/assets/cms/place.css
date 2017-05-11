@@ -1,0 +1,45 @@
+.tabs-left.nav-tabs {
+    background-color: #4a3272;
+    border: 1px solid #ddd;
+}
+.tabs-left.nav-tabs>li.active>a, .tabs-left.nav-tabs>li.active>a:hover {
+    -moz-border-radius: 4px 0 0 4px;
+    -ms-border-radius: 4px 0 0 4px;
+    -o-border-radius: 4px 0 0 4px;
+    background-color: #ff9800;
+    color: white;
+    border: 1px solid #ff9800;
+}
+.tabs-left.nav-tabs>li>a:focus, .tabs-left.nav-tabs>li>a:hover {
+    border-color: #2c3542;
+    background-color: #2c3542;
+    color: white;
+}
+.tabs-left.nav-tabs>li>a {
+    color: white;
+}
+.tabs-left.nav-tabs>li>a:focus {
+    border-color: #ff9800;
+    background-color: #ff9800;
+    color: white;
+}
+.nav-pills .dropdown.open>.dropdown-toggle, .nav-tabs .dropdown.open>.dropdown-toggle {
+    background: #4a3272;
+    color: #ffffff;
+    border-color: transparent;
+}
+.control-label {
+    margin-top: 1px;
+    color: black;
+    font-weight: 400;
+}
+.input-group-addon>i {
+    color: #ffffff;
+}
+.input-group-addon {
+    background-color: #364150;
+}
+
+.before-navigation {
+    padding-left: 0px !important;
+}
