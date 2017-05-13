@@ -32,6 +32,22 @@ class City
     protected $regionId;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="is_popular", type="boolean")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $isPopular;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="is_top", type="boolean")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $isTop;
+
+    /**
      * @ORM\OneToMany(targetEntity="Place", mappedBy="cityId")
      */
     protected $places;
@@ -77,6 +93,39 @@ class City
      * @ORM\Column(name="map", type="string", length=500)
      */
     protected $map;
+
+    /**
+     * @return bool
+     */
+    public function isPopular()
+    {
+        return $this->isPopular;
+    }
+
+    /**
+     * @param bool $isPopular
+     */
+    public function setIsPopular($isPopular)
+    {
+        $this->isPopular = $isPopular;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isTop()
+    {
+        return $this->isTop;
+    }
+
+    /**
+     * @param bool $isTop
+     */
+    public function setIsTop($isTop)
+    {
+        $this->isTop = $isTop;
+    }
+
 
 
     /**

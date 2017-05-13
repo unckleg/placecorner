@@ -49,6 +49,7 @@ class CategoryRepository extends EntityRepository implements Constants
      *
      * @param  string  $locale
      * @param  integer $type
+     * @param  integer $parentId
      * @return array
      */
     public function findAllByLocale($locale = null, $type = Constants::PARENT, $parentId = null)
@@ -69,8 +70,7 @@ class CategoryRepository extends EntityRepository implements Constants
 
         if ($type == Constants::PARENT) {
             // return just parents
-            $qb->andWhere('c.parentId  = :isParent')
-               ->setParameter('isParent', Constants::PARENT);
+            $qb->andWhere('c.parentId IS NULL');
         } else {
             Validator::isValid($parentId, Validator::IS_NUMERIC);
             // where not equal 0 | return just subcategories
@@ -125,10 +125,9 @@ class CategoryRepository extends EntityRepository implements Constants
             ->leftJoin('c.translations', 't')
             ->where('t.locale = :locale')
             ->andWhere('c.isDeleted = :deleted')
-            ->andWhere('c.parentId  = :isParent')
+            ->andWhere('c.parentId  IS NULL')
             ->setParameter('deleted', Constants::IS_ACTIVE)
             ->setParameter('locale', Constants::DEFAULT_LOCALE)
-            ->setParameter('isParent', Constants::PARENT)
         ;
 
         return $qb->getQuery()

@@ -41,7 +41,7 @@ class PageController extends CoreController
             }
 
             $this->addFlash('sucess', $this->trans(
-    'admin.module.page.create_successfully', [], 'flashes'));
+                'admin.module.page.create_successfully', [], 'flashes'));
             return $this->redirectToRoute('admin_page');
         }
 

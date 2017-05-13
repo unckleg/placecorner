@@ -46,3 +46,8 @@ admin:
             create_successfully: New subscriber is created successfully
             edit_successfully: Subscriber %s is updated successfully
             not_exist: Subscriber with searched id doesn't exist!
+        place:
+            create_successfully: New place/directory is created successfully
+            edit_successfully: Place/Directory %s is updated successfully
+            no_content_notice: No content filled for this place/directory!
+            content_successfully: Place/Directory content filled successfully for language %s

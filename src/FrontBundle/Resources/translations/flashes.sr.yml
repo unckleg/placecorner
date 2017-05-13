@@ -1,0 +1,6 @@
+admin:
+    global:
+        sucess: Uspešno
+        error: Greška
+        notice: Obaveštenje
+    module:

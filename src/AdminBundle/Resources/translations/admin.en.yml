@@ -399,8 +399,12 @@ admin:
                     td_hidden: Hidden
                     td_delete: Delete City ?
                     td_show: Activate City ?
-                    td_hide: Hide City  ?
-                    td_edit: Edit City  ?
+                    td_hide: Hide City ?
+                    td_edit: Edit City ?
+                    td_popular: Mark City as Popular ?
+                    td_hide_popular: Hide City from Popular Group ?
+                    td_hide_top: Hide City from Top Group ?
+                    td_top: Mark City as Top ?
             create:
                 pagetitle: New City
                 caption: New City Form
@@ -471,6 +475,8 @@ admin:
                 place: Place
                 create: Place Create
                 edit: Place Edit
+                translate: Place Translate
+            fill_for_to_gallery: You mist first create Item and than upload Images for the same.
             index:
                 pagetitle: Place
                 pagetitle_small: administration of all places/directories
@@ -478,6 +484,7 @@ admin:
                 caption: List
                 caption_small: of all places/directories
                 table:
+                    th_image: Photo
                     th_title: Name
                     th_country_region: Country/Region
                     th_city: City
@@ -491,6 +498,8 @@ admin:
                     td_show: Show Place/Directory ?
                     td_delete: Delete Place/Directory ?
                     td_edit: Edit Place/Directory ?
+                    td_show_on_map: Show Place/Directory On Map ?
+                    td_hide_from_map: Hide Place/Directory From Map ?
             create:
                 pagetitle: New Place/Directory
                 caption: New Place/Directory Form
@@ -498,6 +507,9 @@ admin:
             edit:
                 pagetitle: Editing Place/Directory:
                 caption: Edit Place/Directory Form
+            translate:
+                new_translation: New Translation
+                caption: New Translation Form
             form:
                 title_label: Place/Directory Title
                 title_placeholder: Insert Title for New Place/Directory
@@ -505,6 +517,7 @@ admin:
                 gallery_label: Gallery
                 map_label: GeoLocation
                 map_placeholder: Pick Place/Directory - Latitude/Longitude from Map
+                geo_map_text: GMAP
                 working_label: Working Hours
                 working_placeholder: Insert Working hours for New Place/Directory
                 address_label: Address
@@ -532,3 +545,7 @@ admin:
                 country_label: Assign Country for New Place/Directory
                 region_label: Assign Region for New Place/Directory
                 city_label: Assign City for New Place/Directory
+                tag_label: Add Tags for this Place/Directory
+                category_label: Add Categories for this Place/Directory
+                place_image_label: Place/Directory Featured Photo
+                plupload_label: Place/Directory Bulk Images

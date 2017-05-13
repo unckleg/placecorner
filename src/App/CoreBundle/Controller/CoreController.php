@@ -29,11 +29,13 @@ class CoreController extends Controller
         $locale  = $request->getLocale();
 
         $fileLocator = $this->get('file_locator');
-        $path    = $fileLocator->locate('@AdminBundle/Resources/translations/' . $domain .'.'. $locale . '.yml');
+        $pathAdmin   = $fileLocator->locate('@AdminBundle/Resources/translations/' . $domain .'.'. $locale . '.yml');
+        $pathFront   = $fileLocator->locate('@FrontBundle/Resources/translations/' . $domain .'.'. $locale . '.yml');
 
         $translator = new Translator($locale, new MessageSelector());
         $translator->addLoader($format, new YamlFileLoader());
-        $translator->addResource($format, $path, $locale, $domain);
+        $translator->addResource($format, $pathAdmin, $locale, $domain);
+        $translator->addResource($format, $pathFront, $locale, $domain);
 
         return $translator->trans($translationKey, $arr, $domain);
     }

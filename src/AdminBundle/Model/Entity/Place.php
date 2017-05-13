@@ -3,7 +3,10 @@
 namespace AdminBundle\Model\Entity;
 
 use App\CoreBundle\Model\Translation\TranslatableTrait;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use JsonSerializable;
 
 /**
  * Place
@@ -27,14 +30,14 @@ class Place
     /**
      * @var int
      *
-     * @ORM\Column(name="user_type", type="integer")
+     * @ORM\Column(name="user_type", type="integer", nullable=true)
      */
     protected $userType;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="user_id", type="integer")
+     * @ORM\Column(name="user_id", type="integer", nullable=true)
      */
     protected $userId;
 
@@ -70,15 +73,8 @@ class Place
     protected $municipalityId;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="gallery_id", type="integer", nullable=true)
-     */
-    protected $galleryId;
-
-    /**
      * @var string
-     *
+     * @Assert\NotBlank()
      * @ORM\Column(name="map", type="string", length=500)
      */
     protected $map;
@@ -96,6 +92,23 @@ class Place
      * @ORM\Column(name="address", type="string", length=500)
      */
     protected $address;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="image", type="string", length=1000)
+     */
+    protected $image;
+
+    /**
+     * Many Place have Many Images.
+     * @ORM\ManyToMany(targetEntity="Images")
+     * @ORM\JoinTable(name="place_images",
+     *      joinColumns={@ORM\JoinColumn(name="place_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="image_id", referencedColumnName="id", unique=true)}
+     *      )
+     */
+    protected $images;
 
     /**
      * @var string
@@ -123,7 +136,7 @@ class Place
      *
      * @ORM\Column(name="views", type="integer")
      */
-    protected $views;
+    protected $views = 0;
 
     /**
      * @var string
@@ -161,12 +174,75 @@ class Place
     protected $status = 0;
 
     /**
+     * @var int
+     *
+     * @ORM\Column(name="featured", type="boolean")
+     */
+    protected $featured = 0;
+
+    /**
      * @var bool
      *
      * @ORM\Column(name="is_deleted", type="boolean")
      */
     protected $isDeleted = 0;
 
+
+    /**
+     * Many Places have Many Tags.
+     * @ORM\ManyToMany(targetEntity="Tag")
+     * @ORM\JoinTable(name="place_tags",
+     *      joinColumns={@ORM\JoinColumn(name="place_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="tag_id", referencedColumnName="id")})
+     */
+    protected $tags;
+
+    /**
+     * Many Places have Many Categories.
+     * @ORM\ManyToMany(targetEntity="Category")
+     * @ORM\JoinTable(name="place_categories",
+     *      joinColumns={@ORM\JoinColumn(name="place_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="category_id", referencedColumnName="id")})
+     */
+    protected $categories;
+
+    public function __construct() {
+        $this->tags       = new ArrayCollection();
+        $this->categories = new ArrayCollection();
+        $this->images     = new ArrayCollection();
+    }
+
+    public function addCategories($categories)
+    {
+        foreach($categories as $category) {
+            $this->categories[] = $category;
+        }
+        return $this;
+    }
+
+    public function addTags(Tag $tags)
+    {
+        foreach($tags as $tag) {
+            $this->tags[] = $tag;
+        }
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTags()
+    {
+        return $this->tags;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCategories()
+    {
+        return $this->categories;
+    }
 
     /**
      * Get id
@@ -320,30 +396,6 @@ class Place
     public function getMunicipality()
     {
         return $this->municipalityId;
-    }
-
-    /**
-     * Set galleryId
-     *
-     * @param integer $galleryId
-     *
-     * @return Place
-     */
-    public function setGalleryId($galleryId)
-    {
-        $this->galleryId = $galleryId;
-
-        return $this;
-    }
-
-    /**
-     * Get galleryId
-     *
-     * @return int
-     */
-    public function getGalleryId()
-    {
-        return $this->galleryId;
     }
 
     /**
@@ -611,6 +663,47 @@ class Place
     }
 
     /**
+     * @return string
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     * @param string $image
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getImages()
+    {
+        return $this->images;
+    }
+
+    /**
+     * @param  mixed $images
+     * @return void
+     */
+    public function addImages($images)
+    {
+        if (is_array($images)) {
+            foreach($images as $image) {
+                $this->images[] = $image;
+            }
+        } else {
+            $this->images->add($images);
+        }
+        return $this;
+    }
+
+
+    /**
      * Set status
      *
      * @param integer $status
@@ -633,6 +726,23 @@ class Place
     {
         return $this->status;
     }
+
+    /**
+     * @return int
+     */
+    public function isFeatured()
+    {
+        return $this->featured;
+    }
+
+    /**
+     * @param int $featured
+     */
+    public function setFeatured($featured)
+    {
+        $this->featured = $featured;
+    }
+
 
     /**
      * Set isDeleted

@@ -20,7 +20,7 @@ class CategoryController extends CoreController
         $em          = $this->getDoctrine()->getManager();
         $repository  = $em->getRepository(Category::class);
         $locale      = $request->getDefaultLocale();
-        $categories  = $repository->findAllByLocale($locale);
+        $categories  = $repository->findAllByLocale($locale, Constants::PARENT);
 
         return $this->render('@Admin/Category/index.html.twig', [
             'categories' => $categories
@@ -198,6 +198,7 @@ class CategoryController extends CoreController
 
             if ($form->isSubmitted() && $form->isValid()) {
                 $image = $category->getImage();
+                $category->setParentId($parentCategory);
                 $fileName = $this->get('categories_uploader')->upload($image);
                 $category->setImage($fileName);
 
@@ -259,6 +260,7 @@ class CategoryController extends CoreController
                 } else {
                     $category->setImage(new File($oldImage, false));
                 }
+                $category->setParentId($repository->find($repository->find($id)));
 
                 // update object and flush to DB
                 $em->flush();
@@ -323,6 +325,7 @@ class CategoryController extends CoreController
                 } else {
                     $category->setImage($oldImage);
                 }
+                $category->setParentId($repository->find($repository->find($id)));
 
                 // fill object - persist - flush
                 $em->persist($category->translate($lang, false));

@@ -25,7 +25,8 @@ class AppKernel extends Kernel
             new App\CoreBundle\AppCoreBundle(),
             new BeSimple\I18nRoutingBundle\BeSimpleI18nRoutingBundle(),
             new Knp\DoctrineBehaviors\Bundle\DoctrineBehaviorsBundle(),
-            new JMS\I18nRoutingBundle\JMSI18nRoutingBundle()
+            new JMS\I18nRoutingBundle\JMSI18nRoutingBundle(),
+            new Oneup\UploaderBundle\OneupUploaderBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

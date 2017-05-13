@@ -1,3 +1,27 @@
 homepage:
     path:     /
     defaults: { _controller: FrontBundle:Index:index }
+
+search:
+    path: /search
+    defaults: { _controller: FrontBundle:Index:search }
+
+modal:
+    path: /modal
+    defaults: { _controller: FrontBundle:Index:modal }
+
+initialize:
+    path: /initialize
+    defaults: { _controller: FrontBundle:Index:initialize }
+
+sidebar:
+    path: /sidebar
+    defaults: { _controller: FrontBundle:Index:sidebar }
+
+listing:
+    path: /listing
+    defaults: { _controller: FrontBundle:Index:listing }
+
+details:
+    path: /details
+    defaults: { _controller: FrontBundle:Index:details }

@@ -1,4 +1,5 @@
 services:
-#    front.example:
-#        class: FrontBundle\Example
-#        arguments: ["@service_id", "plain_value", "%parameter%"]
+    front.front_repository:
+        class:  FrontBundle\Model\Repository\FrontRepository
+        arguments:
+            entityManager: "@doctrine.orm.entity_manager"

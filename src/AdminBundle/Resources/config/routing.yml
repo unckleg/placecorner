@@ -232,6 +232,14 @@ admin_place_create:
 admin_place_edit:
     path:     /admin/place/edit/id/{id}/lang/{lang}
     defaults: { _controller: AdminBundle:Place:edit }
+    requirements:
+        lang:  '%app.router_languages%'
+
+admin_place_translate:
+    path:     /admin/place/translate/id/{id}/lang/{lang}/
+    defaults: { _controller: AdminBundle:Place:translate }
+    requirements:
+        lang:  '%app.router_languages%'
 
 admin_place_modify:
     path:     /admin/place/modify/id/{id}/status/{status}

@@ -1,1 +1,241 @@
-wdadwdwaawddaw
+{% extends '@Front/Master/Layouts/front.html.twig' %}
+{% trans_default_domain "front" %}
+{% set page_title = 'front.module.index.page_title'|trans() %}
+
+{% block content %}
+
+    <div id="page-content">
+        <div class="hero-section full-screen has-map has-sidebar">
+            <div class="map-wrapper">
+                <div class="geo-location">
+                    <i class="fa fa-map-marker"></i>
+                </div>
+                <div class="map" id="map-homepage"></div>
+            </div>
+
+            <!--end map-wrapper-->
+            <div class="results-wrapper">
+
+                <div class="form search-form inputs-underline">
+                    {% include('@Front/Index/forms/search.html.twig') %}
+                </div>
+
+                <div class="results">
+                    <div class="tse-scrollable">
+                        <div class="tse-content">
+                            <div class="section-title">
+                                <h2>{{ 'front.module.index.map_form.results'|trans() }}<span class="results-number"></span></h2>
+                            </div>
+                            <!--end section-title-->
+                            <div class="results-content"></div>
+                            <!--end results-content-->
+                        </div>
+                        <!--end tse-content-->
+                    </div>
+                    <!--end tse-scrollable-->
+                </div>
+                <!--end results-->
+            </div>
+            <!--end results-wrapper-->
+        </div>
+        <!--end hero-section-->
+
+        <div class="block">
+            <div class="container">
+                <div class="center">
+                    <div class="section-title">
+                        <div class="center">
+                            <h2>{{ 'front.module.index.inner.popular_title'|trans() }}</h2>
+                            <h3 class="subtitle">
+                                {{ 'front.module.index.inner.popular_description'|trans() }}
+                            </h3>
+                        </div>
+                    </div>
+                    <!--end section-title-->
+                </div>
+                <!--end center-->
+                <div class="row">
+                    {% for city in cities %}
+                        <div class="col-md-3 col-sm-3">
+                            <div class="item" data-id="{{ city.getTranslatable.getId }}">
+                                {% if city.isTop == 1 %}
+                                    <figure class="ribbon">Top</figure>
+                                {% endif %}
+                                <a href="{{ path('listing', {'city': city.getTranslatable.getId }) }}">
+                                    <div class="description">
+                                        <h3>{{ city.getName }}</h3>
+                                        <h4>{{ city.getRegion.getName }}</h4>
+                                        <div class="label label-default">{{ 28 ~ ' Places/Directories' }}</div>
+                                    </div>
+                                    <!--end description-->
+                                    <div class="image bg-transfer">
+                                        <img src="{{ asset('/uploads/cities/'~city.getImage) }}" alt="">
+                                    </div>
+                                    <!--end image-->
+                                </a>
+                                <!--end additional-info-->
+                            </div>
+                            <!--end item-->
+                        </div>
+                    {% endfor %}
+                </div>
+                <!--end row-->
+                <div class="center">
+                    <a href="" class="btn btn-primary btn-light-frame btn-rounded btn-framed arrow">
+                        {{ 'front.module.index.inner.go_to_search'|trans }}
+                    </a>
+                </div>
+                <!--end center-->
+            </div>
+            <!--end container-->
+        </div>
+        <!--end block-->
+        <div class="container"><hr></div>
+        <div class="block">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Events Near You</h2>
+                </div>
+                <!--end section-title-->
+                <div class="row">
+                    <div class="col-md-4 col-sm-4">
+                        <div class="text-element event">
+                            <div class="date-icon">
+                                <figure class="day">22</figure>
+                                <figure class="month">Jun</figure>
+                            </div>
+                            <h4><a href="detail.html">Lorem ipsum dolor sit amet</a></h4>
+                            <figure class="date"><i class="icon_clock_alt"></i>08:00</figure>
+                            <p>Ut nec vulputate enim. Nulla faucibus convallis dui. Donec arcu enim, scelerisque.</p>
+                            <a href="detail.html" class="link arrow">More</a>
+                        </div>
+                        <!--end text-element-->
+                    </div>
+                    <!--end col-md-4-->
+                    <div class="col-md-4 col-sm-4">
+                        <div class="text-element event">
+                            <div class="date-icon">
+                                <figure class="day">04</figure>
+                                <figure class="month">Jul</figure>
+                            </div>
+                            <h4><a href="detail.html">Donec mattis mi vitae volutpat</a></h4>
+                            <figure class="date"><i class="icon_clock_alt"></i>12:00</figure>
+                            <p>Nullam vitae ex ac neque viverra ullamcorper eu at nunc. Morbi imperdiet.</p>
+                            <a href="detail.html" class="link arrow">More</a>
+                        </div>
+                        <!--end text-element-->
+                    </div>
+                    <!--end col-md-4-->
+                    <div class="col-md-4 col-sm-4">
+                        <div class="text-element event">
+                            <div class="date-icon">
+                                <figure class="day">12</figure>
+                                <figure class="month">Aug</figure>
+                            </div>
+                            <h4><a href="detail.html">Vivamus placerat</a></h4>
+                            <figure class="date"><i class="icon_clock_alt"></i>12:00</figure>
+                            <p>Aenean sed purus ut massa scelerisque bibendum eget vel massa.</p>
+                            <a href="detail.html" class="link arrow">More</a>
+                        </div>
+                        <!--end text-element-->
+                    </div>
+                    <!--end col-md-4-->
+                </div>
+                <!--end row-->
+                <div class="background-wrapper">
+                    <div class="background-color background-color-black opacity-5"></div>
+                </div>
+                <!--end background-wrapper-->
+            </div>
+            <!--end container-->
+        </div>
+        <div class="block">
+            <div class="container">
+                <div class="section-title">
+                    <div class="center">
+                        <h2>{{ 'front.module.index.inner.categories'|trans }}</h2>
+                    </div>
+                </div>
+                <!--end section-title-->
+                <div class="categories-list">
+                    <div class="row">
+                        {% for category in categories %}
+                            {% if category.getParentId is null %}
+                                <div class="col-md-3 col-sm-3">
+                                    <div class="list-item">
+                                        <div class="title">
+                                            <div class="icon"><i class="fa fa-paint-brush"></i></div>
+                                            <h3>
+                                                <a href="{{ path('listing', {'category': category.getTranslatable.getId }) }}">
+                                                    {{ category.getTitle }}
+                                                </a>
+                                            </h3>
+                                        </div>
+                                        {% for child in category.children %}
+                                            <ul>
+                                                <li>
+                                                    <a href="{{ path('listing', {'category': category.getTranslatable.getId, 'child': child.getId }) }}">{{ child.getTitle }}</a>
+                                                    <figure class="count">3</figure>
+                                                </li>
+                                            </ul>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            {% endif %}
+                            {% if loop.index == 4 %}
+                                </div>
+                                <div class="row">
+                            {% endif %}
+                        {% endfor %}
+
+                    </div>
+                    <!--end row-->
+                </div>
+                <!--end categories-list-->
+            </div>
+            <!--end container-->
+        </div>
+        <!--end block-->
+        <div class="block big-padding">
+            <div class="container">
+                <div class="vertical-aligned-elements">
+                    <div class="element width-50">
+                        <h3 style="color: #222;">Subscribe and be notified about new locations</h3>
+                    </div>
+                    <!--end element-->
+                    <div class="element width-50">
+                        <form class="form form-email inputs-underline" id="form-subscribe">
+                            <div class="input-group">
+                                <input type="text" class="form-control" name="email" placeholder="Your email" required="">
+                                <span class="input-group-btn">
+                                    <button class="btn" type="submit"><i class="arrow_right"></i></button>
+                                </span>
+                            </div><!-- /input-group -->
+                        </form>
+                        <!--end form-->
+                    </div>
+                    <!--end element-->
+                </div>
+                <!--end vertical-aligned-elements-->
+            </div>
+            <!--end container-->
+            <div class="background-wrapper">
+                <div class="background-color background-color-black opacity-5"></div>
+            </div>
+            <!--end background-wrapper-->
+        </div>
+        <!--end block-->
+    </div>
+    <!--end page-content-->
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script>
+        $('#map_srch_btn').text('');
+        $('#map_srch_btn').append('<i class="fa fa-search"></i>');
+        $('#map_city').find('option[text="All"]').val('All');
+        $('#map_categories').find('option[text="All Categories"]').val('All');
+    </script>
+{% endblock %}

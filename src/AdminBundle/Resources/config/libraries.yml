@@ -22,3 +22,11 @@ libraries:
         - '/skins/backend/assets/vendors/gmaps/gmaps.min.js'
     place_form:
         - '/skins/backend/assets/cms/place.css'
+    plupload:
+        - '/skins/backend/assets/vendors/plupload/jquery-ui.min.css'
+        - '/skins/backend/assets/vendors/plupload/jquery.ui.plupload.css'
+        - '/skins/backend/assets/global/plugins/jquery-ui/jquery-ui.min.js'
+        - '/skins/backend/assets/vendors/plupload/js/moxie.js'
+        - '/skins/backend/assets/vendors/plupload/js/plupload.full.min.js'
+        - '/skins/backend/assets/vendors/plupload/js/jquery.plupload.queue/jquery.plupload.queue.js'
+        - '/skins/backend/assets/vendors/plupload/js/jquery.ui.plupload/jquery.ui.plupload.min.js'

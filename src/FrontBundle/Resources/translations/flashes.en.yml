@@ -1,0 +1,7 @@
+admin:
+    global:
+        sucess: Sucess
+        error: Error
+        notice: Notice
+    module:
+

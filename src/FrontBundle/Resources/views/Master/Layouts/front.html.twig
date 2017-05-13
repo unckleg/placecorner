@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+
+<html lang="en-US">
+<head>
+    <title>{% if page_title is defined %} {{ page_title }} | {% endif %} {{ 'admin.global.title'|trans({}, 'admin') }} </title>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Đorđe Stojiljković">
+    <link href="{{ asset('skins/backend/assets/global/plugins/font-awesome/css/font-awesome.css') }}" rel="stylesheet" type="text/css"/>
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,300,700,900,400italic' rel='stylesheet' type='text/css'>
+    {% block stylesheets %}
+        {% stylesheets output='assets/front/css/layout.css' filter='cssrewrite'
+        'skins/frontend/assets/fonts/elegant-fonts.css'
+        'skins/frontend/assets/bootstrap/css/bootstrap.css'
+        'skins/frontend/assets/bootstrap/css/bootstrap-select.min.css'
+        'skins/frontend/assets/css/zabuto_calendar.min.css'
+        'skins/frontend/assets/css/owl.carousel.css'
+        'skins/frontend/assets/css/trackpad-scroll-emulator.css'
+        'skins/frontend/assets/css/jquery.nouislider.min.css'
+        'skins/frontend/assets/css/style.css'
+        'skins/frontend/assets/app/custom.css'%}
+        <link href="{{ asset_url }}" rel="stylesheet" type="text/css"/>
+        {% endstylesheets %}
+    {% endblock %}
+</head>
+
+
+<body class="homepage">
+    <div class="page-wrapper">
+        <!-- Header partial -->
+        {% include('@Front/Master/Partials/header.html.twig') %}
+
+        <!-- View content-->
+        {% block content %}{% endblock %}
+
+        <!-- Footer partial -->
+        {% include('@Front/Master/Partials/footer.html.twig') %}
+    </div>
+
+    <!--end page-wrapper-->
+    <a href="#" class="to-top scroll" data-show-after-scroll="600"><i class="arrow_up"></i></a>
+
+    {% block javascripts %}
+        <script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyD07QN1C5ATB6dgzP9l5kF_CDn7ihVXric&libraries=places"></script>
+        {% javascripts output='assets/front/js/layout.js'
+        'skins/frontend/assets/js/jquery-2.2.1.min.js'
+        'skins/frontend/assets/js/jquery-migrate-1.2.1.min.js'
+        'skins/frontend/assets/bootstrap/js/bootstrap.min.js'
+        'skins/frontend/assets/js/bootstrap-select.min.js'
+        'skins/frontend/assets/js/richmarker-compiled.js'
+        'skins/frontend/assets/js/markerclusterer_packed.js'
+        'skins/frontend/assets/js/infobox.js'
+        'skins/frontend/assets/js/jquery.validate.min.js'
+        'skins/frontend/assets/js/jquery.fitvids.js'
+        'skins/frontend/assets/js/icheck.min.js'
+        'skins/frontend/assets/js/owl.carousel.min.js'
+        'skins/frontend/assets/js/jquery.trackpad-scroll-emulator.min.js'
+        'skins/frontend/assets/js/bootstrap-datepicker.js'
+        'skins/frontend/assets/js/jquery.nouislider.all.min.js'
+
+        'skins/frontend/assets/js/custom.js'
+        %}
+        <script src="{{ asset_url }}"></script>
+        {% include '@Front/Master/Partials/map-javascript.html.twig' %}
+        {% endjavascripts %}
+
+        <script>
+            var optimizedDatabaseLoading = 0;
+            var _latitude = 44.7866;
+            var _longitude = 20.4489;
+            var element = "map-homepage";
+            var markerTarget = "modal";
+            // use "sidebar", "infobox" or "modal" - defines the action after click on marker
+            var sidebarResultTarget = "modal"; // use "sidebar", "modal" or "new_page" - defines the action after click on marker
+            var showMarkerLabels = false; // next to every marker will be a bubble with title
+            var mapDefaultZoom = 7; // default zoom
+            heroMap(_latitude,_longitude, element, markerTarget, sidebarResultTarget, showMarkerLabels, mapDefaultZoom);
+        </script>
+    {% endblock %}
+</body>

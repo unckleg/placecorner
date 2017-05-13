@@ -56,6 +56,7 @@ table.dataTable.no-footer {
 }
 .control-label .required, .form-group .required {
     color: #000 !important;
+    font-size: 14px !important;
     font-weight: 400 !important;
     padding-left: 0px !important;
 }
@@ -126,4 +127,20 @@ table.dataTable.no-footer {
     -webkit-transform: translateY(-2px) translateZ(0);
     -moz-transform: translateY(-2px) translateZ(0);
     transform: translateY(-2px) translateZ(0);
+}
+.plupload_content plupload_dropbox {
+    position: relative !important;
+    width: 100% !important;
+    height: 150px !important;
+}
+
+.plupload_filelist plupload_filelist_header ui-widget-header {
+    width: 100% !important;
+}
+
+.plupload_filelist plupload_filelist_footer ui-widget-header {
+    width: 100% !important;
+}
+.plupload_filelist .plupload_file_name {
+    width: 600px !important;
 }

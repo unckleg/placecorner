@@ -1,0 +1,96 @@
+<div class="modal-item-detail modal-dialog" role="document"
+      data-latitude="{{ place.getMap }}" data-longitude="{{ place.getMap }}" data-address="{{ place.getAddress }}">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span></button>
+            <div class="section-title">
+                <h2>{{ place.getTitle }}</h2>
+                <div class="label label-default">{{ place.getRegion.getName }}</div>
+                <div class="rating-passive" data-rating="4">
+                    <span class="stars">
+                        <figure class="active fa fa-star"></figure>
+                        <figure class="active fa fa-star"></figure>
+                        <figure class="active fa fa-star"></figure>
+                        <figure class="active fa fa-star"></figure>
+                        <figure class="active fa fa-star"></figure>
+                    </span>
+                    <span class="reviews">2</span>
+                </div>
+
+                {% if place.isTop == 1 %}
+                    <figure class="ribbon">{{ 'front.module.index.map_form.top_label'|trans({}, 'front') }}</figure>
+                {% endif %}
+
+                <div class="controls-more">
+                    <ul>
+                        <li><a href="#">Add to favorites</a></li>
+                        <li><a href="#">Add to watchlist</a></li>
+                    </ul>
+                </div>
+                <!--end controls-more-->
+            </div>
+            <!--end section-title-->
+        </div>
+        <!--end modal-header-->
+        <div class="modal-body">
+            <div class="left">
+
+                {% if place.images is not empty %}
+                    <div class="gallery owl-carousel" data-owl-nav="1" data-owl-dots="0">
+                        {% for image in place.images %}
+                            <img src="{{ asset('/uploads/place/'~place.getTranslatable.getId~'/images/'~image.getImage) }}">
+                        {% endfor %}
+                    </div>
+                {% endif %}
+
+                <div class="map" id="map-modal"></div>
+                <!--end map-->
+
+                <section>
+                    <h3>Contact</h3>
+                    <h5><i class="fa fa-map-marker"></i>{{ place.getAddress }}</h5>
+                    <h5><i class="fa fa-phone"></i>{{ place.getPhone }}</h5>
+                    <h5><i class="fa fa-envelope"></i>{{ place.getEmail }}</h5>
+                </section>
+
+                <section>
+                    <h3>Social Share</h3>
+                    <div class="social-share"></div>
+                </section>
+
+            </div>
+            <!--end left -->
+            <div class="right">
+                <section>
+                    <h3>About</h3>
+                    <div class="read-more">
+                        <p>
+                            {{ place.getContent|raw }}
+                        </p>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>Features</h3>
+                    <ul class="tags">
+                        {% for tag in place.tags %}
+                            {% if tag.isDeleted == 0 and tag.getStatus == 1 %}
+                                <li>{{ tag.getTitle }}</li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                </section>
+
+                <section>
+                    {#<h3>Listing Details</h3>#}
+                    <dl>
+                        {#<dt>'. $currentLocation['description_list'][$i]['title'] .'</dt>#}
+                        {#<dd>'. $currentLocation['description_list'][$i]['value'] .'</dd>#}
+                    </dl>
+                </section>
+
+            </div>
+        </div>
+    </div>
+</div>

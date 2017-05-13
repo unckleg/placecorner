@@ -1,0 +1,40 @@
+front:
+    # Global administration translations
+    global:
+        title: Trough Serbia
+        name: Trough-Serbia
+        breadcrumb:
+            home: Home
+        buttons:
+            yes: Yes
+            no: No
+            go_back: Go back
+        form:
+            button_submit: Submit
+            button_cancel: Cancel
+
+    # List of modules
+    module:
+        index:
+            page_title: Search & Discover
+            map_form:
+                search: Search
+                input: Enter place keyword
+                results: Search Results
+                city_label: City
+                category_label: Category
+                all_cities: All Cities
+                all_categories: All Categories
+                top_label: Top
+            inner:
+                popular_title: Popular Cities
+                popular_description: Discover popular cities round the world
+                go_to_search: View all places
+                categories: List of all Categories
+                subscribe: Subscribe and be notified about new places/directories
+                popular_places: Popular Places
+                promote_yours: Promote yours
+                recently_rated: Recently Rated Places/Directories
+                testimonials: Latest Reviews
+                add_to_favorites: Add To Favorites
+                add_to_watchlist: Add To Watchlist

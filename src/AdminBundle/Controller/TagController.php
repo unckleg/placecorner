@@ -10,7 +10,6 @@ use Symfony\Component\HttpFoundation\Request;
 
 class TagController extends CoreController
 {
-
     public function indexAction(Request $request)
     {
         $em         = $this->getDoctrine()->getManager();
@@ -141,5 +140,4 @@ class TagController extends CoreController
                 $this->json('There was an error while updating Page data');
         }
     }
-
 }

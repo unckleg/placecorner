@@ -1,5 +1,5 @@
 {% extends '@Admin/Master/Layouts/admin.html.twig' %}
-{% set page_title = 'admin.module.page.index.pagetitle'|trans({}, 'admin') %}
+{% set page_title = 'admin.module.place.index.pagetitle'|trans({}, 'admin') %}
 
 {% block breadcrumbs %}
     <div class="page-bar">
@@ -54,6 +54,7 @@
             <table class="table table-bordered table-hover" id="items">
                 <thead>
                 <tr>
+                    <th class="text-center" style="width: 1%;"> {{ 'admin.module.place.index.table.th_image'|trans({}, 'admin') }} </th>
                     <th class="text-center"> {{ 'admin.module.place.index.table.th_title'|trans({}, 'admin') }} </th>
                     <th class="text-center"> {{ 'admin.module.place.index.table.th_country_region'|trans({}, 'admin') }} </th>
                     <th class="text-center"> {{ 'admin.module.place.index.table.th_city'|trans({}, 'admin') }} </th>
@@ -67,6 +68,7 @@
                 {% if places is not empty %}
                     {% for place in places %}
                         <tr>
+                            <td class="text-center"><img src="{{ asset('/uploads/place/'~place.getId~'/featured/'~place.getImage) }}" style="width: 100%;"></td>
                             <td class="text-center"> {{ place.getTitle }} </td>
                             <td class="text-center"> {{ place.getCountry.getName ~' / '~ place.getRegion.getName}} </td>
                             <td class="text-center"> {{ place.getCity.getName }} </td>
@@ -88,6 +90,33 @@
                                 {% endif %}
                             </td>
                             <td class="text-center" style="width: 20%;">
+                                {% if place.isFeatured == 1%}
+                                    <a class="btn red-flamingo btn-sm tooltips" type="button" data-container="body"
+                                       data-placement="top"
+                                       data-original-title="{{ 'admin.module.place.index.table.td_hide_from_map'|trans({}, 'admin') }}"
+                                       data-action="featured"
+                                       data-place-id="{{ place.getId }}"
+                                       data-btn-ok-label="{{ 'admin.global.buttons.yes'|trans({}, 'admin') }}"
+                                       data-btn-cancel-label="{{ 'admin.global.buttons.no'|trans({}, 'admin') }}"
+                                       data-toggle="confirmation"
+                                       data-popout="true"
+                                       data-on-confirm="modifyPlace">
+                                        <i class="icon-location-pin"></i>
+                                    </a>
+                                {% else %}
+                                    <a class="btn blue-ebonyclay btn-sm tooltips" type="button" data-container="body"
+                                       data-placement="top"
+                                       data-original-title="{{ 'admin.module.place.index.table.td_show_on_map'|trans({}, 'admin') }}"
+                                       data-action="featured"
+                                       data-place-id="{{ place.getId }}"
+                                       data-btn-ok-label="{{ 'admin.global.buttons.yes'|trans({}, 'admin') }}"
+                                       data-btn-cancel-label="{{ 'admin.global.buttons.no'|trans({}, 'admin') }}"
+                                       data-toggle="confirmation"
+                                       data-popout="true"
+                                       data-on-confirm="modifyPlace">
+                                        <i class="icon-location-pin"></i>
+                                    </a>
+                                {% endif %}
                                 {% if place.getStatus == 1 %}
                                     <a class="btn purple btn-sm tooltips" type="button" data-container="body"
                                        data-placement="top"

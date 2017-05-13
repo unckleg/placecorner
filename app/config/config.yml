@@ -109,3 +109,9 @@ jms_i18n_routing:
     default_locale: '%locale%'
     locales: '%i18n_languages%'
     strategy: prefix_except_default
+
+# OneUp Uploader Bundle Configuration
+oneup_uploader:
+    mappings:
+        gallery:
+            frontend: plupload

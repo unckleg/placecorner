@@ -36,3 +36,4 @@ parameters:
     # Upload Directories
     categories_directory: '%kernel.root_dir%/../web/uploads/categories'
     cities_directory:     '%kernel.root_dir%/../web/uploads/cities'
+    place_directory:      '%kernel.root_dir%/../web/uploads/place'

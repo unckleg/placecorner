@@ -1,0 +1,3 @@
+testroute:
+    locales: { en: "/engleska", sr: "/srpska", ru: "/ruska"}
+    defaults: { _controller: AdminBundle:Page:create }

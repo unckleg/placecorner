@@ -11,9 +11,11 @@ use Doctrine\ORM\AbstractQuery;
 class CityRepository extends EntityRepository implements Constants
 {
     private static $modifyFields = [
-        'hide'   => 'status',
-        'show'   => 'status',
-        'delete' => 'isDeleted'
+        'hide'    => 'status',
+        'show'    => 'status',
+        'delete'  => 'isDeleted',
+        'popular' => 'isPopular',
+        'top'     => 'isTop'
     ];
 
     /**

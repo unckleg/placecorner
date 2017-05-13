@@ -3,6 +3,7 @@
 namespace AdminBundle\Model\Entity\Translation;
 
 use App\CoreBundle\Model\Translation\TranslationTrait;
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -16,21 +17,21 @@ class PlaceTranslation
 
     /**
      * @var string
-     *
      * @ORM\Column(name="title", type="string", length=1000)
+     * @Assert\NotBlank()
      */
     protected $title;
 
     /**
      * @var string
-     *
      * @ORM\Column(name="content", type="text", nullable=true)
+     * @Assert\NotBlank()
      */
     protected $content;
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank()
      * @ORM\Column(name="seo_title", type="string", length=500)
      */
     protected $seoTitle;

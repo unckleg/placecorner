@@ -20,3 +20,7 @@ fos_js_routing:
 my_yaml_i18n_routes:
     resource: "@AdminBundle/Resources/translations/routes/i18n.yml"
     type: be_simple_i18n
+
+oneup_uploader:
+    resource: .
+    type: uploader

@@ -3,6 +3,7 @@
 namespace AdminBundle\Model\Entity;
 
 use App\CoreBundle\Model\Translation\TranslatableTrait;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -26,11 +27,30 @@ class Category
     protected $id;
 
     /**
+     * @ORM\OneToMany(targetEntity="Category", mappedBy="parentId")
+     */
+    protected $children;
+
+    /**
      * @var int
      *
-     * @ORM\Column(name="parent_id", type="integer")
+     * @ORM\ManyToOne(targetEntity="Category", inversedBy="children")
+     * @ORM\JoinColumn(name="parent_id", referencedColumnName="id")
      */
-    protected $parentId = 0;
+    protected $parentId = null;
+
+    public function __construct()
+    {
+        $this->children = new ArrayCollection();
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getChildren()
+    {
+        return $this->children;
+    }
 
     /**
      * @var string

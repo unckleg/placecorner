@@ -1,0 +1,35 @@
+front:
+    # Global administration translations
+    global:
+        title: Place Corner - Administration
+        name: Near.me
+        breadcrumb:
+            home: Home
+        buttons:
+            yes: Yes
+            no: No
+            go_back: Go back
+        form:
+            button_submit: Submit
+            button_cancel: Cancel
+
+    # List of modules
+    module:
+        index:
+            page_title: Gradski Kutak
+            map_form:
+                search: Pretraga
+                input: Unesite reči za pretragu
+                results: Pronađeni rezultati
+                city_label: Grad
+                category_label: Kategorija
+            inner:
+                popular_title: Popularni Gradovi
+                popular_description: Upoznajte popularne gradove širom sveta
+                go_to_search: Pogledaj sva mesta
+                categories: Popularna Mesta
+                subscribe: Prijavite se na mejling listu i budite uvek obavešteni o novi mestima
+                popular_places: Popularna Mesta
+                promote_yours: Promovišite Svoje
+                recently_rated: Skoro ocenjena Mesta
+                testimonials: Poslednji Komentari

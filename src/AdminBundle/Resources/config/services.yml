@@ -23,12 +23,19 @@ services:
         public: false
         tags: [{ name: twig.extension }]
 
+    admin.upload_listener:
+        class: AdminBundle\EventListener\GalleryUploadListener
+        arguments: ['@doctrine.orm.entity_manager', '@place_uploader']
+        tags: [{ name: kernel.event_listener, event: oneup_uploader.post_persist, method: onUpload }]
+
     # TODO: Make that class construct wait for directory path argument ~
     # TODO: ~ because I'll have thousands of injectors because of file uploading.. Bad :)
     categories_uploader:
         class: App\CoreBundle\Service\Upload\FileUploader
         arguments: ['%categories_directory%']
-
     cities_uploader:
             class: App\CoreBundle\Service\Upload\FileUploader
             arguments: ['%cities_directory%']
+    place_uploader:
+        class: App\CoreBundle\Service\Upload\FileUploader
+        arguments: ['%place_directory%']

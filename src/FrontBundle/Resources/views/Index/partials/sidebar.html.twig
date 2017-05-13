@@ -1,0 +1,37 @@
+{% for place in places %}
+    <div class="result-item" data-id="{{ place.getId() }}">
+        <a href="">
+            <h3 style="color: #4fc3f7;">{{ place.getTitle() }}</h3>
+            <div class="result-item-detail">
+
+                <div class="image"
+                 style="background-image:
+                 url('{{ asset('/uploads/place/'~place.getId()~'/featured/'~place.getImage()) }}')"></div>
+
+                <div class="description">
+                    <h5><i class="fa fa-map-marker"></i>{{ place.getAddress() }}</h5>
+                    <div class="rating-passive"data-rating="5">
+                        <span class="stars"></span>
+                        <span class="reviews">5</span>
+                    </div>
+                    <div class="label label-default">{{ place.getCity.getName }}</div>
+                    <p>{{ place.getContent()|raw }}</p>
+                </div>
+            </div>
+        </a>
+        <div class="controls-more">
+            <ul>
+                <li>
+                    <a href="#" class="add-to-favorites">
+                        {{ 'front.module.index.inner.add_to_favorites'|trans({}, 'front') }}
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="add-to-watchlist">
+                        {{ 'front.module.index.inner.add_to_watchlist'|trans({}, 'front') }}
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+{% endfor %}

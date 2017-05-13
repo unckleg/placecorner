@@ -1,0 +1,35 @@
+{{ form_start(form) }}
+
+    {{ form_errors(form) }}
+    {{ form_row(form._token) }}
+
+<div class="section-title">
+    <h2>{{ 'front.module.index.map_form.search'|trans({}, 'front') }}</h2>
+</div>
+
+<div class="form-group">
+    {{ form_errors(form.text) }}
+    {{ form_widget(form.text) }}
+</div>
+
+<div class="row">
+    <div class="col-md-6 col-sm-6">
+        <div class="form-group">
+            {{ form_errors(form.city) }}
+            {{ form_widget(form.city) }}
+        </div>
+    </div>
+
+    <div class="col-md-6 col-sm-6">
+        <div class="form-group">
+            {{ form_errors(form.categories) }}
+            {{ form_widget(form.categories) }}
+        </div>
+    </div>
+</div>
+
+<div class="form-group">
+    {{ form_widget(form.submit, {'id': 'map_srch_btn', 'attr': {'data-ajax-data-file': path('search')} }) }}
+</div>
+
+{{ form_end(form) }}

@@ -94,6 +94,60 @@
                                 {% endif %}
                             </td>
                             <td class="text-center" style="width: 20%;">
+                                {% if city.isTop == 1%}
+                                    <a class="btn red-thunderbird btn-sm tooltips" type="button" data-container="body"
+                                       data-placement="top"
+                                       data-original-title="{{ 'admin.module.city.index.table.td_hide_top'|trans({}, 'admin') }}"
+                                       data-action="top"
+                                       data-city-id="{{ city.getId }}"
+                                       data-btn-ok-label="{{ 'admin.global.buttons.yes'|trans({}, 'admin') }}"
+                                       data-btn-cancel-label="{{ 'admin.global.buttons.no'|trans({}, 'admin') }}"
+                                       data-toggle="confirmation"
+                                       data-popout="true"
+                                       data-on-confirm="modifyCity">
+                                        <i class="icon-star"></i>
+                                    </a>
+                                {% else %}
+                                    <a class="btn purple-medium btn-sm tooltips" type="button" data-container="body"
+                                       data-placement="top"
+                                       data-original-title="{{ 'admin.module.city.index.table.td_top'|trans({}, 'admin') }}"
+                                       data-action="top"
+                                       data-city-id="{{ city.getId }}"
+                                       data-btn-ok-label="{{ 'admin.global.buttons.yes'|trans({}, 'admin') }}"
+                                       data-btn-cancel-label="{{ 'admin.global.buttons.no'|trans({}, 'admin') }}"
+                                       data-toggle="confirmation"
+                                       data-popout="true"
+                                       data-on-confirm="modifyCity">
+                                        <i class="icon-star"></i>
+                                    </a>
+                                {% endif %}
+                                {% if city.isPopular == 1%}
+                                    <a class="btn red-flamingo btn-sm tooltips" type="button" data-container="body"
+                                       data-placement="top"
+                                       data-original-title="{{ 'admin.module.city.index.table.td_hide_popular'|trans({}, 'admin') }}"
+                                       data-action="popular"
+                                       data-city-id="{{ city.getId }}"
+                                       data-btn-ok-label="{{ 'admin.global.buttons.yes'|trans({}, 'admin') }}"
+                                       data-btn-cancel-label="{{ 'admin.global.buttons.no'|trans({}, 'admin') }}"
+                                       data-toggle="confirmation"
+                                       data-popout="true"
+                                       data-on-confirm="modifyCity">
+                                        <i class="icon-flag"></i>
+                                    </a>
+                                {% else %}
+                                    <a class="btn blue-ebonyclay btn-sm tooltips" type="button" data-container="body"
+                                       data-placement="top"
+                                       data-original-title="{{ 'admin.module.city.index.table.td_popular'|trans({}, 'admin') }}"
+                                       data-action="popular"
+                                       data-city-id="{{ city.getId }}"
+                                       data-btn-ok-label="{{ 'admin.global.buttons.yes'|trans({}, 'admin') }}"
+                                       data-btn-cancel-label="{{ 'admin.global.buttons.no'|trans({}, 'admin') }}"
+                                       data-toggle="confirmation"
+                                       data-popout="true"
+                                       data-on-confirm="modifyCity">
+                                        <i class="icon-flag"></i>
+                                    </a>
+                                {% endif %}
                                 {% if city.getStatus == 1 %}
                                     <a class="btn purple btn-sm tooltips" type="button" data-container="body"
                                        data-placement="top"
